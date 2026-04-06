@@ -303,14 +303,14 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
 /* ══════════════════════════════════════════════
    DOUGH CHAT
 ══════════════════════════════════════════════ */
-.dough-btn{position:fixed;bottom:28px;right:28px;z-index:200;width:56px;height:56px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 20px rgba(232,98,26,0.4);transition:transform 0.2s,background 0.2s}
+.dough-btn{width:56px;height:56px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 20px rgba(232,98,26,0.4);transition:transform 0.2s,background 0.2s}
 .dough-btn:hover{transform:scale(1.08);background:#d4561a}
 .dough-pulse{position:absolute;inset:-3px;border-radius:50%;border:2px solid var(--accent);animation:pulse 2s ease-out infinite;pointer-events:none}
 @keyframes pulse{0%{transform:scale(1);opacity:0.8}100%{transform:scale(1.5);opacity:0}}
 .dough-callout{position:fixed;bottom:38px;right:94px;z-index:200;background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:10px 16px;font-size:13px;font-weight:500;color:var(--warm);white-space:nowrap;animation:fadeSlide 0.4s var(--ease) both;pointer-events:none}
 .dough-callout::after{content:'';position:absolute;right:-7px;top:50%;transform:translateY(-50%);border:7px solid transparent;border-right:none;border-left-color:var(--border2)}
 @keyframes fadeSlide{from{opacity:0;transform:translateX(8px)}to{opacity:1;transform:translateX(0)}}
-.dough-panel{position:fixed;bottom:96px;right:28px;z-index:200;width:360px;background:var(--bg2);border:1px solid var(--border2);border-radius:12px;display:none;flex-direction:column;box-shadow:0 12px 48px rgba(0,0,0,0.6);overflow:hidden}
+.dough-panel{position:fixed;bottom:110px;right:24px;z-index:200;width:360px;background:var(--bg2);border:1px solid var(--border2);border-radius:12px;display:none;flex-direction:column;box-shadow:0 12px 48px rgba(0,0,0,0.6);overflow:hidden}
 .dough-panel.open{display:flex;animation:panelIn 0.35s var(--ease) both}
 @keyframes panelIn{from{opacity:0;transform:translateY(16px) scale(0.97)}to{opacity:1;transform:translateY(0) scale(1)}}
 .dough-header{display:flex;align-items:center;gap:12px;padding:16px 18px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.03)}
@@ -556,43 +556,52 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
 @keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .hero-ticker:hover{animation-play-state:paused}
 
-/* ══ FORNO BUTTON & LABEL ══ */
-.dough-btn{width:62px;height:62px}
-.forno-label{
-  position:fixed;bottom:96px;right:16px;z-index:200;
-  background:var(--bg2);
-  border:1px solid rgba(78,138,71,0.45);
-  border-radius:10px;
-  padding:8px 14px;
-  display:flex;flex-direction:column;align-items:center;gap:2px;
-  pointer-events:none;
-  animation:fornoLabelIn 0.5s 1s var(--ease) both;
-  text-align:center;
-  min-width:62px;
-  box-shadow:0 4px 20px rgba(0,0,0,0.4);
+/* ══ FORNO WIDGET ══ */
+.forno-widget{
+  position:fixed;bottom:24px;right:24px;z-index:200;
+  display:flex;flex-direction:column;align-items:center;gap:8px;
 }
-@keyframes fornoLabelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.dough-btn{
+  width:62px;height:62px;
+  position:relative;
+}
+.forno-label{
+  background:rgba(17,16,8,0.92);
+  border:1px solid rgba(78,138,71,0.5);
+  border-radius:10px;
+  padding:7px 14px 8px;
+  display:flex;flex-direction:column;align-items:center;gap:3px;
+  pointer-events:none;
+  animation:fornoLabelIn 0.6s 1.2s var(--ease) both;
+  opacity:0;
+  text-align:center;
+  white-space:nowrap;
+  -webkit-backdrop-filter:blur(8px);
+  backdrop-filter:blur(8px);
+  box-shadow:0 4px 24px rgba(0,0,0,0.5);
+}
+@keyframes fornoLabelIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .forno-label-name{
-  font-family:var(--fd);
-  font-size:15px;
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:16px;
   font-weight:900;
   color:#4e8a47;
   line-height:1;
   letter-spacing:-0.01em;
 }
 .forno-label-sub{
-  font-family:var(--fm);
-  font-size:8.5px;
-  letter-spacing:0.16em;
+  font-family:'DM Mono',monospace;
+  font-size:8px;
+  letter-spacing:0.2em;
   text-transform:uppercase;
-  color:var(--muted);
+  color:rgba(154,138,106,0.8);
   line-height:1;
 }
 .forno-label-pulse{
-  width:6px;height:6px;
+  width:5px;height:5px;
   border-radius:50%;
   background:#4e8a47;
-  margin-top:3px;
+  margin-top:2px;
   animation:pulse 2s ease-out infinite;
 }
 </style>
@@ -1163,12 +1172,13 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
 <!-- ══════════════════════════════════════════════
      DOUGH AI CHAT
 ══════════════════════════════════════════════ -->
-<div class="forno-label" id="fornoLabel">
-  <span class="forno-label-name">Forno</span>
-  <span class="forno-label-sub">Pizza Expert</span>
-  <div class="forno-label-pulse"></div>
-</div>
-<button class="dough-btn" id="doughBtn" aria-label="Ask Forno — Pizza Expert">
+<div class="forno-widget">
+  <div class="forno-label" id="fornoLabel">
+    <span class="forno-label-name">Forno</span>
+    <span class="forno-label-sub">Pizza Expert</span>
+    <div class="forno-label-pulse"></div>
+  </div>
+  <button class="dough-btn" id="doughBtn" aria-label="Ask Forno — Pizza Expert">
   <span class="dough-pulse" id="doughPulse"></span>
   <svg id="chatIcon" width="26" height="26" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
   <!-- Oven body -->
@@ -1189,7 +1199,8 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
 </svg>
   <svg id="closeIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
 </button>
-<div class="dough-callout" id="doughCallout">Ask Forno — Your Pizza Expert ↗</div>
+</div>
+<!-- callout removed -->
 <div class="dough-panel" id="doughPanel">
   <div class="dough-header">
     <div class="dough-avatar">D</div>
