@@ -115,10 +115,8 @@ address{font-style:normal}
 /* ══════════════════════════════════════════════
    NAV
 ══════════════════════════════════════════════ */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:12px 48px 12px 36px;transition:background 0.3s,padding 0.3s}
-.nav.scrolled{background:rgba(17,16,8,0.93);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);padding:8px 48px 8px 36px;border-bottom:1px solid var(--border)}
-.nav.scrolled .logo-tjs{font-size:42px}
-.nav.scrolled .logo-sub{font-size:9px}
+.nav-OLD-FLEX{display:none}
+.nav-scrolled-OLD{display:none}
 .nav-logo img{filter:none;mix-blend-mode:screen;transition:opacity 0.2s;height:60px;width:auto;object-fit:contain}
 .nav-logo:hover img{opacity:0.8}
 .nav-links{display:flex;align-items:center;gap:28px}
@@ -135,17 +133,17 @@ address{font-style:normal}
 /* ══════════════════════════════════════════════
    HERO
 ══════════════════════════════════════════════ */
-.hero-section{min-height:100vh;display:flex;align-items:flex-start;justify-content:space-between;padding:160px 80px 80px;position:relative;overflow:hidden;gap:60px;flex-wrap:nowrap}
+.hero-section{min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:180px 40px 80px;position:relative;overflow:hidden;flex-direction:column}
 .hero-grain{position:absolute;inset:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:200px 200px;opacity:0.5}
 .hero-bg-text{position:absolute;font-family:var(--fd);font-size:28vw;font-weight:900;color:rgba(255,255,255,0.02);bottom:-6vw;left:-2vw;pointer-events:none;user-select:none;letter-spacing:-0.05em;white-space:nowrap}
-.hero-content{flex:1;max-width:620px;position:relative;z-index:1}
+.hero-content{width:100%;max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1}
 .hero-badge{display:inline-flex;align-items:center;font-family:var(--fm);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#4e8a47;background:rgba(78,138,71,0.12);border:1px solid rgba(78,138,71,0.3);padding:6px 14px;border-radius:40px;margin-bottom:28px}
 .hero-title{font-family:var(--fd);font-size:clamp(2.8rem,6vw,4.5rem);font-weight:900;line-height:1.08;margin-bottom:24px;color:var(--warm);animation:heroIn 1s var(--ease) both}
 .hero-title em{font-style:italic;color:var(--accent)}
 .hero-sub{font-size:17px;color:var(--muted);line-height:1.8;margin-bottom:36px;max-width:520px;animation:heroIn 1s 0.2s var(--ease) both}
 .hero-actions{display:flex;gap:16px;flex-wrap:wrap;animation:heroIn 1s 0.35s var(--ease) both}
 @keyframes heroIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.hero-right{position:relative;z-index:1;flex-shrink:0;animation:heroIn 1s 0.15s var(--ease) both}
+.hero-right{display:none}
 .hero-card{background:rgba(255,255,255,0.04);border:1px solid var(--border2);border-radius:12px;padding:28px 32px;width:240px;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .hero-card-badge{font-family:var(--fm);font-size:11px;color:var(--gold);letter-spacing:0.1em;display:block;margin-bottom:20px}
 .hero-stat{padding:16px 0}
@@ -610,6 +608,79 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
   margin-top:2px;
   animation:pulse 2s ease-out infinite;
 }
+
+/* ══ NAV — CENTERED LOGO SPLIT ══ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:14px 40px;transition:background 0.3s,padding 0.3s;gap:24px}
+.nav.scrolled{background:rgba(17,16,8,0.95);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:10px 40px;border-bottom:1px solid var(--border)}
+.nav-left,.nav-right{display:flex;align-items:center;gap:20px}
+.nav-left{justify-content:flex-end}
+.nav-right{justify-content:flex-start}
+.nav-left li,.nav-right li{list-style:none}
+.nav-left a,.nav-right a{font-size:13px;color:var(--muted);font-weight:500;transition:color 0.2s;letter-spacing:0.02em;white-space:nowrap}
+.nav-left a:hover,.nav-right a:hover{color:var(--warm)}
+.nav-cta{background:var(--accent) !important;color:#fff !important;padding:9px 18px;border-radius:4px;font-weight:600 !important;font-size:12px !important}
+.nav-cta:hover{background:#3d6e36 !important;color:#fff !important}
+.nav-logo{display:flex;flex-direction:column;align-items:center;text-decoration:none;gap:3px;line-height:1}
+.logo-tjs{font-family:'Playfair Display',Georgia,serif;font-size:52px;font-weight:900;color:#4e8a47;line-height:0.9;letter-spacing:-0.04em;transition:font-size 0.3s}
+.logo-sub{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:#4e8a47;opacity:0.85;line-height:1.4;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px}
+.logo-sub em{font-style:normal;font-size:7.5px;letter-spacing:0.18em;color:#4e8a47;opacity:0.6;display:block}
+.nav-logo:hover .logo-tjs{color:#6ab562}
+.nav.scrolled .logo-tjs{font-size:36px}
+.nav.scrolled .logo-sub{font-size:8px}
+.nav-burger{display:none;flex-direction:column;gap:5px;padding:4px;z-index:101}
+.nav-burger span{display:block;width:22px;height:2px;background:var(--warm);border-radius:2px;transition:0.3s}
+
+/* ══ HERO — CENTERED LAYOUT ══ */
+.hero-section{min-height:100vh;display:flex;align-items:flex-start;justify-content:center;padding:180px 40px 80px;position:relative;overflow:hidden;flex-direction:column}
+.hero-content{width:100%;max-width:900px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1}
+.hero-badge{display:inline-flex;align-items:center;font-family:var(--fm);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:#4e8a47;background:rgba(78,138,71,0.1);border:1px solid rgba(78,138,71,0.25);padding:6px 14px;border-radius:40px;margin-bottom:28px}
+.hero-title{font-family:var(--fd);font-size:clamp(3rem,7vw,5.5rem);font-weight:900;line-height:1.05;margin-bottom:24px;color:var(--warm);animation:heroIn 1s var(--ease) both;text-align:center}
+.hero-title em{font-style:italic;color:#4e8a47}
+.hero-sub{font-size:18px;color:var(--muted);line-height:1.8;margin-bottom:48px;max-width:640px;animation:heroIn 1s 0.2s var(--ease) both;text-align:center}
+.hero-cta-wrap{display:flex;flex-direction:column;align-items:center;width:100%;margin-bottom:48px;animation:heroIn 1s 0.35s var(--ease) both}
+.hero-who{font-family:var(--fm);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;text-align:center}
+.hero-split-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.hero-cta-card{display:flex;flex-direction:column;gap:4px;padding:22px 28px;border-radius:10px;border:1px solid var(--border2);text-decoration:none;transition:transform 0.2s,border-color 0.2s,background 0.2s;width:220px;background:rgba(255,255,255,0.03)}
+.hero-cta-card:hover{transform:translateY(-3px)}
+.hero-cta-b2b{border-color:rgba(78,138,71,0.4)}
+.hero-cta-b2b:hover{border-color:#4e8a47;background:rgba(78,138,71,0.06)}
+.hero-cta-consumer{border-color:rgba(78,138,71,0.3)}
+.hero-cta-consumer:hover{border-color:#4e8a47;background:rgba(78,138,71,0.06)}
+.hero-cta-icon{font-size:1.6rem;margin-bottom:6px}
+.hero-cta-label{font-family:var(--fd);font-size:1.15rem;font-weight:700;color:var(--warm)}
+.hero-cta-sub{font-size:12px;color:var(--muted);line-height:1.5}
+.hero-cta-arrow{font-size:12px;font-weight:500;margin-top:auto;padding-top:12px;color:#4e8a47}
+.hero-photos-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%;margin-bottom:36px;animation:heroIn 1s 0.5s var(--ease) both}
+.hero-photos-row img{width:100%;height:200px;object-fit:cover;border-radius:10px;border:1px solid var(--border2);display:block;transition:transform 0.3s}
+.hero-photos-row img:hover{transform:scale(1.02)}
+.hero-stats-row{display:flex;align-items:center;justify-content:center;gap:0;background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:12px;padding:20px 32px;width:100%;animation:heroIn 1s 0.6s var(--ease) both}
+.hero-stat-item{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;padding:0 16px}
+.hero-stat-num{font-family:var(--fd);font-size:1.8rem;font-weight:900;color:var(--warm);line-height:1}
+.hero-stat-label{font-family:var(--fm);font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);text-align:center;line-height:1.4}
+.hero-stat-divider{width:1px;height:40px;background:var(--border2);flex-shrink:0}
+
+/* ══ RESPONSIVE NAV & HERO ══ */
+@media(max-width:1024px){
+  .nav{grid-template-columns:1fr auto 1fr;padding:12px 24px;gap:16px}
+  .nav-left,.nav-right{gap:14px}
+  .nav-left a,.nav-right a{font-size:12px}
+  .logo-tjs{font-size:42px}
+  .hero-photos-row img{height:160px}
+}
+@media(max-width:768px){
+  .nav{grid-template-columns:auto 1fr auto;padding:12px 20px}
+  .nav-left{display:none}
+  .nav-right{display:none}
+  .nav-logo{grid-column:2;justify-self:center}
+  .nav-burger{display:flex;grid-column:3}
+  .logo-tjs{font-size:38px}
+  .hero-section{padding:140px 24px 60px}
+  .hero-title{font-size:clamp(2.4rem,8vw,3.5rem)}
+  .hero-cta-card{width:160px;padding:18px 16px}
+  .hero-photos-row{grid-template-columns:1fr}
+  .hero-stats-row{flex-wrap:wrap;gap:16px;padding:16px}
+  .hero-stat-divider{display:none}
+}
 </style>
 </head>
 <body>
@@ -618,14 +689,16 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
      NAV
 ══════════════════════════════════════════════ -->
 <nav class="nav" id="mainNav">
+  <ul class="nav-left">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+  </ul>
   <a href="#hero" class="nav-logo">
     <span class="logo-tjs">TJ's</span>
     <span class="logo-sub">Pizza Products<em>"Built from the base up"</em></span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#products">Products</a></li>
-    <li><a href="#story">Our Story</a></li>
-    <li><a href="#gallery">Gallery</a></li>
+  <ul class="nav-right">
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#contact" class="nav-cta">Free Sample Pack</a></li>
@@ -747,18 +820,62 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
 <!-- ══════════════════════════════════════════════
      PRODUCTS
 ══════════════════════════════════════════════ -->
-<section id="products" class="section">
-  <div class="container">
-    <div class="reveal">
-      <div class="section-label">Our Range</div>
-      <h2 class="section-title">Seven products.<br/>Endless possibilities.</h2>
-      <p class="section-sub">All products contain no added preservatives, colourings, or artificial flavours. Made in our HACCP-certified factory in Warnervale, NSW Central Coast.</p>
+<section id="hero" class="hero-section">
+  <div class="hero-grain"></div>
+  <div class="hero-bg-text">PIZZA</div>
+  <div class="hero-content">
+    <div class="hero-ticker-wrap">
+      <div class="hero-ticker">
+        <span>Vegan Friendly</span><span class="ticker-dot">·</span>
+        <span>HACCP Certified</span><span class="ticker-dot">·</span>
+        <span>No Preservatives</span><span class="ticker-dot">·</span>
+        <span>Wood Fire Ready</span><span class="ticker-dot">·</span>
+        <span>PFD Food Services</span><span class="ticker-dot">·</span>
+        <span>NSW Central Coast</span><span class="ticker-dot">·</span>
+        <span>22 Years Strong</span><span class="ticker-dot">·</span>
+        <span>National Delivery</span><span class="ticker-dot">·</span>
+        <span>Vegan Friendly</span><span class="ticker-dot">·</span>
+        <span>HACCP Certified</span><span class="ticker-dot">·</span>
+        <span>No Preservatives</span><span class="ticker-dot">·</span>
+        <span>Wood Fire Ready</span><span class="ticker-dot">·</span>
+      </div>
     </div>
-    <div class="products-grid" id="productsGrid"></div>
-    <div class="reveal products-cta">
-      <p>Not sure which product suits your kitchen? Ask <strong>Forno</strong> — our pizza expert — or request a free sample.</p>
-      <a href="#contact" class="btn-primary">Request a Free Sample Pack</a>
+    <div class="hero-badge">Est. 2002 · Warnervale NSW · HACCP Certified</div>
+    <h1 class="hero-title">The base behind<br/><em>Australia's best</em><br/>pizza kitchens.</h1>
+    <p class="hero-sub">Premium par-baked pizza bases and hand-stretched dough balls. No preservatives. No shortcuts. For commercial kitchens, food trucks — and Friday night at home.</p>
+
+    <div class="hero-cta-wrap">
+      <p class="hero-who">Who are you cooking for?</p>
+      <div class="hero-split-ctas">
+        <a href="#contact" class="hero-cta-card hero-cta-b2b">
+          <span class="hero-cta-icon">🍽</span>
+          <span class="hero-cta-label">I run a venue</span>
+          <span class="hero-cta-sub">Restaurants, food trucks, pubs &amp; clubs</span>
+          <span class="hero-cta-arrow">Free sample pack →</span>
+        </a>
+        <a href="#homecook" class="hero-cta-card hero-cta-consumer">
+          <span class="hero-cta-icon">🏠</span>
+          <span class="hero-cta-label">I cook at home</span>
+          <span class="hero-cta-sub">Recipes, tips &amp; where to buy</span>
+          <span class="hero-cta-arrow">Explore →</span>
+        </a>
+      </div>
     </div>
+
+    <div class="hero-photos-row">
+      <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-15-scaled.jpg" alt="TJ's dough production" loading="eager"/>
+      <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-12.jpg" alt="TJ's frozen dough balls" loading="eager"/>
+      <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-9.jpg" alt="TJ's pizza bases" loading="eager"/>
+    </div>
+
+    <div class="hero-stats-row">
+      <div class="hero-stat-item"><span class="hero-stat-num">500+</span><span class="hero-stat-label">Commercial customers</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat-item"><span class="hero-stat-num">22yrs</span><span class="hero-stat-label">Australian family owned</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat-item"><span class="hero-stat-num">7</span><span class="hero-stat-label">Product ranges</span></div>
+      <div class="hero-stat-divider"></div>
+      <div class="hero-stat-item"><span class="hero-stat-num">12mo</span><span class="hero-stat-label">Frozen shelf life</span></div>
     </div>
   </div>
 </section>
