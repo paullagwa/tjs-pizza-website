@@ -39,7 +39,7 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 .nav-logo{display:flex;flex-direction:column;align-items:center;gap:3px;line-height:1;text-decoration:none}
 .logo-tjs{font-family:var(--fd);font-size:52px;font-weight:900;color:var(--green);line-height:0.9;letter-spacing:-0.04em;transition:font-size 0.3s,color 0.2s}
 .logo-sub{font-family:var(--fm);font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--green);opacity:0.85;line-height:1.4;text-align:center}
-.logo-sub em{font-style:normal;font-size:7.5px;letter-spacing:0.18em;opacity:0.65;display:block}
+.logo-sub em{font-style:normal;font-size:7.5px;letter-spacing:0.18em;color:#f5f0e8;opacity:1;display:block}
 .nav-logo:hover .logo-tjs{color:#6ab562}
 .nav.scrolled .logo-tjs{font-size:36px}
 .nav-burger{display:none;flex-direction:column;gap:5px;padding:4px;z-index:101}
@@ -294,7 +294,6 @@ footer{background:#0a0906;padding:64px 0 0;border-top:1px solid var(--border)}
   <ul class="nav-right">
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#contact" class="nav-cta">Free Sample Pack</a></li>
   </ul>
   <button class="nav-burger" id="burgerBtn" aria-label="Open menu"><span></span><span></span><span></span></button>
 </nav>
@@ -307,7 +306,6 @@ footer{background:#0a0906;padding:64px 0 0;border-top:1px solid var(--border)}
   <a href="#homecook" class="m-link">Home Cook Guide</a>
   <a href="#faq" class="m-link">FAQ</a>
   <a href="#contact" class="m-link">Contact</a>
-  <a href="#contact" class="m-link m-cta">Free Sample Pack</a>
 </div>
 <main>
 <section id="hero" class="hero-section">
@@ -319,12 +317,11 @@ footer{background:#0a0906;padding:64px 0 0;border-top:1px solid var(--border)}
         <span>Vegan Friendly</span><span class="ticker-dot">·</span><span>HACCP Certified</span><span class="ticker-dot">·</span><span>No Preservatives</span><span class="ticker-dot">·</span><span>Wood Fire Ready</span><span class="ticker-dot">·</span><span>PFD Food Services</span><span class="ticker-dot">·</span><span>NSW Central Coast</span><span class="ticker-dot">·</span><span>22 Years Strong</span><span class="ticker-dot">·</span><span>National Delivery</span><span class="ticker-dot">·</span><span>Vegan Friendly</span><span class="ticker-dot">·</span><span>HACCP Certified</span><span class="ticker-dot">·</span><span>No Preservatives</span><span class="ticker-dot">·</span><span>Wood Fire Ready</span><span class="ticker-dot">·</span>
       </div>
     </div>
-    <div class="hero-badge">Est. 2002 · Warnervale NSW · HACCP Certified</div>
     <h1 class="hero-title">The base behind<br/><em>Australia's best</em><br/>pizza kitchens.</h1>
     <p class="hero-sub">Premium par-baked pizza bases and hand-stretched dough balls. No preservatives. No shortcuts. For commercial kitchens, food trucks — and Friday night at home.</p>
     <p class="hero-who">Who are you cooking for?</p>
     <div class="hero-ctas">
-      <a href="#contact" class="hero-cta"><span class="cta-icon">🍽</span><span class="cta-title">I run a venue</span><span class="cta-sub">Restaurants, food trucks, pubs &amp; clubs</span><span class="cta-link">Free sample pack →</span></a>
+      <a href="#contact" class="hero-cta"><span class="cta-icon">🍽</span><span class="cta-title">I run a venue</span><span class="cta-sub">Restaurants, food trucks, pubs &amp; clubs</span><span class="cta-link">Get in touch →</span></a>
       <a href="#homecook" class="hero-cta"><span class="cta-icon">🏠</span><span class="cta-title">I cook at home</span><span class="cta-sub">Recipes, tips &amp; where to buy</span><span class="cta-link">Explore →</span></a>
     </div>
     <div class="hero-photos">
@@ -347,7 +344,7 @@ footer{background:#0a0906;padding:64px 0 0;border-top:1px solid var(--border)}
   <div class="container">
     <div class="reveal"><div class="section-label">Our Range</div><h2 class="section-title">Seven products.<br/>Endless possibilities.</h2><p class="section-sub">No preservatives, no soy, no milk products. HACCP certified. Made in Warnervale, NSW Central Coast.</p></div>
     <div id="productsGrid" class="products-grid"></div>
-    <div class="reveal products-cta"><p>Not sure which product suits your kitchen? Ask <strong>Forno</strong> or request a free sample.</p><a href="#contact" class="btn-primary">Request a Free Sample Pack</a></div>
+
   </div>
 </section>
 
@@ -415,7 +412,7 @@ footer{background:#0a0906;padding:64px 0 0;border-top:1px solid var(--border)}
       <div class="team-card reveal">
         <div class="team-photo-wrap"><img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/10/a-1.jpg" alt="Jeff Knox" class="team-photo" loading="lazy"/></div>
         <div class="team-name">Jeff Knox</div><div class="team-role">Director</div>
-        <p class="team-bio">Jeff is the commercial force behind TJ's. Need a price, a sample pack, or want to talk pizza — Jeff picks up the phone.</p>
+        <p class="team-bio">Jeff is the commercial force behind TJ's. Need pricing, product info, or just want to talk pizza — Jeff picks up the phone.</p>
         <a href="tel:0402091718" class="team-phone">📞 0402 091 718</a>
       </div>
       <div class="team-card reveal" style="transition-delay:100ms">
@@ -439,14 +436,6 @@ footer{background:#0a0906;padding:64px 0 0;border-top:1px solid var(--border)}
       <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/haccp-aust-cert-black-1.jpg" alt="HACCP Certified" loading="lazy"/>
       <div><strong>HACCP Food Safety Certified</strong><p>All TJ's products meet Australian food safety standards.</p></div>
     </div>
-  </div>
-</section>
-<section class="sample-section">
-  <div class="sample-content reveal">
-    <div class="section-label" style="color:#6aab64">Zero Risk</div>
-    <h2>Try before you buy.<br/><em>On us.</em></h2>
-    <p>We're so confident in our product that we'll send you a free sample pack — no commitment, no sales pressure.</p>
-    <a href="#contact" class="btn-primary btn-large">Claim Your Free Sample Pack →</a>
   </div>
 </section>
 <section id="homecook" class="section section-dark">
@@ -482,7 +471,7 @@ footer{background:#0a0906;padding:64px 0 0;border-top:1px solid var(--border)}
       <div class="reveal">
         <div class="section-label" style="color:#6aab64">Get in Touch</div>
         <h2 class="section-title">Let's talk<br/>pizza.</h2>
-        <p class="contact-sub">Whether you need a free sample pack, wholesale pricing, or just want to find out more — Jeff and Rhys are easy to deal with.</p>
+        <p class="contact-sub">Whether you need wholesale pricing, product specs, or just want to find out more — Jeff and Rhys are easy to deal with.</p>
         <div class="contact-details">
           <div class="contact-detail"><span class="detail-icon">📞</span><div><strong>Call Jeff directly</strong><a href="tel:0402091718">0402 091 718</a><a href="tel:0243940176">(02) 43 94 01 76</a></div></div>
           <div class="contact-detail"><span class="detail-icon">📧</span><div><strong>Email</strong><a href="mailto:jeff@tjspizzaproducts.com.au">jeff@tjspizzaproducts.com.au</a></div></div>
@@ -493,7 +482,7 @@ footer{background:#0a0906;padding:64px 0 0;border-top:1px solid var(--border)}
         <div class="form-wrap">
           <div class="form-success" id="formSuccess"><div class="success-icon">✓</div><h3 id="successName">Thanks!</h3><p>We'll be in touch within one business day. Need us sooner? Call Jeff on 0402 091 718.</p></div>
           <div id="formInner">
-            <div class="form-title">Request a Free Sample Pack</div>
+            <div class="form-title">Get in touch</div>
             <form class="contact-form" id="contactForm" novalidate>
               <div class="form-row"><input type="text" id="fname" placeholder="Your name *" required/><input type="text" placeholder="Business name *" required/></div>
               <div class="form-row"><input type="tel" placeholder="Phone number *" required/><input type="email" placeholder="Email address"/></div>
@@ -592,7 +581,7 @@ var FAQS=[
   {q:'Do you deliver nationally across Australia?',a:"Yes — based on the NSW Central Coast, we supply commercial kitchens nationally through PFD Food Services and direct."},
   {q:"Are your products HACCP certified?",a:"All TJ's products are produced in our HACCP-certified facility in Warnervale, NSW with full batch traceability."},
   {q:'Do your pizza bases contain preservatives?',a:'Never. Zero added preservatives, artificial colourings, or flavours. Clean ingredients, great results.'},
-  {q:'Can I get a free sample before ordering?',a:"Yes! We offer free sample packs for new commercial customers. Fill out the contact form or call us — no obligation."},
+  {q:'How do I get started?',a:"Call Jeff on 0402 091 718 or fill out the contact form and we'll get back to you within one business day with pricing and product info."},
   {q:'What types of ovens work with your dough balls?',a:"Our dough balls work in all commercial ovens — especially wood fire. They thaw quickly, stretch easily, and hold up at high heat."}
 ];
 document.getElementById('yr').textContent=new Date().getFullYear();
