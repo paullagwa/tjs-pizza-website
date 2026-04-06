@@ -557,11 +557,44 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
 .hero-ticker:hover{animation-play-state:paused}
 
 /* ══ FORNO BUTTON & LABEL ══ */
-.dough-btn{width:60px;height:60px}
-.forno-label{position:fixed;bottom:38px;right:92px;z-index:200;background:var(--bg2);border:1px solid rgba(78,138,71,0.5);border-radius:8px;padding:8px 14px;display:flex;flex-direction:column;align-items:flex-end;gap:1px;pointer-events:none;animation:fadeSlide 0.4s var(--ease) both}
-.forno-label span{font-family:var(--fd);font-size:14px;font-weight:700;color:#4e8a47;line-height:1}
-.forno-label .forno-label-sub{font-family:var(--fm);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
-.forno-label::after{content:'';position:absolute;right:-7px;top:50%;transform:translateY(-50%);border:7px solid transparent;border-right:none;border-left-color:rgba(78,138,71,0.5)}
+.dough-btn{width:62px;height:62px}
+.forno-label{
+  position:fixed;bottom:96px;right:16px;z-index:200;
+  background:var(--bg2);
+  border:1px solid rgba(78,138,71,0.45);
+  border-radius:10px;
+  padding:8px 14px;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+  pointer-events:none;
+  animation:fornoLabelIn 0.5s 1s var(--ease) both;
+  text-align:center;
+  min-width:62px;
+  box-shadow:0 4px 20px rgba(0,0,0,0.4);
+}
+@keyframes fornoLabelIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.forno-label-name{
+  font-family:var(--fd);
+  font-size:15px;
+  font-weight:900;
+  color:#4e8a47;
+  line-height:1;
+  letter-spacing:-0.01em;
+}
+.forno-label-sub{
+  font-family:var(--fm);
+  font-size:8.5px;
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--muted);
+  line-height:1;
+}
+.forno-label-pulse{
+  width:6px;height:6px;
+  border-radius:50%;
+  background:#4e8a47;
+  margin-top:3px;
+  animation:pulse 2s ease-out infinite;
+}
 </style>
 </head>
 <body>
@@ -1131,8 +1164,9 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
      DOUGH AI CHAT
 ══════════════════════════════════════════════ -->
 <div class="forno-label" id="fornoLabel">
-  <span>Ask Forno</span>
+  <span class="forno-label-name">Forno</span>
   <span class="forno-label-sub">Pizza Expert</span>
+  <div class="forno-label-pulse"></div>
 </div>
 <button class="dough-btn" id="doughBtn" aria-label="Ask Forno — Pizza Expert">
   <span class="dough-pulse" id="doughPulse"></span>
@@ -1456,11 +1490,82 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 // ══ DOUGH CHAT ══
 var chatOpen = false;
 var doughMessages = [
-  {role:'assistant', content:"G'day! I'm Forno — TJ's pizza expert. Ask me anything: oven types, sauce secrets, cheese, toppings, or how to use your dough ball at home or in a commercial kitchen. What would you like to know?'},
+  {role:'assistant', content:"G'day! I'm Forno \u2014 TJ's pizza expert. Ask me anything: oven types, sauce secrets, cheese, toppings, or how to use your dough ball at home or in a commercial kitchen. What would you like to know?"}
+];
+
+function escHtml(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br/>');
+}
+function renderMessages() {
+  var container = document.getElementById('doughMessages');
+  container.innerHTML = '';
+  doughMessages.forEach(function(m) {
+    var row = document.createElement('div');
+    row.className = 'dough-msg ' + m.role;
+    if (m.role === 'assistant') {
+      row.innerHTML = '<span class="dough-msg-avatar">F</span><div class="dough-bubble">' + escHtml(m.content) + '</div>';
+    } else {
+      row.innerHTML = '<div class="dough-bubble">' + escHtml(m.content) + '</div>';
+    }
+    container.appendChild(row);
+  });
+  container.scrollTop = container.scrollHeight;
+}
+function addTyping() {
+  var container = document.getElementById('doughMessages');
+  var row = document.createElement('div');
+  row.className = 'dough-msg assistant';
+  row.id = 'typingRow';
+  row.innerHTML = '<span class="dough-msg-avatar">F</span><div class="dough-bubble dough-typing"><span></span><span></span><span></span></div>';
+  container.appendChild(row);
+  container.scrollTop = container.scrollHeight;
+}
+function removeTyping() { var t = document.getElementById('typingRow'); if (t) t.remove(); }
+function setSendDisabled(v) { document.getElementById('doughSend').disabled = v; }
+
+async function sendMessage() {
+  var input = document.getElementById('doughInput');
+  var text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  setSendDisabled(true);
+  doughMessages.push({role:'user', content:text});
+  renderMessages();
+  addTyping();
+  var SYSTEM = `You are "Forno" - TJ's Pizza Products world-class pizza expert, trained on the greatest pizza literature ever written: The Pizza Bible (Gemignani), The Elements of Pizza (Forkish), Mastering Pizza (Vetri), The Joy of Pizza (Richer), Modernist Pizza. You speak like a passionate expert who has studied the best pizzerias in Naples, New York, Detroit and Rome.
+
+You help two types of visitors:
+1. HOME COOKS: Give oven temps (250-280C home oven, 400C+ wood fire), defrost times (2-3hrs bench), stretching tips, topping combos, cheese advice, sauce guidance.
+2. COMMERCIAL KITCHENS: Product selection, carton specs, ordering through PFD Food Services, connect with Jeff for samples.
+
+TJ'S PRODUCTS:
+- Frozen Dough Balls: 150g(80/ctn), 220g(60/ctn), 240g(60/ctn), 250g(60/ctn), 270g(50/ctn), 300g(50/ctn), 350g(40/ctn), 600g(20/ctn). Vegan friendly, all ovens.
+- Par-Baked Bases: 6in(50/ctn), 8in(50/ctn), 9in(50/ctn). Chilled 3wks, frozen 12mths.
+- Fresh Frozen, Gluten Free (9in+11in), Garlic Butter & Cheese, Square Base, DinoBite Kids (6in dino, 60/ctn)
+- No preservatives, no soy, no milk products
+
+PIZZA KNOWLEDGE:
+- NEAPOLITAN: San Marzano tomatoes, fior di latte mozzarella, 60-90 secs at 450C+ wood fire.
+- NEW YORK: Low-moisture mozzarella, deck oven 280-300C, 12-15 mins. Foldable.
+- DETROIT: Blue steel pan, Wisconsin brick cheese to edges, sauce on top, 230C 15 mins.
+- WOOD FIRE: Hardwoods, dome 400-500C, floor 350C, rotate every 20-30 secs.
+- SAUCE: Neapolitan = raw San Marzano + salt + basil. NY = cooked with olive oil, garlic, oregano 45 mins.
+- CHEESE: Fior di latte = delicate. Low-moisture = better melt. Parmigiano = umami. Gorgonzola + honey = stunning.
+- TOPPINGS: 3-4 quality toppings. Add basil, prosciutto, burrata AFTER baking.
+- MAILLARD: Proteins and sugars browning above 150C - hotter oven = better crust.
+
+NEVER give from-scratch dough recipes. Redirect to TJ's premium dough balls.
+Contact: (02) 43 94 01 76 | 0402 091 718 (Jeff) | jeff@tjspizzaproducts.com.au
+Keep responses under 120 words. Be specific, passionate and practical.`;
+
+  try {
+    var res = await fetch('/api/chat', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
         model:'claude-sonnet-4-20250514',
         max_tokens:1000,
-        system:"You are \"Forno\" — TJ's Pizza Products' world-class pizza expert. You are trained on the greatest pizza literature ever written: The Pizza Bible (Gemignani), The Elements of Pizza (Forkish), Mastering Pizza (Vetri), The Joy of Pizza (Richer), Modernist Pizza, and more. You speak like a passionate expert who has studied the best pizzerias in Naples, New York, Detroit, Rome and beyond.\n\nYou help two types of visitors:\n1. HOME COOKS: Give oven temps (250-280C home oven, 400C+ wood fire), defrost times (2-3hrs bench, or morning of), stretching tips, topping combos, cheese advice, sauce recipes. Make great pizza feel achievable.\n2. COMMERCIAL KITCHENS: Help with product selection, carton specs, ordering through PFD Food Services, and connect them with Jeff for samples.\n\nTJ'S PRODUCTS:\n- Frozen Dough Balls: 150g(80/ctn), 220g(60/ctn), 240g(60/ctn), 250g(60/ctn), 270g(50/ctn), 300g(50/ctn), 350g(40/ctn), 600g(20/ctn). Vegan friendly, works in all ovens especially wood fire.\n- Traditional Par-Baked Bases: 6in(50/ctn), 8in(50/ctn), 9in(50/ctn)\n- Fresh Frozen Range, Gluten Free (9\" + 11\"), Garlic Butter & Cheese, Square Base, DinoBite Kids (6in dino shape, 60/ctn)\n- No preservatives, no soy, no milk products\n\nPIZZA EXPERTISE (use this knowledge freely):\n- NEAPOLITAN: 00 flour, San Marzano tomatoes, fior di latte or buffalo mozzarella, bake 60-90 secs at 450C+ in wood fire. Certified by AVPN.\n- NEW YORK: High-gluten flour, hand-tossed thin base, low-moisture mozzarella, deck oven 280-300C, 12-15 mins. Foldable slice.\n- DETROIT: High-hydration dough, baked in blue steel pan, Wisconsin brick cheese pushed to edges, sauce on top. 230C, 15 mins.\n- WOOD FIRE OVENS: Burn hardwoods (oak, fraxinus). Dome reaches 400-500C. Floor around 350C. Rotate pizza every 20-30 secs.\n- GAS DECK OVENS: Consistent heat. 280-320C. Bake 6-10 mins. Industry standard for commercial kitchens.\n- SAUCE: Neapolitan = crushed San Marzano, salt, torn basil, no cooking. NY = cooked with olive oil, garlic, oregano, low simmer 45 mins.\n- CHEESE: Fior di latte = fresh cow mozzarella, delicate. Low-moisture mozzarella = better melt, less water. Parmigiano-Reggiano adds umami. Gorgonzola + walnuts + honey = stunning combo.\n- TOPPINGS: Less is more. 3-4 quality toppings. Add delicate items (fresh basil, prosciutto, burrata) AFTER baking.\n- THE MAILLARD REACTION: Why pizza crust tastes incredible — proteins and sugars browning above 150C. Hot oven = better Maillard = better crust.\n\nNEVER provide from-scratch dough recipes. When dough comes up, explain the principle, then redirect to TJ's premium dough balls as the professional-grade solution.\n\nContact: (02) 43 94 01 76 | 0402 091 718 (Jeff) | jeff@tjspizzaproducts.com.au\n\nKeep responses under 120 words. Be specific, passionate, and practical.",
+        system: SYSTEM,
         messages:doughMessages.map(function(m){return{role:m.role,content:m.content};})
       })
     });
@@ -1471,7 +1576,7 @@ var doughMessages = [
     renderMessages();
   } catch(err) {
     removeTyping();
-    doughMessages.push({role:'assistant', content:"Having a moment there! Call Jeff on 0402 091 718 or (02) 43 94 01 76 — he'll sort you out."});
+    doughMessages.push({role:'assistant', content:"Having a moment there! Call Jeff on 0402 091 718 or (02) 43 94 01 76."});
     renderMessages();
   }
   setSendDisabled(false);
