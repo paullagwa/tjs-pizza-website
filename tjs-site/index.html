@@ -472,9 +472,10 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
 .nav-cta{font-size:12px !important;padding:8px 16px !important;white-space:nowrap}
 
 /* ══ DUAL CTA HERO SPLIT ══ */
-.hero-who{font-family:var(--fm);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
-.hero-split-ctas{display:flex;gap:14px;flex-wrap:wrap}
-.hero-cta-card{display:flex;flex-direction:column;gap:3px;padding:18px 22px;border-radius:10px;border:1px solid var(--border2);text-decoration:none;transition:transform 0.2s,border-color 0.2s,background 0.2s;min-width:200px;flex:1;background:rgba(255,255,255,0.03)}
+.hero-cta-wrap{display:flex;flex-direction:column;align-items:center;width:100%}
+.hero-who{font-family:var(--fm);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;text-align:center}
+.hero-split-ctas{display:flex;gap:14px;flex-wrap:wrap;width:100%;justify-content:center}
+.hero-cta-card{display:flex;flex-direction:column;gap:3px;padding:18px 22px;border-radius:10px;border:1px solid var(--border2);text-decoration:none;transition:transform 0.2s,border-color 0.2s,background 0.2s;min-width:180px;max-width:240px;flex:1;background:rgba(255,255,255,0.03)}
 .hero-cta-card:hover{transform:translateY(-2px)}
 .hero-cta-b2b{border-color:rgba(78,138,71,0.4)}
 .hero-cta-b2b:hover{border-color:#4e8a47;background:rgba(78,138,71,0.06)}
@@ -514,9 +515,10 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
 }
 
 /* ══ DUAL CTA HERO SPLIT ══ */
-.hero-who{font-family:var(--fm);font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
-.hero-split-ctas{display:flex;gap:14px;flex-wrap:wrap}
-.hero-cta-card{display:flex;flex-direction:column;gap:3px;padding:18px 22px;border-radius:10px;border:1px solid var(--border2);text-decoration:none;transition:transform 0.2s,border-color 0.2s,background 0.2s;min-width:200px;flex:1;background:rgba(255,255,255,0.03)}
+.hero-cta-wrap{display:flex;flex-direction:column;align-items:center;width:100%}
+.hero-who{font-family:var(--fm);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;text-align:center}
+.hero-split-ctas{display:flex;gap:14px;flex-wrap:wrap;width:100%;justify-content:center}
+.hero-cta-card{display:flex;flex-direction:column;gap:3px;padding:18px 22px;border-radius:10px;border:1px solid var(--border2);text-decoration:none;transition:transform 0.2s,border-color 0.2s,background 0.2s;min-width:180px;max-width:240px;flex:1;background:rgba(255,255,255,0.03)}
 .hero-cta-card:hover{transform:translateY(-2px)}
 .hero-cta-b2b{border-color:rgba(78,138,71,0.4)}
 .hero-cta-b2b:hover{border-color:#4e8a47;background:rgba(78,138,71,0.06)}
@@ -696,6 +698,7 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
     <div class="hero-badge">Est. 2002 · Warnervale NSW · HACCP Certified</div>
     <h1 class="hero-title">The base behind<br/><em>Australia's best</em><br/>pizza kitchens.</h1>
     <p class="hero-sub">Premium par-baked pizza bases and hand-stretched dough balls. No preservatives. No shortcuts. For commercial kitchens, food trucks — and Friday night at home.</p>
+    <div class="hero-cta-wrap">
     <p class="hero-who">Who are you cooking for?</p>
     <div class="hero-split-ctas">
       <a href="#contact" class="hero-cta-card hero-cta-b2b">
@@ -755,6 +758,7 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
     <div class="reveal products-cta">
       <p>Not sure which product suits your kitchen? Ask <strong>Forno</strong> — our pizza expert — or request a free sample.</p>
       <a href="#contact" class="btn-primary">Request a Free Sample Pack</a>
+    </div>
     </div>
   </div>
 </section>
