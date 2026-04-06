@@ -54,7 +54,7 @@
   --bg3:     #231e14;
   --warm:    #f5f0e8;
   --muted:   #9a8a6a;
-  --accent:  #e8621a;
+  --accent:  #4e8a47;
   --tjs-green: #4e8a47;
   --gold:    #d4a537;
   --green:   #4a9e5a;
@@ -106,7 +106,7 @@ address{font-style:normal}
    BUTTONS
 ══════════════════════════════════════════════ */
 .btn-primary{display:inline-flex;align-items:center;background:var(--accent);color:#fff;font-weight:600;font-size:15px;padding:14px 28px;border-radius:4px;transition:background 0.2s,transform 0.15s;letter-spacing:0.02em;font-family:var(--fb)}
-.btn-primary:hover{background:#d4561a;transform:translateY(-1px)}
+.btn-primary:hover{background:#3d6e36;transform:translateY(-1px)}
 .btn-large{font-size:17px !important;padding:18px 36px !important}
 .btn-full{width:100%;justify-content:center}
 .btn-ghost{display:inline-flex;align-items:center;color:var(--muted);font-size:15px;font-weight:500;padding:14px 20px;border:1px solid var(--border2);border-radius:4px;transition:color 0.2s,border-color 0.2s}
@@ -123,7 +123,7 @@ address{font-style:normal}
 .nav-links li a{font-size:14px;color:var(--muted);font-weight:500;transition:color 0.2s;letter-spacing:0.02em}
 .nav-links li a:hover{color:var(--warm)}
 .nav-cta{background:var(--accent) !important;color:#fff !important;padding:9px 18px;border-radius:4px;font-weight:600 !important;font-size:13px !important}
-.nav-cta:hover{background:#d4561a !important;color:#fff !important}
+.nav-cta:hover{background:#3d6e36 !important;color:#fff !important}
 .nav-burger{display:none;flex-direction:column;gap:5px;padding:4px;z-index:101}
 .nav-burger span{display:block;width:22px;height:2px;background:var(--warm);border-radius:2px;transition:0.3s}
 .nav-menu-open .nav-burger span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
@@ -271,7 +271,7 @@ address{font-style:normal}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .contact-form input,.contact-form select,.contact-form textarea{background:rgba(255,255,255,0.06);border:1px solid var(--border2);border-radius:6px;padding:12px 16px;font-size:14px;color:var(--warm);font-family:var(--fb);outline:none;width:100%;transition:border-color 0.2s,background 0.2s;-webkit-appearance:none;appearance:none}
 .contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--muted)}
-.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{border-color:var(--accent);background:rgba(232,98,26,0.06)}
+.contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus{border-color:var(--accent);background:rgba(78,138,71,0.06)}
 .contact-form select{cursor:pointer}
 .contact-form select option{background:var(--bg2);color:var(--warm)}
 .form-note{font-size:12px;color:var(--muted);text-align:center}
@@ -303,8 +303,8 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
 /* ══════════════════════════════════════════════
    DOUGH CHAT
 ══════════════════════════════════════════════ */
-.dough-btn{width:56px;height:56px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 20px rgba(232,98,26,0.4);transition:transform 0.2s,background 0.2s}
-.dough-btn:hover{transform:scale(1.08);background:#d4561a}
+.dough-btn{width:56px;height:56px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 20px rgba(78,138,71,0.4);transition:transform 0.2s,background 0.2s}
+.dough-btn:hover{transform:scale(1.08);background:#3d6e36}
 .dough-pulse{position:absolute;inset:-3px;border-radius:50%;border:2px solid var(--accent);animation:pulse 2s ease-out infinite;pointer-events:none}
 @keyframes pulse{0%{transform:scale(1);opacity:0.8}100%{transform:scale(1.5);opacity:0}}
 .dough-callout{position:fixed;bottom:38px;right:94px;z-index:200;background:var(--bg2);border:1px solid var(--border2);border-radius:8px;padding:10px 16px;font-size:13px;font-weight:500;color:var(--warm);white-space:nowrap;animation:fadeSlide 0.4s var(--ease) both;pointer-events:none}
@@ -336,7 +336,7 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
 .dough-input:focus{border-color:var(--accent)}
 .dough-send{width:36px;height:36px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;transition:background 0.2s,opacity 0.2s}
 .dough-send:disabled{opacity:0.4}
-.dough-send:not(:disabled):hover{background:#d4561a}
+.dough-send:not(:disabled):hover{background:#3d6e36}
 
 /* ══════════════════════════════════════════════
    MOBILE NAV OVERLAY
@@ -474,8 +474,8 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
 .hero-cta-card:hover{transform:translateY(-2px)}
 .hero-cta-b2b{border-color:rgba(78,138,71,0.4)}
 .hero-cta-b2b:hover{border-color:#4e8a47;background:rgba(78,138,71,0.06)}
-.hero-cta-consumer{border-color:rgba(232,98,26,0.4)}
-.hero-cta-consumer:hover{border-color:var(--accent);background:rgba(232,98,26,0.06)}
+.hero-cta-consumer{border-color:rgba(78,138,71,0.4)}
+.hero-cta-consumer:hover{border-color:var(--accent);background:rgba(78,138,71,0.06)}
 .hero-cta-icon{font-size:1.4rem;margin-bottom:4px}
 .hero-cta-label{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--warm)}
 .hero-cta-sub{font-size:12px;color:var(--muted);line-height:1.5}
@@ -516,8 +516,8 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
 .hero-cta-card:hover{transform:translateY(-2px)}
 .hero-cta-b2b{border-color:rgba(78,138,71,0.4)}
 .hero-cta-b2b:hover{border-color:#4e8a47;background:rgba(78,138,71,0.06)}
-.hero-cta-consumer{border-color:rgba(232,98,26,0.4)}
-.hero-cta-consumer:hover{border-color:var(--accent);background:rgba(232,98,26,0.06)}
+.hero-cta-consumer{border-color:rgba(78,138,71,0.4)}
+.hero-cta-consumer:hover{border-color:var(--accent);background:rgba(78,138,71,0.06)}
 .hero-cta-icon{font-size:1.4rem;margin-bottom:4px}
 .hero-cta-label{font-family:var(--fd);font-size:1.1rem;font-weight:700;color:var(--warm)}
 .hero-cta-sub{font-size:12px;color:var(--muted);line-height:1.5}
