@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TJ's Image Embedder</title>
+<style>
+  body { font-family: system-ui, sans-serif; background: #111; color: #f0f0f0; padding: 40px; max-width: 600px; margin: 0 auto; }
+  h1 { color: #4e8a47; margin-bottom: 8px; }
+  p { color: #888; font-size: 14px; margin-bottom: 32px; }
+  button { background: #4e8a47; color: white; border: none; padding: 16px 32px; font-size: 16px; border-radius: 8px; cursor: pointer; width: 100%; }
+  button:hover { background: #5fa050; }
+  button:disabled { background: #333; cursor: not-allowed; }
+  .log { margin-top: 24px; background: #1a1a1a; border-radius: 8px; padding: 16px; font-family: monospace; font-size: 13px; max-height: 300px; overflow-y: auto; }
+  .log div { margin-bottom: 4px; }
+  .ok { color: #4e8a47; }
+  .fail { color: #e8621a; }
+  .info { color: #888; }
+  .done { margin-top: 20px; background: #1a3a1a; border: 1px solid #4e8a47; border-radius: 8px; padding: 20px; display: none; }
+  .done h2 { color: #4e8a47; margin-bottom: 8px; }
+  .done p { color: #aaa; margin-bottom: 16px; }
+  .done a { background: #e8621a; color: white; padding: 12px 24px; border-radius: 6px; text-decoration: none; display: inline-block; font-size: 14px; }
+</style>
+</head>
+<body>
+<h1>TJ's Image Embedder</h1>
+<p>This tool fetches all product photos from the TJ's Pizza Products website and embeds them directly into the site HTML so they always display — even without an internet connection to the original server.</p>
+<button id="runBtn" onclick="run()">Embed All Images →</button>
+<div class="log" id="log" style="display:none"></div>
+<div class="done" id="done">
+  <h2>✓ All done!</h2>
+  <p>Your fully self-contained <code>index.html</code> has been downloaded. Replace the existing <code>index.html</code> in your GitHub repo with this new file and push — Vercel will auto-deploy.</p>
+  <a href="#" id="helpLink">Need help? Contact All In Code</a>
+</div>
+
+<script>
+const IMAGES = [
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/IMG_4008.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/IMG_6172.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-1.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-10.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-11.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-12.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-13.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-14.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-15-scaled.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-16-scaled.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-2.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-3.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-4.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-5.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-6.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-7.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-8.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-9.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/haccp-aust-cert-black-1.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/10/Person.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/10/TJs-Pizza-Products-13.jpg',
+  'https://tjspizzaproducts.com.au/wp-content/uploads/2020/10/a-1.jpg',
+];
+
+function log(msg, cls) {
+  const el = document.getElementById('log');
+  el.style.display = 'block';
+  const d = document.createElement('div');
+  d.className = cls || 'info';
+  d.textContent = msg;
+  el.appendChild(d);
+  el.scrollTop = el.scrollHeight;
+}
+
+async function toBase64(url) {
+  const res = await fetch(url, { referrerPolicy: 'no-referrer' });
+  const blob = await res.blob();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(blob);
+  });
+}
+
+async function run() {
+  const btn = document.getElementById('runBtn');
+  btn.disabled = true;
+  btn.textContent = 'Working...';
+  log('Fetching site HTML...');
+
+  let html;
+  try {
+    const res = await fetch('index.html');
+    html = await res.text();
+    log('HTML loaded (' + (html.length / 1024).toFixed(0) + 'KB)', 'ok');
+  } catch(e) {
+    log('ERROR: Could not load index.html — make sure this file is in the same folder as index.html', 'fail');
+    btn.disabled = false;
+    btn.textContent = 'Try Again';
+    return;
+  }
+
+  let ok = 0, fail = 0;
+  for (const url of IMAGES) {
+    const filename = url.split('/').pop();
+    try {
+      const dataUri = await toBase64(url);
+      html = html.split(url).join(dataUri);
+      log('✓ ' + filename, 'ok');
+      ok++;
+    } catch(e) {
+      log('✗ ' + filename + ' (skipped — will still hotlink)', 'fail');
+      fail++;
+    }
+  }
+
+  log('');
+  log('Embedded ' + ok + ' images. ' + (fail > 0 ? fail + ' kept as external links.' : 'All done!'), 'ok');
+
+  // Download the result
+  const blob = new Blob([html], { type: 'text/html' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'index-embedded.html';
+  a.click();
+
+  document.getElementById('done').style.display = 'block';
+  btn.textContent = 'Done!';
+}
+</script>
+</body>
+</html>
