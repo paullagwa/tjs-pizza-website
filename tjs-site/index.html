@@ -117,7 +117,7 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:48px}
 .gallery-img{width:100%;height:180px;object-fit:cover;border-radius:8px;border:1px solid var(--border);transition:transform 0.3s,opacity 0.3s;opacity:0.85}
 .gallery-img:hover{transform:scale(1.03);opacity:1}
-.gallery-img-wide{grid-column:span 2}
+.gallery-img-wide{grid-column:span 1}
 /* STORY */
 .story-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;margin-top:8px}
 .timeline{display:flex;flex-direction:column;gap:0}
@@ -131,7 +131,7 @@ img{max-width:100%;display:block}a{color:inherit;text-decoration:none}button{cur
 .story-imgs{display:flex;flex-direction:column;gap:14px;padding-top:20px}
 .story-img{width:100%;height:240px;object-fit:cover;border-radius:10px;border:1px solid var(--border2)}
 /* TEAM */
-.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;max-width:700px}
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px;max-width:720px;margin-left:auto;margin-right:auto}
 .team-card{background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:12px;padding:26px}
 .team-photo-wrap{width:80px;height:80px;border-radius:50%;overflow:hidden;border:2px solid var(--green);margin-bottom:14px}
 .team-photo{width:100%;height:100%;object-fit:cover}
@@ -350,6 +350,22 @@ footer{background:#0a0906;padding:64px 0 0;border-top:1px solid var(--border)}
     <div class="reveal products-cta"><p>Not sure which product suits your kitchen? Ask <strong>Forno</strong> or request a free sample.</p><a href="#contact" class="btn-primary">Request a Free Sample Pack</a></div>
   </div>
 </section>
+
+<section id="sizeguide" class="section">
+  <div class="container" style="max-width:780px">
+    <div class="reveal"><div class="section-label">Size Guide</div><h2 class="section-title">The right base<br/>for every occasion.</h2></div>
+    <div class="sizes-grid">
+      <div class="size-card reveal"><div class="size-dim">2"</div><h3>Canape Base</h3><p>Bite-size canape for function menus and bar snacks.</p></div>
+      <div class="size-card reveal" style="transition-delay:60ms"><div class="size-dim">6–8"</div><h3>Kids Meal</h3><p>Perfect children's pizza — 4 slices. Also our DinoBite dino shape.</p></div>
+      <div class="size-card reveal" style="transition-delay:120ms"><div class="size-dim">8–9"</div><h3>Garlic Bread Sub</h3><p>Top with garlic butter and cheese. Cheaper and better than garlic bread.</p></div>
+      <div class="size-card featured reveal" style="transition-delay:180ms"><div class="size-best">Best seller</div><div class="size-dim">10"</div><h3>Individual Meal</h3><p>Our most popular. Perfect plate-size for one. 8 slices.</p></div>
+      <div class="size-card reveal" style="transition-delay:240ms"><div class="size-dim">11–12"</div><h3>Share / Family</h3><p>Larger meals or family pizza. Great table spend driver.</p></div>
+      <div class="size-card reveal" style="transition-delay:300ms"><div class="size-dim">Dough Ball</div><h3>Wood Fire Ready</h3><p>Raw dough, any oven. Especially wood fire. Low cost, high profit.</p></div>
+      <div class="size-card reveal" style="transition-delay:360ms"><div class="size-dim">Square Slab</div><h3>Counter Meals</h3><p>Window displays, lunch specials, special nights. Up to half-metre on request.</p></div>
+      <div class="size-card reveal" style="transition-delay:420ms"><div class="size-dim">Custom</div><h3>Bespoke to Order</h3><p>Custom weights, sizes and recipes — under confidential contract.</p></div>
+    </div>
+  </div>
+</section>
 <section id="whytjs" class="section section-dark">
   <div class="container">
     <div class="reveal"><div class="section-label" style="color:#6aab64">Why TJ's</div><h2 class="section-title">We don't cut corners.<br/>We cut dough.</h2></div>
@@ -362,16 +378,12 @@ footer{background:#0a0906;padding:64px 0 0;border-top:1px solid var(--border)}
     <div class="gallery-grid reveal">
       <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-4.jpg" alt="TJ's production" class="gallery-img" loading="lazy"/>
       <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-7.jpg" alt="TJ's pizza bases" class="gallery-img" loading="lazy"/>
-      <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-16-scaled.jpg" alt="TJ's factory" class="gallery-img gallery-img-wide" loading="lazy"/>
       <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-11.jpg" alt="TJ's dough" class="gallery-img" loading="lazy"/>
       <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-3.jpg" alt="TJ's range" class="gallery-img" loading="lazy"/>
       <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-9.jpg" alt="TJ's bases" class="gallery-img" loading="lazy"/>
-      <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-8.jpg" alt="TJ's products" class="gallery-img gallery-img-wide" loading="lazy"/>
+      <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-8.jpg" alt="TJ's products" class="gallery-img" loading="lazy"/>
       <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-6.jpg" alt="TJ's garlic base" class="gallery-img" loading="lazy"/>
       <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-5.jpg" alt="TJ's pizza" class="gallery-img" loading="lazy"/>
-      <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/IMG_6172.jpg" alt="TJ's production" class="gallery-img" loading="lazy"/>
-      <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-2.jpg" alt="TJ's factory" class="gallery-img" loading="lazy"/>
-      <img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-10.jpg" alt="TJ's range" class="gallery-img" loading="lazy"/>
     </div>
   </div>
 </section>
@@ -391,7 +403,7 @@ footer{background:#0a0906;padding:64px 0 0;border-top:1px solid var(--border)}
 </section>
 <section id="team" class="section section-dark">
   <div class="container">
-    <div class="reveal"><div class="section-label" style="color:#6aab64">The People</div><h2 class="section-title">Meet Jeff &amp; Rhys.</h2><p class="section-sub" style="color:var(--muted)">Family-owned means there's always a real person at the other end of the phone.</p></div>
+    <div class="reveal" style="text-align:center"><div class="section-label" style="color:#6aab64">The People</div><h2 class="section-title">Meet Jeff &amp; Rhys.</h2><p class="section-sub" style="color:var(--muted);margin:0 auto">Family-owned means there's always a real person at the other end of the phone.</p></div>
     <div class="team-grid">
       <div class="team-card reveal">
         <div class="team-photo-wrap"><img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/10/a-1.jpg" alt="Jeff Knox" class="team-photo" loading="lazy"/></div>
@@ -428,21 +440,6 @@ footer{background:#0a0906;padding:64px 0 0;border-top:1px solid var(--border)}
     <h2>Try before you buy.<br/><em>On us.</em></h2>
     <p>We're so confident in our product that we'll send you a free sample pack — no commitment, no sales pressure.</p>
     <a href="#contact" class="btn-primary btn-large">Claim Your Free Sample Pack →</a>
-  </div>
-</section>
-<section id="sizeguide" class="section">
-  <div class="container" style="max-width:780px">
-    <div class="reveal"><div class="section-label">Size Guide</div><h2 class="section-title">The right base<br/>for every occasion.</h2></div>
-    <div class="sizes-grid">
-      <div class="size-card reveal"><div class="size-dim">2"</div><h3>Canape Base</h3><p>Bite-size canape for function menus and bar snacks.</p></div>
-      <div class="size-card reveal" style="transition-delay:60ms"><div class="size-dim">6–8"</div><h3>Kids Meal</h3><p>Perfect children's pizza — 4 slices. Also our DinoBite dino shape.</p></div>
-      <div class="size-card reveal" style="transition-delay:120ms"><div class="size-dim">8–9"</div><h3>Garlic Bread Sub</h3><p>Top with garlic butter and cheese. Cheaper and better than garlic bread.</p></div>
-      <div class="size-card featured reveal" style="transition-delay:180ms"><div class="size-best">Best seller</div><div class="size-dim">10"</div><h3>Individual Meal</h3><p>Our most popular. Perfect plate-size for one. 8 slices.</p></div>
-      <div class="size-card reveal" style="transition-delay:240ms"><div class="size-dim">11–12"</div><h3>Share / Family</h3><p>Larger meals or family pizza. Great table spend driver.</p></div>
-      <div class="size-card reveal" style="transition-delay:300ms"><div class="size-dim">Dough Ball</div><h3>Wood Fire Ready</h3><p>Raw dough, any oven. Especially wood fire. Low cost, high profit.</p></div>
-      <div class="size-card reveal" style="transition-delay:360ms"><div class="size-dim">Square Slab</div><h3>Counter Meals</h3><p>Window displays, lunch specials, special nights. Up to half-metre on request.</p></div>
-      <div class="size-card reveal" style="transition-delay:420ms"><div class="size-dim">Custom</div><h3>Bespoke to Order</h3><p>Custom weights, sizes and recipes — under confidential contract.</p></div>
-    </div>
   </div>
 </section>
 <section id="homecook" class="section section-dark">
