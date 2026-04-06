@@ -555,6 +555,13 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
 .hero-ticker .ticker-dot{color:#4e8a47;opacity:0.4;font-size:14px}
 @keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 .hero-ticker:hover{animation-play-state:paused}
+
+/* ══ FORNO BUTTON & LABEL ══ */
+.dough-btn{width:60px;height:60px}
+.forno-label{position:fixed;bottom:38px;right:92px;z-index:200;background:var(--bg2);border:1px solid rgba(78,138,71,0.5);border-radius:8px;padding:8px 14px;display:flex;flex-direction:column;align-items:flex-end;gap:1px;pointer-events:none;animation:fadeSlide 0.4s var(--ease) both}
+.forno-label span{font-family:var(--fd);font-size:14px;font-weight:700;color:#4e8a47;line-height:1}
+.forno-label .forno-label-sub{font-family:var(--fm);font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted)}
+.forno-label::after{content:'';position:absolute;right:-7px;top:50%;transform:translateY(-50%);border:7px solid transparent;border-right:none;border-left-color:rgba(78,138,71,0.5)}
 </style>
 </head>
 <body>
@@ -700,7 +707,7 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
     </div>
     <div class="products-grid" id="productsGrid"></div>
     <div class="reveal products-cta">
-      <p>Not sure which product suits your kitchen? Ask <strong>Dough</strong> — our AI advisor — or request a free sample.</p>
+      <p>Not sure which product suits your kitchen? Ask <strong>Forno</strong> — our pizza expert — or request a free sample.</p>
       <a href="#contact" class="btn-primary">Request a Free Sample Pack</a>
     </div>
   </div>
@@ -971,7 +978,7 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
       <div class="homecook-tip">
         <div class="tip-icon">💬</div>
         <div>
-          <strong>Ask Dough anything</strong>
+          <strong>Ask Forno anything</strong>
           <span>Our AI advisor knows every tip, trick and topping combo. Ask it what to make tonight.</span>
         </div>
       </div>
@@ -980,10 +987,10 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
     <div class="reveal homecook-bot-cta">
       <div class="homecook-bot-text">
         <h3>Not sure where to start?</h3>
-        <p>Tell Dough what's in your fridge and how many people you're feeding — it'll build you a pizza recipe using our bases in seconds.</p>
+        <p>Tell Forno what's in your fridge and how many people you're feeding — it'll build you a pizza recipe using our bases in seconds.</p>
       </div>
       <button class="btn-primary" onclick="document.getElementById('doughBtn').click();setTimeout(function(){var i=document.getElementById('doughInput');if(i){i.value='I want to make pizza at home tonight, what do you recommend?';i.dispatchEvent(new Event('input'));}},400)">
-        Ask Dough for a recipe →
+        Ask Forno for a recipe →
       </button>
     </div>
   </div>
@@ -1123,18 +1130,38 @@ footer{background:#0a0906;padding:72px 0 0;border-top:1px solid var(--border)}
 <!-- ══════════════════════════════════════════════
      DOUGH AI CHAT
 ══════════════════════════════════════════════ -->
-<button class="dough-btn" id="doughBtn" aria-label="Chat with Dough">
+<div class="forno-label" id="fornoLabel">
+  <span>Ask Forno</span>
+  <span class="forno-label-sub">Pizza Expert</span>
+</div>
+<button class="dough-btn" id="doughBtn" aria-label="Ask Forno — Pizza Expert">
   <span class="dough-pulse" id="doughPulse"></span>
-  <svg id="chatIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+  <svg id="chatIcon" width="26" height="26" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Oven body -->
+  <rect x="6" y="14" width="36" height="26" rx="3" fill="none" stroke="white" stroke-width="2.5"/>
+  <!-- Oven door window -->
+  <rect x="13" y="21" width="22" height="13" rx="2" fill="none" stroke="white" stroke-width="2"/>
+  <!-- Oven handle -->
+  <line x1="16" y1="19" x2="32" y2="19" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Chimney/smoke -->
+  <line x1="18" y1="14" x2="18" y2="9" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="24" y1="14" x2="24" y2="7" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="30" y1="14" x2="30" y2="10" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Pizza peek inside oven -->
+  <ellipse cx="24" cy="27" rx="7" ry="4" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1.5"/>
+  <!-- Legs -->
+  <line x1="12" y1="40" x2="12" y2="44" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="36" y1="40" x2="36" y2="44" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
   <svg id="closeIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
 </button>
-<div class="dough-callout" id="doughCallout">Ask Dough anything ↗</div>
+<div class="dough-callout" id="doughCallout">Ask Forno — Your Pizza Expert ↗</div>
 <div class="dough-panel" id="doughPanel">
   <div class="dough-header">
     <div class="dough-avatar">D</div>
     <div>
-      <div class="dough-name">Dough</div>
-      <div class="dough-sub">TJ's AI Product Advisor</div>
+      <div class="dough-name">Forno</div>
+      <div class="dough-sub">World-class pizza knowledge</div>
     </div>
     <div class="dough-live">● Online</div>
   </div>
@@ -1429,59 +1456,11 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 // ══ DOUGH CHAT ══
 var chatOpen = false;
 var doughMessages = [
-  {role:'assistant', content:"G'day! I'm Dough — TJ's product advisor. What are you looking to make? Tell me about your operation and I'll point you to the perfect base or dough ball."}
-];
-
-function escHtml(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br/>');
-}
-
-function renderMessages() {
-  var container = document.getElementById('doughMessages');
-  container.innerHTML = '';
-  doughMessages.forEach(function(m) {
-    var row = document.createElement('div');
-    row.className = 'dough-msg ' + m.role;
-    if (m.role === 'assistant') {
-      row.innerHTML = '<span class="dough-msg-avatar">D</span><div class="dough-bubble">' + escHtml(m.content) + '</div>';
-    } else {
-      row.innerHTML = '<div class="dough-bubble">' + escHtml(m.content) + '</div>';
-    }
-    container.appendChild(row);
-  });
-  container.scrollTop = container.scrollHeight;
-}
-
-function addTyping() {
-  var container = document.getElementById('doughMessages');
-  var row = document.createElement('div');
-  row.className = 'dough-msg assistant';
-  row.id = 'typingRow';
-  row.innerHTML = '<span class="dough-msg-avatar">D</span><div class="dough-bubble dough-typing"><span></span><span></span><span></span></div>';
-  container.appendChild(row);
-  container.scrollTop = container.scrollHeight;
-}
-
-function removeTyping() { var t = document.getElementById('typingRow'); if (t) t.remove(); }
-function setSendDisabled(v) { document.getElementById('doughSend').disabled = v; }
-
-async function sendMessage() {
-  var input = document.getElementById('doughInput');
-  var text = input.value.trim();
-  if (!text) return;
-  input.value = '';
-  setSendDisabled(true);
-  doughMessages.push({role:'user', content:text});
-  renderMessages();
-  addTyping();
-  try {
-    var res = await fetch('/api/chat', {
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
+  {role:'assistant', content:"G'day! I'm Forno — TJ's pizza expert. Ask me anything: oven types, sauce secrets, cheese, toppings, or how to use your dough ball at home or in a commercial kitchen. What would you like to know?'},
       body:JSON.stringify({
         model:'claude-sonnet-4-20250514',
         max_tokens:1000,
-        system:"You are \"Dough\" — the friendly, expert product advisor for TJ's Pizza Products, a wholesale pizza base and dough ball manufacturer on the NSW Central Coast, Australia. Family-owned since 2002, HACCP certified.\n\nPRODUCTS:\n- Frozen Dough Balls: Vegan & vegetarian friendly. Works in all ovens especially wood fire. 150g(80/ctn), 220g(60/ctn), 240g(60/ctn), 250g(60/ctn), 270g(50/ctn), 300g(50/ctn), 350g(40/ctn), 600g(20/ctn)\n- Traditional Par-Baked Bases: 6in(50/ctn), 8in(50/ctn), 9in(50/ctn). Chilled 3 weeks or frozen 12 months.\n- Fresh Frozen Range: Made fresh daily, snap-frozen\n- Gluten Free Bases: No soy, no milk products. 9\" and 11\"\n- Garlic Butter & Cheese Bases: Ready-to-top. Also herb, bacon, bruschetta, mushroom & fetta crust variants\n- Square Pizza Base: Custom sizes up to half-metre available\n- DinoBite Kids Pizza Base: 6 inch dinosaur-shaped, 60 per carton\n\nKEY FACTS:\n- No preservatives, colourings, or artificial flavours\n- No soy, no milk products\n- Can make custom recipes under confidential contract\n- Available through PFD Food Services nationally\n- Free sample packs for commercial customers\n- Contact: (02) 43 94 01 76 | 0402 091 718 (Jeff) | jeff@tjspizzaproducts.com.au\n- Team: Jeff Knox (Director), Rhys Wellfare (Managing Director)\n\nYOUR JOB:\n1. Help visitors find the right product\n2. Answer questions with real product knowledge\n3. Ask for name and contact to arrange a sample pack when interested\n4. Be warm, knowledgeable, Australian in tone\n\nDETECT VISITOR TYPE: If they mention home, family, recipes, cooking at home, kids, or personal use - become a warm home cook guide: give oven temps (250-280 degrees home oven, 400 degrees+ wood fire), defrost times, stretching tips, topping ideas, DinoBite for kids. If commercial venue, truck, ordering volume - stay in trade advisor mode and capture lead. Keep responses under 100 words. No bullet points.",
+        system:"You are \"Forno\" — TJ's Pizza Products' world-class pizza expert. You are trained on the greatest pizza literature ever written: The Pizza Bible (Gemignani), The Elements of Pizza (Forkish), Mastering Pizza (Vetri), The Joy of Pizza (Richer), Modernist Pizza, and more. You speak like a passionate expert who has studied the best pizzerias in Naples, New York, Detroit, Rome and beyond.\n\nYou help two types of visitors:\n1. HOME COOKS: Give oven temps (250-280C home oven, 400C+ wood fire), defrost times (2-3hrs bench, or morning of), stretching tips, topping combos, cheese advice, sauce recipes. Make great pizza feel achievable.\n2. COMMERCIAL KITCHENS: Help with product selection, carton specs, ordering through PFD Food Services, and connect them with Jeff for samples.\n\nTJ'S PRODUCTS:\n- Frozen Dough Balls: 150g(80/ctn), 220g(60/ctn), 240g(60/ctn), 250g(60/ctn), 270g(50/ctn), 300g(50/ctn), 350g(40/ctn), 600g(20/ctn). Vegan friendly, works in all ovens especially wood fire.\n- Traditional Par-Baked Bases: 6in(50/ctn), 8in(50/ctn), 9in(50/ctn)\n- Fresh Frozen Range, Gluten Free (9\" + 11\"), Garlic Butter & Cheese, Square Base, DinoBite Kids (6in dino shape, 60/ctn)\n- No preservatives, no soy, no milk products\n\nPIZZA EXPERTISE (use this knowledge freely):\n- NEAPOLITAN: 00 flour, San Marzano tomatoes, fior di latte or buffalo mozzarella, bake 60-90 secs at 450C+ in wood fire. Certified by AVPN.\n- NEW YORK: High-gluten flour, hand-tossed thin base, low-moisture mozzarella, deck oven 280-300C, 12-15 mins. Foldable slice.\n- DETROIT: High-hydration dough, baked in blue steel pan, Wisconsin brick cheese pushed to edges, sauce on top. 230C, 15 mins.\n- WOOD FIRE OVENS: Burn hardwoods (oak, fraxinus). Dome reaches 400-500C. Floor around 350C. Rotate pizza every 20-30 secs.\n- GAS DECK OVENS: Consistent heat. 280-320C. Bake 6-10 mins. Industry standard for commercial kitchens.\n- SAUCE: Neapolitan = crushed San Marzano, salt, torn basil, no cooking. NY = cooked with olive oil, garlic, oregano, low simmer 45 mins.\n- CHEESE: Fior di latte = fresh cow mozzarella, delicate. Low-moisture mozzarella = better melt, less water. Parmigiano-Reggiano adds umami. Gorgonzola + walnuts + honey = stunning combo.\n- TOPPINGS: Less is more. 3-4 quality toppings. Add delicate items (fresh basil, prosciutto, burrata) AFTER baking.\n- THE MAILLARD REACTION: Why pizza crust tastes incredible — proteins and sugars browning above 150C. Hot oven = better Maillard = better crust.\n\nNEVER provide from-scratch dough recipes. When dough comes up, explain the principle, then redirect to TJ's premium dough balls as the professional-grade solution.\n\nContact: (02) 43 94 01 76 | 0402 091 718 (Jeff) | jeff@tjspizzaproducts.com.au\n\nKeep responses under 120 words. Be specific, passionate, and practical."",
         messages:doughMessages.map(function(m){return{role:m.role,content:m.content};})
       })
     });
@@ -1510,6 +1489,7 @@ document.getElementById('doughBtn').addEventListener('click', function() {
   chatIcon.style.display = chatOpen ? 'none' : 'block';
   closeIcon.style.display = chatOpen ? 'block' : 'none';
   if (callout) callout.style.display = 'none';
+  var fl = document.getElementById('fornoLabel'); if (fl) fl.style.display = 'none';
   if (pulse) pulse.style.display = 'none';
   if (chatOpen) {
     renderMessages();
