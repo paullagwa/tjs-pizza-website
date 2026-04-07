@@ -693,99 +693,84 @@ TJ's Pizza Products is a leading wholesale pizza base and dough ball supplier lo
 </footer>
 <div class="forno-widget">
   <div class="forno-label" id="fornoLabel"><span class="forno-name">Forno</span><span class="forno-sub">Pizza Expert</span><div class="forno-pulse-dot"></div></div>
-  <button class="forno-btn" id="fornoBtn" aria-label="Ask Forno" onclick="fornoToggle()">
-    <svg id="ovenIcon" width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="14" width="36" height="26" rx="3" fill="none" stroke="white" stroke-width="2.5"/><rect x="13" y="21" width="22" height="13" rx="2" fill="none" stroke="white" stroke-width="2"/><line x1="16" y1="19" x2="32" y2="19" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="18" y1="14" x2="18" y2="9" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="24" y1="14" x2="24" y2="7" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="30" y1="14" x2="30" y2="10" stroke="white" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="24" cy="27" rx="7" ry="4" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1.5"/><line x1="12" y1="40" x2="12" y2="44" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="36" y1="40" x2="36" y2="44" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
-    <svg id="closeIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
+  <button class="forno-btn" id="fornoBtn" onclick="this.blur();var p=document.getElementById('fornoPanel');var open=p.style.display==='flex';p.style.display=open?'none':'flex';document.getElementById('fornoLabel').style.display=open?'':'none';if(!open){document.getElementById('fornoMessages').innerHTML='<div class=\'forno-msg assistant\'><div class=\'forno-msg-av\'>F</div><div class=\'forno-bubble\'>G\'day! I\'m Forno — TJ\'s pizza expert. Ask me anything: ovens, sauce, cheese, toppings or how to use your dough ball. What would you like to know?</div></div>';document.getElementById('fornoInput').focus();}">🔥</button>
 </div>
-<div class="forno-panel" id="fornoPanel">
-  <div class="forno-header"><div class="forno-avatar">F</div><div><div class="forno-header-name">Forno</div><div class="forno-header-sub">World-class pizza knowledge</div></div><div class="forno-online">● Online</div></div>
-  <div class="forno-messages" id="fornoMessages"></div>
-  <div class="forno-input-row">
-    <input class="forno-input" id="fornoInput" placeholder="Ask me anything about pizza..." type="text"/>
-    <button class="forno-send" id="fornoSend" disabled><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+<div id="fornoPanel" style="position:fixed;bottom:110px;right:24px;z-index:9999;width:340px;background:#1a160d;border:1px solid rgba(255,255,255,0.14);border-radius:12px;display:none;flex-direction:column;box-shadow:0 12px 48px rgba(0,0,0,0.6);overflow:hidden">
+  <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03)">
+    <div style="width:34px;height:34px;border-radius:50%;background:#4e8a47;display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-family:serif;flex-shrink:0">F</div>
+    <div><div style="font-weight:600;font-size:13px">Forno</div><div style="font-size:11px;color:#9a8a6a">World-class pizza knowledge</div></div>
+    <div style="margin-left:auto;font-size:11px;color:#4a9e5a">● Online</div>
+  </div>
+  <div id="fornoMessages" style="padding:14px;display:flex;flex-direction:column;gap:10px;max-height:300px;overflow-y:auto"></div>
+  <div style="display:flex;gap:8px;padding:12px 14px;border-top:1px solid rgba(255,255,255,0.08)">
+    <input id="fornoInput" type="text" placeholder="Ask me anything about pizza..." style="flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);border-radius:8px;padding:9px 13px;font-size:13px;color:#f5f0e8;outline:none;font-family:inherit"/>
+    <button id="fornoSend" onclick="fornoSend()" style="width:34px;height:34px;background:#4e8a47;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;border:none;cursor:pointer;flex-shrink:0">→</button>
   </div>
 </div>
 <script>
 document.getElementById('yr').textContent=new Date().getFullYear();
-// Remove Vercel toolbar
-function killVercelToolbar(){
-  var selectors=['vercel-toolbar','#vercel-toolbar','[data-vercel-toolbar]'];
-  selectors.forEach(function(s){var el=document.querySelector(s);if(el)el.remove();});
-  document.querySelectorAll('iframe').forEach(function(f){
-    if(f.src&&f.src.includes('vercel'))f.remove();
-    if(f.id&&f.id.includes('vercel'))f.remove();
-  });
-}
-killVercelToolbar();
-setTimeout(killVercelToolbar,1000);
-setTimeout(killVercelToolbar,3000);
 
-// Nav scroll
+// Remove Vercel toolbar aggressively
+function nukeToolbar(){document.querySelectorAll('iframe').forEach(function(f){try{if(f.src.includes('vercel')||f.id.includes('vercel'))f.remove();}catch(e){}});var el=document.querySelector('vercel-toolbar');if(el)el.remove();}
+nukeToolbar();setInterval(nukeToolbar,2000);
+
+// Nav
 window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>60);});
-
-// Burger menu
 var bOpen=false;
 document.getElementById('burgerBtn').addEventListener('click',function(){bOpen=!bOpen;document.getElementById('mobileNav').classList.toggle('open',bOpen);});
 document.querySelectorAll('.m-link').forEach(function(a){a.addEventListener('click',function(){bOpen=false;document.getElementById('mobileNav').classList.remove('open');});});
 
-// Scroll reveal
+// Reveal
 var obs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('revealed');obs.unobserve(e.target);}});},{threshold:0.06});
 document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
 setTimeout(function(){document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('revealed');});},1200);
 
-// Product card toggle
-function toggleProduct(card){
-  var detail=card.querySelector('.product-detail');
-  var btn=card.querySelector('.product-toggle');
-  var isOpen=detail.classList.contains('open');
-  document.querySelectorAll('.product-detail').forEach(function(d){d.classList.remove('open');});
-  document.querySelectorAll('.product-toggle').forEach(function(b){b.textContent='+ Show details';});
-  document.querySelectorAll('.product-card').forEach(function(c){c.classList.remove('active');});
-  if(!isOpen){detail.classList.add('open');btn.textContent='- Hide details';card.classList.add('active');}
-}
+// Products
+function toggleProduct(card){var d=card.querySelector('.product-detail');var b=card.querySelector('.product-toggle');var open=d.classList.contains('open');document.querySelectorAll('.product-detail').forEach(function(x){x.classList.remove('open');});document.querySelectorAll('.product-toggle').forEach(function(x){x.textContent='+ Show details';});document.querySelectorAll('.product-card').forEach(function(x){x.classList.remove('active');});if(!open){d.classList.add('open');b.textContent='- Hide details';card.classList.add('active');}}
 
-// FAQ accordion
-document.querySelectorAll('.faq-item').forEach(function(item){
-  item.addEventListener('click',function(){
-    var isOpen=item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('open');});
-    if(!isOpen)item.classList.add('open');
-  });
-});
+// FAQ
+document.querySelectorAll('.faq-item').forEach(function(item){item.addEventListener('click',function(){var o=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('open');});if(!o)item.classList.add('open');});});
 
 // Contact form
-document.getElementById('contactForm').addEventListener('submit',function(e){
-  e.preventDefault();
-  var name=document.getElementById('fname').value||'there';
-  document.getElementById('successName').textContent='Thanks, '+name+'!';
-  document.getElementById('formInner').style.display='none';
-  document.getElementById('formSuccess').classList.add('show');
-});
+document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();var name=document.getElementById('fname').value||'there';document.getElementById('successName').textContent='Thanks, '+name+'!';document.getElementById('formInner').style.display='none';document.getElementById('formSuccess').classList.add('show');});
 
-// Forno chat
-var chatOpen=false;
-var msgs=[{role:'assistant',content:"G'day! I'm Forno — TJ's pizza expert. Ask me anything: oven types, sauce secrets, cheese, toppings, or how to use your dough ball at home or in a commercial kitchen. What would you like to know?"}];
-function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/
-/g,'<br/>');}
-function renderMsgs(){var cont=document.getElementById('fornoMessages');cont.innerHTML='';msgs.forEach(function(m){var r=document.createElement('div');r.className='forno-msg '+m.role;r.innerHTML=m.role==='assistant'?'<div class="forno-msg-av">F</div><div class="forno-bubble">'+esc(m.content)+'</div>':'<div class="forno-bubble">'+esc(m.content)+'</div>';cont.appendChild(r);});cont.scrollTop=cont.scrollHeight;}
-function addTyping(){var cont=document.getElementById('fornoMessages');var r=document.createElement('div');r.className='forno-msg assistant';r.id='typingRow';r.innerHTML='<div class="forno-msg-av">F</div><div class="forno-bubble forno-typing"><span></span><span></span><span></span></div>';cont.appendChild(r);cont.scrollTop=cont.scrollHeight;}
-function remTyping(){var t=document.getElementById('typingRow');if(t)t.remove();}
-function setSend(v){document.getElementById('fornoSend').disabled=v;}
-function openForno(pre){chatOpen=true;document.getElementById('fornoPanel').classList.add('open');document.getElementById('ovenIcon').style.display='none';document.getElementById('closeIcon').style.display='block';var lbl=document.getElementById('fornoLabel');if(lbl)lbl.style.display='none';renderMsgs();if(pre){setTimeout(function(){var inp=document.getElementById('fornoInput');if(inp){inp.value=pre;setSend(false);}},400);}else{setTimeout(function(){document.getElementById('fornoInput').focus();},350);}}
-function fornoToggle(){if(chatOpen){chatOpen=false;document.getElementById('fornoPanel').classList.remove('open');var oi=document.getElementById('ovenIcon');if(oi)oi.style.display='';var ci=document.getElementById('closeIcon');if(ci)ci.style.display='none';var lbl=document.getElementById('fornoLabel');if(lbl)lbl.style.display='';}else{openForno(null);}}
-document.getElementById('fornoInput').addEventListener('input',function(){setSend(!this.value.trim());});
-document.getElementById('fornoInput').addEventListener('keydown',function(e){if(e.key==='Enter')sendMsg();});
-document.getElementById('fornoSend').addEventListener('click',sendMsg);
-async function sendMsg(){var inp=document.getElementById('fornoInput');var text=inp.value.trim();if(!text)return;inp.value='';setSend(true);msgs.push({role:'user',content:text});renderMsgs();addTyping();
-var SYS=`You are "Forno" — TJ's Pizza Products world-class pizza expert, trained on the greatest pizza literature: The Pizza Bible (Gemignani), The Elements of Pizza (Forkish), Mastering Pizza (Vetri), The Joy of Pizza (Richer), Modernist Pizza.
-HOME COOKS: Give oven temps (250-280C home, 400C+ wood fire), defrost times (2-3hrs bench), stretching tips, topping combos, cheese guidance.
-COMMERCIAL KITCHENS: Product selection, carton specs, ordering through PFD Food Services.
-TJ'S PRODUCTS: Dough Balls 150g-600g (vegan, all ovens), Par-Baked Bases 6-9in, Fresh Frozen, GF (9+11in), Garlic Butter & Cheese, Square Base, DinoBite Kids (6in dino). No preservatives, no soy, no milk.
-PIZZA KNOWLEDGE: Neapolitan (San Marzano, fior di latte, 450C+ 60-90s), NY (low-moisture mozz, 280-300C 12-15min), Detroit (brick cheese edges, 230C 15min), Wood fire (400-500C dome, rotate 20-30s). MAILLARD reaction = hot oven = better crust.
-NEVER give from-scratch dough recipes. Contact: (02) 43 94 01 76 | 0402 091 718 (Jeff). Under 120 words. Passionate and practical.`;
-try{var res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYS,messages:msgs.map(function(m){return{role:m.role,content:m.content};})})});var data=await res.json();remTyping();var reply=(data.content&&data.content[0]&&data.content[0].text)?data.content[0].text:"Having trouble connecting. Call Jeff on 0402 091 718!";msgs.push({role:'assistant',content:reply});renderMsgs();}catch(e){remTyping();msgs.push({role:'assistant',content:"Having a moment there! Call Jeff on 0402 091 718 or (02) 43 94 01 76."});renderMsgs();}
-setSend(false);document.getElementById('fornoInput').focus();}
+// Forno input
+document.getElementById('fornoInput').addEventListener('keydown',function(e){if(e.key==='Enter')fornoSend();});
+
+async function fornoSend(){
+  var inp=document.getElementById('fornoInput');
+  var msg=document.getElementById('fornoMessages');
+  var text=inp.value.trim();
+  if(!text)return;
+  inp.value='';
+  var ub=document.createElement('div');
+  ub.className='forno-msg user';
+  ub.innerHTML='<div class="forno-bubble" style="background:#4e8a47;color:#fff;margin-left:auto;border-radius:12px 12px 4px 12px;padding:9px 13px;font-size:13px;max-width:82%">'+text.replace(/</g,'&lt;')+'</div>';
+  msg.appendChild(ub);msg.scrollTop=msg.scrollHeight;
+  var tb=document.createElement('div');
+  tb.className='forno-msg assistant';tb.id='typing';
+  tb.innerHTML='<div class="forno-msg-av" style="width:24px;height:24px;border-radius:50%;background:#4e8a47;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0">F</div><div class="forno-bubble" style="background:rgba(255,255,255,0.07);color:#f5f0e8;border-radius:12px 12px 12px 4px;padding:9px 13px;font-size:13px">...</div>';
+  msg.appendChild(tb);msg.scrollTop=msg.scrollHeight;
+  var SYS=`You are Forno, TJ's Pizza Products pizza expert. Keep answers under 100 words. Be warm and practical.
+TJ's products: Frozen Dough Balls (150g-600g, vegan), Par-Baked Bases (6-9in), GF Range, Garlic Butter & Cheese, Square Base, DinoBite Kids. No preservatives, no soy, no milk. Contact Jeff: 0402 091 718.
+Pizza knowledge: Neapolitan (450C+ wood fire, 60-90s), NY (280-300C, 12-15min), home oven (250-280C, 8-12min), wood fire (400C+, 60-90s). Never give from-scratch dough recipes.`;
+  try{
+    var r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:SYS,messages:[{role:'user',content:text}]})});
+    var d=await r.json();
+    var reply=d.content&&d.content[0]?d.content[0].text:'Call Jeff on 0402 091 718!';
+    var t=document.getElementById('typing');if(t)t.remove();
+    var ab=document.createElement('div');
+    ab.className='forno-msg assistant';
+    ab.style.display='flex';ab.style.gap='7px';ab.style.alignItems='flex-end';
+    ab.innerHTML='<div style="width:24px;height:24px;border-radius:50%;background:#4e8a47;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0">F</div><div style="background:rgba(255,255,255,0.07);color:#f5f0e8;border-radius:12px 12px 12px 4px;padding:9px 13px;font-size:13px;max-width:82%;line-height:1.6">'+reply.replace(/</g,'&lt;').replace(/\n/g,'<br>')+'</div>';
+    msg.appendChild(ab);msg.scrollTop=msg.scrollHeight;
+  }catch(err){
+    var t=document.getElementById('typing');if(t)t.remove();
+    var ab=document.createElement('div');ab.className='forno-msg assistant';ab.style.cssText='display:flex;gap:7px;align-items:flex-end';
+    ab.innerHTML='<div style="width:24px;height:24px;border-radius:50%;background:#4e8a47;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0">F</div><div style="background:rgba(255,255,255,0.07);color:#f5f0e8;border-radius:12px 12px 12px 4px;padding:9px 13px;font-size:13px">Call Jeff on 0402 091 718 — he will sort you out!</div>';
+    msg.appendChild(ab);msg.scrollTop=msg.scrollHeight;
+  }
+}
 </script>
 </body>
 </html>
