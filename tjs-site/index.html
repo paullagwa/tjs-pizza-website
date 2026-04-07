@@ -272,7 +272,7 @@ footer{background:#0a0906;padding:64px 0 0;border-top:1px solid var(--border)}
 .forno-sub{font-family:var(--fm);font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(154,138,106,0.8)}
 .forno-pulse-dot{width:5px;height:5px;border-radius:50%;background:var(--green);margin-top:2px;animation:pulse 2s ease-out infinite}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(78,138,71,0.6)}100%{box-shadow:0 0 0 8px rgba(78,138,71,0)}}
-.forno-btn{width:62px;height:62px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 20px rgba(78,138,71,0.4);transition:transform 0.2s,background 0.2s}
+.forno-btn{width:72px;height:72px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 4px 20px rgba(78,138,71,0.4);transition:transform 0.2s,background 0.2s}
 .forno-btn:hover{transform:scale(1.07);background:var(--green2)}
 .forno-panel{position:fixed;bottom:110px;right:24px;z-index:999;width:360px;background:var(--bg2);border:1px solid var(--border2);border-radius:12px;display:none;flex-direction:column;box-shadow:0 12px 48px rgba(0,0,0,0.6);overflow:hidden}
 .forno-panel.open{display:flex}
@@ -693,7 +693,19 @@ TJ's Pizza Products is a leading wholesale pizza base and dough ball supplier lo
 </footer>
 <div class="forno-widget">
   <div class="forno-label" id="fornoLabel"><span class="forno-name">Forno</span><span class="forno-sub">Pizza Expert</span><div class="forno-pulse-dot"></div></div>
-  <button class="forno-btn" id="fornoBtn" onclick="this.blur();var p=document.getElementById('fornoPanel');var open=p.style.display==='flex';p.style.display=open?'none':'flex';document.getElementById('fornoLabel').style.display=open?'':'none';if(!open){document.getElementById('fornoMessages').innerHTML='<div class=\'forno-msg assistant\'><div class=\'forno-msg-av\'>F</div><div class=\'forno-bubble\'>G\'day! I\'m Forno — TJ\'s pizza expert. Ask me anything: ovens, sauce, cheese, toppings or how to use your dough ball. What would you like to know?</div></div>';document.getElementById('fornoInput').focus();}">🔥</button>
+  <button class="forno-btn" id="fornoBtn" onclick="this.blur();var p=document.getElementById('fornoPanel');var open=p.style.display==='flex';p.style.display=open?'none':'flex';document.getElementById('fornoLabel').style.display=open?'':'none';if(!open){document.getElementById('fornoMessages').innerHTML='<div class=\'forno-msg assistant\'><div class=\'forno-msg-av\'>F</div><div class=\'forno-bubble\'>G\'day! I\'m Forno — TJ\'s pizza expert. Ask me anything: ovens, sauce, cheese, toppings or how to use your dough ball. What would you like to know?</div></div>';document.getElementById('fornoInput').focus();}">
+    <svg width="34" height="34" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="6" y="14" width="36" height="26" rx="3" fill="none" stroke="white" stroke-width="2.5"/>
+      <rect x="13" y="21" width="22" height="13" rx="2" fill="none" stroke="white" stroke-width="2"/>
+      <line x1="16" y1="19" x2="32" y2="19" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="18" y1="14" x2="18" y2="9" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="24" y1="14" x2="24" y2="7" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="30" y1="14" x2="30" y2="10" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      <ellipse cx="24" cy="27" rx="7" ry="4" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1.5"/>
+      <line x1="12" y1="40" x2="12" y2="44" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+      <line x1="36" y1="40" x2="36" y2="44" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+    </svg>
+  </button>
 </div>
 <div id="fornoPanel" style="position:fixed;bottom:110px;right:24px;z-index:9999;width:340px;background:#1a160d;border:1px solid rgba(255,255,255,0.14);border-radius:12px;display:none;flex-direction:column;box-shadow:0 12px 48px rgba(0,0,0,0.6);overflow:hidden">
   <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03)">
