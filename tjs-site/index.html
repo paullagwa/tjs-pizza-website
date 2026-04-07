@@ -680,7 +680,7 @@ TJ's Pizza Products is a leading wholesale pizza base and dough ball supplier lo
 </footer>
 <div class="forno-widget">
   <div class="forno-label" id="fornoLabel"><span class="forno-name">Forno</span><span class="forno-sub">Pizza Expert</span><div class="forno-pulse-dot"></div></div>
-  <button class="forno-btn" id="fornoBtn" aria-label="Ask Forno">
+  <button class="forno-btn" id="fornoBtn" aria-label="Ask Forno" onclick="fornoToggle()">
     <svg id="ovenIcon" width="28" height="28" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="6" y="14" width="36" height="26" rx="3" fill="none" stroke="white" stroke-width="2.5"/><rect x="13" y="21" width="22" height="13" rx="2" fill="none" stroke="white" stroke-width="2"/><line x1="16" y1="19" x2="32" y2="19" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="18" y1="14" x2="18" y2="9" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="24" y1="14" x2="24" y2="7" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="30" y1="14" x2="30" y2="10" stroke="white" stroke-width="2.5" stroke-linecap="round"/><ellipse cx="24" cy="27" rx="7" ry="4" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="1.5"/><line x1="12" y1="40" x2="12" y2="44" stroke="white" stroke-width="2.5" stroke-linecap="round"/><line x1="36" y1="40" x2="36" y2="44" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>
     <svg id="closeIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
   </button>
@@ -748,7 +748,7 @@ function addTyping(){var cont=document.getElementById('fornoMessages');var r=doc
 function remTyping(){var t=document.getElementById('typingRow');if(t)t.remove();}
 function setSend(v){document.getElementById('fornoSend').disabled=v;}
 function openForno(pre){chatOpen=true;document.getElementById('fornoPanel').classList.add('open');document.getElementById('ovenIcon').style.display='none';document.getElementById('closeIcon').style.display='block';var lbl=document.getElementById('fornoLabel');if(lbl)lbl.style.display='none';renderMsgs();if(pre){setTimeout(function(){var inp=document.getElementById('fornoInput');if(inp){inp.value=pre;setSend(false);}},400);}else{setTimeout(function(){document.getElementById('fornoInput').focus();},350);}}
-document.getElementById('fornoBtn').addEventListener('click',function(){if(chatOpen){chatOpen=false;document.getElementById('fornoPanel').classList.remove('open');document.getElementById('ovenIcon').style.display='';document.getElementById('closeIcon').style.display='none';var lbl=document.getElementById('fornoLabel');if(lbl)lbl.style.display='';}else{openForno(null);}});
+function fornoToggle(){if(chatOpen){chatOpen=false;document.getElementById('fornoPanel').classList.remove('open');var oi=document.getElementById('ovenIcon');if(oi)oi.style.display='';var ci=document.getElementById('closeIcon');if(ci)ci.style.display='none';var lbl=document.getElementById('fornoLabel');if(lbl)lbl.style.display='';}else{openForno(null);}}
 document.getElementById('fornoInput').addEventListener('input',function(){setSend(!this.value.trim());});
 document.getElementById('fornoInput').addEventListener('keydown',function(e){if(e.key==='Enter')sendMsg();});
 document.getElementById('fornoSend').addEventListener('click',sendMsg);
