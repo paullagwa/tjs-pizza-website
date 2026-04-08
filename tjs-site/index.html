@@ -317,6 +317,15 @@ div[style*="z-index: 9999"][style*="position: fixed"] iframe {
   pointer-events: none !important;
   opacity: 0 !important;
 }
+
+.product-hero{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:12px}
+.product-img-hero{height:320px}
+.product-img-hero img{height:320px}
+.dough-highlights{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0;padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.dh-item{display:flex;flex-direction:column;align-items:center;gap:4px}
+.dh-num{font-family:var(--fd);font-size:1.4rem;font-weight:900;color:var(--green);line-height:1}
+.dh-label{font-family:var(--fm);font-size:9px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);text-align:center}
+@media(max-width:768px){.product-hero{grid-template-columns:1fr}.product-img-hero{height:220px}.product-img-hero img{height:220px}}
 </style>
 <script type="application/ld+json">
 {
@@ -456,24 +465,43 @@ div[style*="z-index: 9999"][style*="position: fixed"] iframe {
 </section>
 <section id="products" class="section">
   <div class="container">
-    <div class="reveal"><div class="section-label">Our Range</div><h2 class="section-title">Seven products.<br/>Endless possibilities.</h2><p class="section-sub">No preservatives, no soy, no milk products. HACCP certified. Made in Warnervale, NSW Central Coast. Supplying restaurants, pizza trucks, pubs and clubs across Sydney, Newcastle, Hunter Valley, Wollongong and nationally.</p></div>
+    <div class="reveal"><div class="section-label">Our Range</div><h2 class="section-title">Built on the<br/><em>dough ball.</em></h2><p class="section-sub">Our frozen dough ball range is the core of what we do — and why hundreds of commercial kitchens across Australia keep coming back. Eight sizes, vegan friendly, no preservatives.</p></div>
     <div class="products-grid">
-      <article class="product-card reveal" onclick="toggleProduct(this)">
-        <div class="product-img-wrap"><img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-12.jpg" alt="Frozen pizza dough balls wholesale 150g to 600g vegan HACCP certified" loading="lazy"/></div>
-        <div class="product-body"><div class="product-tag">Most Popular</div><div class="product-name">Frozen Dough Ball Range</div><p class="product-desc">Hand-stretched and frozen at peak freshness. Eight sizes. Vegan friendly. Works in all ovens including wood fire.</p><div class="product-detail"><p>Perfect for Neapolitan, Roman and artisan pizza. Available through PFD Food Services nationally.</p><table class="spec-table"><thead><tr><th>Size</th><th>Carton</th></tr></thead><tbody><tr><td>150g</td><td>80/ctn</td></tr><tr><td>220g</td><td>60/ctn</td></tr><tr><td>240g</td><td>60/ctn</td></tr><tr><td>250g</td><td>60/ctn</td></tr><tr><td>270g</td><td>50/ctn</td></tr><tr><td>300g</td><td>50/ctn</td></tr><tr><td>350g</td><td>40/ctn</td></tr><tr><td>600g</td><td>20/ctn</td></tr></tbody></table><div class="shelf-row"><span>Shelf Life</span><span>12 months frozen</span></div></div><button class="product-toggle">+ Show details</button></div>
+      <article class="product-card product-hero reveal" onclick="toggleProduct(this)">
+        <div class="product-img-wrap product-img-hero"><img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-12.jpg" alt="Frozen pizza dough balls wholesale 150g to 600g vegan HACCP certified" loading="lazy"/></div>
+        <div class="product-body">
+          <div class="product-tag">TJ's Signature Product</div>
+          <div class="product-name">Frozen Dough Ball Range</div>
+          <p class="product-desc">The heart of what we do. Hand-stretched and frozen at peak freshness. Eight sizes from 150g to 600g. Vegan friendly. Works in every oven — especially wood fire.</p>
+          <div class="dough-highlights">
+            <div class="dh-item"><span class="dh-num">8</span><span class="dh-label">Sizes</span></div>
+            <div class="dh-item"><span class="dh-num">Vegan</span><span class="dh-label">Friendly</span></div>
+            <div class="dh-item"><span class="dh-num">12mo</span><span class="dh-label">Frozen shelf life</span></div>
+            <div class="dh-item"><span class="dh-num">All</span><span class="dh-label">Oven types</span></div>
+          </div>
+          <div class="product-detail">
+            <p>Perfect for Neapolitan, NY, Roman and artisan pizza. Thaws in minutes. Available through PFD Food Services nationally and direct from our Warnervale factory.</p>
+            <table class="spec-table"><thead><tr><th>Size</th><th>Carton qty</th></tr></thead><tbody>
+              <tr><td>150g</td><td>80/ctn</td></tr>
+              <tr><td>220g</td><td>60/ctn</td></tr>
+              <tr><td>240g</td><td>60/ctn</td></tr>
+              <tr><td>250g</td><td>60/ctn</td></tr>
+              <tr><td>270g</td><td>50/ctn</td></tr>
+              <tr><td>300g</td><td>50/ctn</td></tr>
+              <tr><td>350g</td><td>40/ctn</td></tr>
+              <tr><td>600g</td><td>20/ctn</td></tr>
+            </tbody></table>
+            <div class="shelf-row"><span>Shelf Life</span><span>12 months frozen</span></div>
+          </div>
+          <button class="product-toggle">+ Show carton sizes</button>
+        </div>
       </article>
-      <article class="product-card reveal" style="transition-delay:70ms" onclick="toggleProduct(this)">
-        <div class="product-img-wrap"><img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-9.jpg" alt="Traditional par-baked pizza bases wholesale 6 8 9 inch NSW" loading="lazy"/></div>
-        <div class="product-body"><div class="product-tag">Best Seller</div><div class="product-name">Traditional Par-Baked Base</div><p class="product-desc">Par-baked and ready to top. Consistent crisp-to-soft ratio every time. Chilled or frozen.</p><div class="product-detail"><p>Up to 3 weeks chilled or 12 months frozen. Defrosts in minutes for real service pressure.</p><table class="spec-table"><thead><tr><th>Size</th><th>Carton</th></tr></thead><tbody><tr><td>6 inch</td><td>50/ctn</td></tr><tr><td>8 inch</td><td>50/ctn</td></tr><tr><td>9 inch</td><td>50/ctn</td></tr></tbody></table><div class="shelf-row"><span>Shelf Life</span><span>3 wks chilled / 12 mths frozen</span></div></div><button class="product-toggle">+ Show details</button></div>
-      </article>
+      
       <article class="product-card reveal" style="transition-delay:140ms" onclick="toggleProduct(this)">
         <div class="product-img-wrap"><img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-8.jpg" alt="Fresh frozen pizza bases wholesale commercial kitchen supply" loading="lazy"/></div>
         <div class="product-body"><div class="product-tag">Premium</div><div class="product-name">Fresh Frozen Range</div><p class="product-desc">Made fresh daily, snap-frozen to lock in texture. Scratch quality without the labour.</p><div class="product-detail"><p>For restaurants that want premium pizza without dedicated dough-making staff.</p><div class="shelf-row"><span>Shelf Life</span><span>12 months frozen</span></div></div><button class="product-toggle">+ Show details</button></div>
       </article>
-      <article class="product-card reveal" style="transition-delay:210ms" onclick="toggleProduct(this)">
-        <div class="product-img-wrap"><img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-3.jpg" alt="Gluten free pizza bases wholesale HACCP certified no cross-contamination" loading="lazy"/></div>
-        <div class="product-body"><div class="product-tag">Inclusive</div><div class="product-name">Gluten Free Range</div><p class="product-desc">Dedicated HACCP-certified GF production. No cross-contamination. No soy, no milk.</p><div class="product-detail"><p>Produced in a fully segregated facility. Available in 9" and 11".</p><div class="shelf-row"><span>Shelf Life</span><span>12 months frozen</span></div></div><button class="product-toggle">+ Show details</button></div>
-      </article>
+      
       <article class="product-card reveal" style="transition-delay:280ms" onclick="toggleProduct(this)">
         <div class="product-img-wrap"><img referrerpolicy="no-referrer" src="https://tjspizzaproducts.com.au/wp-content/uploads/2020/09/TJs-Pizza-Products-6.jpg" alt="Garlic butter and cheese pizza base wholesale ready to serve" loading="lazy"/></div>
         <div class="product-body"><div class="product-tag">Ready to Serve</div><div class="product-name">Garlic Butter &amp; Cheese</div><p class="product-desc">Pre-topped with rich garlic butter and cheese. Freezer to oven to plate. High-margin.</p><div class="product-detail"><p>Eliminates prep time. Also available as herb, bacon, bruschetta and mushroom &amp; fetta variants.</p><div class="shelf-row"><span>Shelf Life</span><span>12 months frozen</span></div></div><button class="product-toggle">+ Show details</button></div>
