@@ -843,10 +843,11 @@ div[style*="z-index: 9999"][style*="position: fixed"] iframe {
           <div id="formInner">
             <div class="form-title">Get in touch</div>
             <form class="contact-form" id="contactForm" novalidate>
-              <div class="form-row"><input type="text" id="fname" placeholder="Your name *" required/><input type="text" placeholder="Business name *" required/></div>
-              <div class="form-row"><input type="tel" placeholder="Phone number *" required/><input type="email" placeholder="Email address"/></div>
-              <select><option value="">Which product interests you?</option><option>Frozen Dough Balls</option><option>Traditional Pizza Bases</option><option>Fresh Frozen Range</option><option>Gluten Free Range</option><option>Garlic Butter &amp; Cheese</option><option>Square Pizza Base</option><option>DinoBite Kids Base</option><option>Full range — send everything!</option></select>
-              <textarea placeholder="Tell us about your kitchen or operation (optional)" rows="3"></textarea>
+              <div class="form-row"><input type="text" id="fname" name="name" autocomplete="name" placeholder="Your name *" required/><input type="text" id="fbusiness" name="business" autocomplete="organization" placeholder="Business name *" required/></div>
+              <div class="form-row"><input type="tel" id="fphone" name="phone" autocomplete="tel" placeholder="Phone number *" required/><input type="email" id="femail" name="email" autocomplete="email" placeholder="Email address"/></div>
+              <select id="fproduct" name="product"><option value="">Which product interests you?</option><option>Frozen Dough Balls</option><option>Traditional Pizza Bases</option><option>Fresh Frozen Range</option><option>Gluten Free Range</option><option>Garlic Butter &amp; Cheese</option><option>Square Pizza Base</option><option>DinoBite Kids Base</option><option>Full range — send everything!</option></select>
+              <textarea id="fmessage" name="message" placeholder="Tell us about your kitchen or operation (optional)" rows="3"></textarea>
+              <input type="text" id="fwebsite" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0" value=""/>
               <button type="submit" class="btn-primary btn-full">Send Request →</button>
               <p class="form-note">No spam. No lock-in. We'll respond within one business day.</p>
             </form>
@@ -938,7 +939,31 @@ function toggleProduct(card){var d=card.querySelector('.product-detail');var b=c
 document.querySelectorAll('.faq-item').forEach(function(item){item.addEventListener('click',function(){var o=item.classList.contains('open');document.querySelectorAll('.faq-item').forEach(function(x){x.classList.remove('open');});if(!o)item.classList.add('open');});});
 
 // Contact form
-document.getElementById('contactForm').addEventListener('submit',function(e){e.preventDefault();var name=document.getElementById('fname').value||'there';document.getElementById('successName').textContent='Thanks, '+name+'!';document.getElementById('formInner').style.display='none';document.getElementById('formSuccess').classList.add('show');});
+document.getElementById('contactForm').addEventListener('submit',async function(e){
+  e.preventDefault();
+  var name=document.getElementById('fname').value.trim();
+  var business=document.getElementById('fbusiness').value.trim();
+  var phone=document.getElementById('fphone').value.trim();
+  if(!name||!business||!phone){alert('Please fill in your name, business name and phone number.');return;}
+  var btn=this.querySelector('button[type="submit"]');
+  btn.disabled=true;btn.textContent='Sending...';
+  try{
+    var r=await fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      name:name,business:business,phone:phone,
+      email:document.getElementById('femail').value.trim(),
+      product:document.getElementById('fproduct').value,
+      message:document.getElementById('fmessage').value.trim(),
+      website:document.getElementById('fwebsite').value
+    })});
+    if(!r.ok)throw new Error('send failed');
+    document.getElementById('successName').textContent='Thanks, '+name+'!';
+    document.getElementById('formInner').style.display='none';
+    document.getElementById('formSuccess').classList.add('show');
+  }catch(err){
+    btn.disabled=false;btn.textContent='Send Request →';
+    alert('Something went wrong sending your enquiry. Please call Jeff on 0402 091 718.');
+  }
+});
 
 // Photo upload preview
 var photoInput = document.getElementById('photoInput');
@@ -1016,11 +1041,8 @@ async function fornoSend(){
   tb.className='forno-msg assistant';tb.id='typing';
   tb.innerHTML='<div class="forno-msg-av" style="width:24px;height:24px;border-radius:50%;background:#4e8a47;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0">F</div><div class="forno-bubble" style="background:rgba(255,255,255,0.07);color:#f5f0e8;border-radius:12px 12px 12px 4px;padding:9px 13px;font-size:13px">...</div>';
   msg.appendChild(tb);msg.scrollTop=msg.scrollHeight;
-  var SYS=`You are Forno, TJ's Pizza Products pizza expert. Keep answers under 100 words. Be warm and practical.
-TJ's products: Frozen Dough Balls (150g-600g, vegan), Par-Baked Bases (6-9in), GF Range, Garlic Butter & Cheese, Square Base, DinoBite Kids. No preservatives, no soy, no milk. Contact Jeff: 0402 091 718.
-Pizza knowledge: Neapolitan (450C+ wood fire, 60-90s), NY (280-300C, 12-15min), home oven (250-280C, 8-12min), wood fire (400C+, 60-90s). Never give from-scratch dough recipes.`;
   try{
-    var r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:300,system:SYS,messages:[{role:'user',content:text}]})});
+    var r=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:[{role:'user',content:text}]})});
     var d=await r.json();
     var reply=d.content&&d.content[0]?d.content[0].text:'Call Jeff on 0402 091 718!';
     var t=document.getElementById('typing');if(t)t.remove();
