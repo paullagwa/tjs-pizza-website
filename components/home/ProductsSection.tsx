@@ -12,7 +12,7 @@ function SpecTable({ product }: { product: ProductRange }) {
         {product.name} sizes and carton quantities
       </caption>
       <thead>
-        <tr className="border-b border-line text-left font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+        <tr className="border-b border-line text-left font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
           <th scope="col" className="py-1.5 pr-4 font-medium">Size</th>
           <th scope="col" className="py-1.5 font-medium">Carton</th>
         </tr>
@@ -38,7 +38,7 @@ function ProductCard({ product }: { product: ProductRange }) {
     >
       <div className={product.flagship ? "gap-8 md:grid md:grid-cols-2" : ""}>
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-green">
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-green">
             {product.tagline}
           </p>
           <h3 className="mt-2 font-display text-2xl font-bold">{product.name}</h3>
@@ -100,9 +100,9 @@ export default function ProductsSection() {
           Built on the <em className="text-green">dough ball</em>
         </h2>
         <p className="mt-4 max-w-2xl text-warm/70">
-          Our frozen dough ball range is the core of what we do — and why{" "}
-          {`hundreds of commercial kitchens`} order every week. Seven ranges,
-          one standard: clean ingredients, consistent results.
+          Our frozen dough ball range is the core of what we do — and why 500+
+          commercial kitchens order every week. Seven ranges, one standard:
+          clean ingredients, consistent results.
         </p>
 
         <div className="mt-10 grid gap-5 md:grid-cols-2">
@@ -112,7 +112,7 @@ export default function ProductsSection() {
         </div>
 
         <aside className="mt-10 rounded-lg border border-green/50 bg-bg2 p-7 md:p-9">
-          <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-green">
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-green">
             {bespokeOffer.tag}
           </p>
           <h3 className="mt-2 font-display text-2xl font-bold sm:text-3xl">

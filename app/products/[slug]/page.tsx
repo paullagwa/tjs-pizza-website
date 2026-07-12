@@ -113,7 +113,7 @@ export default async function ProductPage({
                   </h2>
                   <table className="mt-4 w-full text-sm">
                     <thead>
-                      <tr className="border-b border-line text-left font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+                      <tr className="border-b border-line text-left font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
                         <th scope="col" className="py-2 pr-4 font-medium">Size</th>
                         <th scope="col" className="py-2 font-medium">Carton</th>
                       </tr>

@@ -14,7 +14,7 @@ export default function SiteFooter() {
             <p className="font-display text-2xl font-extrabold text-green">
               TJ&rsquo;s
             </p>
-            <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-muted">
+            <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">
               Pizza Products
             </p>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-warm/65">

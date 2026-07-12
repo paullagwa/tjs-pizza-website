@@ -115,7 +115,7 @@ export default function FornoWidget() {
               <p className="font-display text-lg font-bold leading-none text-green">
                 Forno
               </p>
-              <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.2em] text-muted">
+              <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
                 Pizza expert
               </p>
             </div>
@@ -198,7 +198,7 @@ function Bubble({ from, content }: { from: Msg["role"]; content: string }) {
     <div className="flex items-end gap-2">
       <span
         aria-hidden="true"
-        className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-deep font-mono text-[10px] font-bold text-white"
+        className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-green-deep font-mono text-[11px] font-bold text-white"
       >
         F
       </span>

@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     title: `Wholesale Pizza Bases & Dough Balls NSW | ${SITE_NAME}`,
     description:
       "HACCP-certified wholesale pizza bases and hand-stretched dough balls from the NSW Central Coast. Australian family-owned since 2002.",
-    images: [{ url: "/images/TJs-Pizza-Products-15-scaled.jpg", width: 1200, height: 900 }],
+    images: [{ url: "/images/TJs-Pizza-Products-16-scaled.jpg", width: 1200, height: 900 }],
   },
   twitter: {
     card: "summary_large_image",
@@ -62,6 +62,12 @@ export default function RootLayout({
       className={`${playfair.variable} ${jakarta.variable} ${dmMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-body">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-green-deep focus:px-4 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-white"
+        >
+          Skip to content
+        </a>
         <JsonLd data={siteGraph()} />
         {children}
         <FornoWidget />

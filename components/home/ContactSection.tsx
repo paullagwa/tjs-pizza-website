@@ -65,7 +65,7 @@ export default function ContactSection() {
             <li className="flex items-start gap-3">
               <Phone aria-hidden="true" className="mt-1 h-4 w-4 text-green" />
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
                   Call Jeff directly
                 </p>
                 <a href="tel:0402091718" className="mt-1 block text-warm/85 hover:text-warm">
@@ -79,7 +79,7 @@ export default function ContactSection() {
             <li className="flex items-start gap-3">
               <Mail aria-hidden="true" className="mt-1 h-4 w-4 text-green" />
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
                   Email
                 </p>
                 <a
@@ -93,7 +93,7 @@ export default function ContactSection() {
             <li className="flex items-start gap-3">
               <MapPin aria-hidden="true" className="mt-1 h-4 w-4 text-green" />
               <div>
-                <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+                <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
                   Factory
                 </p>
                 <p className="mt-1 text-warm/85">{business.address.display}</p>

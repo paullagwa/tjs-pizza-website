@@ -84,7 +84,7 @@ export default function HomeCooksPage() {
             <div className="mt-8 grid gap-5 md:grid-cols-3">
               {recipes.map((r) => (
                 <article key={r.title} className="rounded-lg border border-line bg-bg p-6">
-                  <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-green">
+                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-green">
                     {r.tag}
                   </p>
                   <h3 className="mt-2 font-display text-xl font-bold">{r.title}</h3>

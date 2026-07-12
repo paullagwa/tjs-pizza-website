@@ -33,7 +33,7 @@ export default function TeamSection() {
                 />
               )}
               <h3 className="mt-5 font-display text-xl font-bold">{member.name}</h3>
-              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-green">
+              <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-green">
                 {member.role}
               </p>
               <p className="mt-3 text-sm leading-relaxed text-warm/70">{member.bio}</p>

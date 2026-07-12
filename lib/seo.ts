@@ -40,7 +40,7 @@ export function siteGraph() {
         foundingDate: String(business.foundedYear),
         logo: {
           "@type": "ImageObject",
-          url: absoluteUrl("/images/TJs-Pizza-Products-12.jpg"),
+          url: absoluteUrl("/images/tjs-logo.jpg"),
         },
         sameAs: business.socials,
       },
@@ -52,7 +52,7 @@ export function siteGraph() {
         url: SITE_URL,
         email: primaryEmail.address,
         telephone: PHONE_E164,
-        image: absoluteUrl("/images/TJs-Pizza-Products-15-scaled.jpg"),
+        image: absoluteUrl("/images/TJs-Pizza-Products-16-scaled.jpg"),
         servesCuisine: "Pizza",
         address: {
           "@type": "PostalAddress",

@@ -62,24 +62,24 @@ export default function Hero() {
 
         <div className="mt-14 grid gap-4 sm:grid-cols-3">
           <Image
-            src="/images/TJs-Pizza-Products-15-scaled.jpg"
-            alt="Prawn and rocket pizza on a TJ's hand-stretched base"
-            width={800}
-            height={600}
-            priority
-            className="h-52 w-full rounded-lg object-cover"
-          />
-          <Image
-            src="/images/IMG_6172.jpg"
-            alt="Margherita pizza in front of the pizza oven"
-            width={800}
-            height={600}
-            priority
-            className="h-52 w-full rounded-lg object-cover"
-          />
-          <Image
             src="/images/TJs-Pizza-Products-16-scaled.jpg"
-            alt="Pepperoni pizza cooked on a TJ's base"
+            alt="A floured TJ's dough ball with fresh mozzarella, basil and olive oil"
+            width={800}
+            height={600}
+            priority
+            className="h-52 w-full rounded-lg object-cover"
+          />
+          <Image
+            src="/images/TJs-Pizza-Products-1.jpg"
+            alt="Pizza dough with a rolling pin, vine tomatoes and basil"
+            width={800}
+            height={600}
+            priority
+            className="h-52 w-full rounded-lg object-cover"
+          />
+          <Image
+            src="/images/TJs-Pizza-Products-2.jpg"
+            alt="A golden calzone made on TJ's dough, fresh out of the oven"
             width={800}
             height={600}
             priority
@@ -91,28 +91,28 @@ export default function Hero() {
           <div>
             <dt className="sr-only">Commercial customers</dt>
             <dd className="font-display text-3xl font-extrabold">{business.customerCount}</dd>
-            <dd className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+            <dd className="mt-1 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
               Commercial customers
             </dd>
           </div>
           <div>
             <dt className="sr-only">Years in business</dt>
             <dd className="font-display text-3xl font-extrabold">{years}yrs</dd>
-            <dd className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+            <dd className="mt-1 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
               Australian family owned
             </dd>
           </div>
           <div>
             <dt className="sr-only">Product ranges</dt>
             <dd className="font-display text-3xl font-extrabold">{productRanges.length}</dd>
-            <dd className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+            <dd className="mt-1 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
               Product ranges
             </dd>
           </div>
           <div>
             <dt className="sr-only">Freshness</dt>
             <dd className="font-display text-3xl font-extrabold">Fresh</dd>
-            <dd className="mt-1 font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+            <dd className="mt-1 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
               Frozen at peak quality
             </dd>
           </div>

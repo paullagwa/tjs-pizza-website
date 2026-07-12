@@ -40,7 +40,7 @@ export default function SiteHeader() {
           <span className="font-display text-2xl font-extrabold text-green">
             TJ&rsquo;s
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-muted">
+          <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">
             Pizza Products
           </span>
         </Link>

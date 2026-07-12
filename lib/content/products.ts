@@ -122,8 +122,8 @@ export const productRanges: ProductRange[] = [
     specs: [],
     shelfLife: '12 months frozen',
     dietary: ['No preservatives', 'No soy', 'No milk products'],
-    image: '/images/TJs-Pizza-Products-5.jpg',
-    imageAlt: 'Square pizza bases for pubs, canteens and commercial kitchens',
+    image: '/images/IMG_4008.jpg',
+    imageAlt: "A custom half-metre TJ's pizza slab on its tray",
   },
   {
     slug: 'dinobite-kids',

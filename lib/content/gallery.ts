@@ -56,24 +56,28 @@ export const gallery: GalleryImage[] = [
  * Other legacy image placements (outside the gallery grid), mapped via the
  * same pre-embed commit — useful for the rebuild's hero/story/team sections.
  */
+/**
+ * Contents verified by eye (2026-07-13):
+ * - TJs-Pizza-Products-15-scaled.jpg is the OLD MARKETING FLYER (poster with
+ *   baked-in text and the legacy live.com.au email) — do not display on the site.
+ * - TJs-Pizza-Products-16-scaled.jpg is a dough ball with mozzarella, basil
+ *   and olive oil (used in the hero + og:image).
+ * - IMG_4008.jpg is the half-metre pizza slab (used on the square-base page).
+ * - IMG_6172.jpg is square-cut ham & pineapple slices.
+ */
 export const sectionImages = {
   hero: [
     {
-      src: '/images/TJs-Pizza-Products-15-scaled.jpg',
-      alt: "TJ's dough ball production facility at Warnervale on the NSW Central Coast",
+      src: '/images/TJs-Pizza-Products-16-scaled.jpg',
+      alt: "A floured TJ's dough ball with fresh mozzarella, basil and olive oil",
     },
     {
-      // VERIFY mapping — legacy hero slots 2 & 3 were base64-only in every commit
-      // (legacy alts: "wood fire oven" / "pepperoni"), and the embedded photos do NOT
-      // match these rescued files. IMG_4008/IMG_6172 are the only unused rescued
-      // photos; alts below describe their actual content.
-      src: '/images/IMG_4008.jpg',
-      alt: "A long par-baked pizza slab fresh from TJ's kitchen",
+      src: '/images/TJs-Pizza-Products-1.jpg',
+      alt: 'Pizza dough with a rolling pin, vine tomatoes and basil',
     },
     {
-      // VERIFY mapping — see note above.
-      src: '/images/IMG_6172.jpg',
-      alt: "A sliced ham and pineapple pizza made on a TJ's base",
+      src: '/images/TJs-Pizza-Products-2.jpg',
+      alt: "A golden calzone made on TJ's dough, fresh out of the oven",
     },
   ],
   story: [
@@ -86,16 +90,16 @@ export const sectionImages = {
       alt: "Wholesale pizza production inside TJ's factory",
     },
   ],
-  factoryBanner: {
-    src: '/images/TJs-Pizza-Products-16-scaled.jpg',
-    alt: "TJ's 2000m² production facility at Warnervale, NSW Central Coast",
-  },
   haccpBadge: {
     src: '/images/haccp-aust-cert-black-1.jpg',
     alt: 'HACCP Australia food safety certification mark',
   },
-  bespoke: {
-    src: '/images/TJs-Pizza-Products-13.jpg',
-    alt: "Custom dough development at TJ's factory",
+  /** Real brand logo (navy/blue on white) — used for the JSON-LD Organization
+      logo; the on-site header keeps the green wordmark treatment. */
+  logo: { src: '/images/tjs-logo.jpg', alt: "TJ's Pizza Products logo" },
+  /** Legacy marketing flyer — kept for reference only, not displayed. */
+  legacyFlyer: {
+    src: '/images/TJs-Pizza-Products-15-scaled.jpg',
+    alt: "TJ's dough ball marketing flyer (legacy)",
   },
 } satisfies Record<string, GalleryImage | GalleryImage[]>;
