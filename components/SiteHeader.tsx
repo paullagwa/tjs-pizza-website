@@ -6,10 +6,10 @@ import { Menu, Phone, X } from "lucide-react";
 
 const links = [
   { href: "/#products", label: "Products" },
-  { href: "/#why", label: "Why TJ's" },
-  { href: "/#story", label: "Our Story" },
-  { href: "/#faq", label: "FAQ" },
-  { href: "/#contact", label: "Contact" },
+  { href: "/about", label: "Our Story" },
+  { href: "/home-cooks", label: "Home Cooks" },
+  { href: "/faq", label: "FAQ" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function SiteHeader() {

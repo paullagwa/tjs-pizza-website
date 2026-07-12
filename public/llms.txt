@@ -1,0 +1,26 @@
+# TJ's Pizza Products
+
+> Australian family-owned wholesale pizza base and dough ball manufacturer in Warnervale, NSW Central Coast. Supplying commercial kitchens, restaurants, pizza trucks, pubs, clubs, schools and canteens since 2002 — nationally through PFD Food Services and direct from the factory. HACCP food safety certified. No artificial preservatives, colours or flavours. No soy. No milk products. Vegan friendly dough balls.
+
+Key facts: founded 2002; 500+ commercial customers; 2000m² HACCP-certified factory at Doherty Close, Warnervale NSW 2259; distributed nationally by PFD Food Services; contact Jeff Knox 0402 091 718, jeff@tjspizzaproducts.com.au.
+
+## Products
+
+- [Frozen Dough Ball Range](https://tjspizzaproducts.com.au/products/frozen-dough-balls): Signature product. Hand-stretched, 9 sizes from 150g to 1kg, vegan friendly, 12 months frozen shelf life. Suited to Neapolitan, NY, Roman and wood-fire pizza.
+- [Traditional Pizza Bases](https://tjspizzaproducts.com.au/products/traditional-pizza-bases): Par-baked bases in 6, 8 and 9 inch. Up to 3 weeks chilled or 12 months frozen.
+- [Gluten Free Range](https://tjspizzaproducts.com.au/products/gluten-free): 9 and 11 inch bases produced in a dedicated, fully segregated HACCP-certified facility — no cross-contamination.
+- [Fresh Frozen Range](https://tjspizzaproducts.com.au/products/fresh-frozen): Bases snap-frozen at peak quality.
+- [Garlic Butter & Cheese](https://tjspizzaproducts.com.au/products/garlic-butter-cheese): Pre-topped bases, freezer to oven. Herb, bacon, bruschetta and mushroom & fetta variants.
+- [Square Pizza Base](https://tjspizzaproducts.com.au/products/square-pizza-base): Cut-to-shape bases for pubs, canteens and clubs. Custom sizes to half-metre.
+- [DinoBite Kids Pizza Base](https://tjspizzaproducts.com.au/products/dinobite-kids): Dinosaur-shaped par-baked bases for kids menus and school canteens.
+
+## Company
+
+- [About](https://tjspizzaproducts.com.au/about): Family story — from a service-station pizza outlet (2002) to a national wholesale manufacturer. Team: Jeff Knox (Director), Rhys Wellfare (Managing Director), Paul Lagwa (QLD Sales).
+- [FAQ](https://tjspizzaproducts.com.au/faq): Minimum orders, shelf life, vegan/gluten-free, national delivery, HACCP certification.
+- [Contact](https://tjspizzaproducts.com.au/contact): Wholesale pricing and sample boxes. Phone 0402 091 718.
+- [Home Cooks](https://tjspizzaproducts.com.au/home-cooks): Recipes, oven tips and the DinoBite kids competition.
+
+## Full content
+
+- [llms-full.txt](https://tjspizzaproducts.com.au/llms-full.txt): complete site content in markdown.
