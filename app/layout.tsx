@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Playfair_Display, Plus_Jakarta_Sans, DM_Mono } from "next/font/google";
+import FornoWidget from "@/components/FornoWidget";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -41,7 +42,10 @@ export default function RootLayout({
       lang="en-AU"
       className={`${playfair.variable} ${jakarta.variable} ${dmMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col font-body">{children}</body>
+      <body className="min-h-full flex flex-col font-body">
+        {children}
+        <FornoWidget />
+      </body>
     </html>
   );
 }
