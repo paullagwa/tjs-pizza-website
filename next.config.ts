@@ -14,6 +14,29 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
+  // 301 map for every page URL on the old WordPress site (from its Yoast
+  // page-sitemap, captured 2026-07). /faq and /contact keep their paths.
+  async redirects() {
+    return [
+      { source: "/about-us", destination: "/about", permanent: true },
+      { source: "/our-story", destination: "/about", permanent: true },
+      { source: "/our-team", destination: "/about", permanent: true },
+      { source: "/gallery", destination: "/about", permanent: true },
+      { source: "/privacy-policy", destination: "/privacy", permanent: true },
+      { source: "/terms-and-conditions", destination: "/terms", permanent: true },
+      { source: "/retail", destination: "/home-cooks", permanent: true },
+      {
+        source: "/sizes-and-uses",
+        destination: "/products/frozen-dough-balls",
+        permanent: true,
+      },
+      {
+        source: "/dough-balls",
+        destination: "/products/frozen-dough-balls",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
