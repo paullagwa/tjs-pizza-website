@@ -17,7 +17,7 @@ export default function TrustBar() {
         {items.map(({ icon: Icon, label }) => (
           <li
             key={label}
-            className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.14em] text-warm/70"
+            className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-warm/70"
           >
             <Icon aria-hidden="true" className="h-3.5 w-3.5 text-green" />
             {label}

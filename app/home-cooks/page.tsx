@@ -12,18 +12,14 @@ import {
   pdfThawInstructions,
   recipes,
 } from "@/lib/content/community";
-import { absoluteUrl } from "@/lib/seo";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Home Cooks — Recipes, Tips & The DinoBite Challenge",
   description:
     "Cook restaurant-quality pizza at home on TJ's hand-stretched dough balls. Recipes, oven tips for home and wood-fire ovens, and the Great DinoBite Challenge for kids.",
-  alternates: { canonical: "/home-cooks" },
-  openGraph: {
-    title: "Home Cooks | TJ's Pizza Products",
-    url: absoluteUrl("/home-cooks"),
-  },
-};
+  path: "/home-cooks",
+});
 
 export default function HomeCooksPage() {
   return (
@@ -41,7 +37,7 @@ export default function HomeCooksPage() {
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-green">
             For home cooks
           </p>
-          <h1 className="mt-3 max-w-2xl font-display text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+          <h1 className="mt-3 max-w-2xl font-display text-4xl font-black leading-[1.1] sm:text-5xl">
             Restaurant quality. <em className="text-green">Your kitchen.</em>
           </h1>
           <p className="mt-5 max-w-xl text-lg text-warm/75">
@@ -53,7 +49,7 @@ export default function HomeCooksPage() {
           <ol className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {homeCookSteps.map((s) => (
               <li key={s.step} className="rounded-lg border border-line bg-bg2 p-6">
-                <p className="font-display text-2xl font-extrabold text-green">
+                <p className="font-display text-2xl font-black text-green">
                   {s.step}
                 </p>
                 <h2 className="mt-2 font-display text-lg font-bold">{s.title}</h2>
@@ -78,13 +74,13 @@ export default function HomeCooksPage() {
 
         <section className="border-y border-line bg-bg2 px-4 py-16 sm:px-6">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display text-3xl font-extrabold sm:text-4xl">
+            <h2 className="font-display text-3xl font-black sm:text-4xl">
               Try these <em className="text-green">first</em>
             </h2>
             <div className="mt-8 grid gap-5 md:grid-cols-3">
               {recipes.map((r) => (
                 <article key={r.title} className="rounded-lg border border-line bg-bg p-6">
-                  <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-green">
+                  <p className="font-mono text-xs uppercase tracking-[0.18em] text-green">
                     {r.tag}
                   </p>
                   <h3 className="mt-2 font-display text-xl font-bold">{r.title}</h3>
@@ -133,7 +129,7 @@ export default function HomeCooksPage() {
                 <Trophy aria-hidden="true" className="h-4 w-4" />
                 {competition.tag}
               </p>
-              <h2 className="mt-3 font-display text-3xl font-extrabold sm:text-4xl">
+              <h2 className="mt-3 font-display text-3xl font-black sm:text-4xl">
                 {competition.name}
               </h2>
               <p className="mt-4 max-w-lg leading-relaxed text-warm/75">
@@ -145,7 +141,7 @@ export default function HomeCooksPage() {
                     key={p.place}
                     className="flex items-center gap-4 rounded-lg border border-line bg-bg2 px-5 py-3.5"
                   >
-                    <dt className="font-display text-xl font-extrabold text-green">
+                    <dt className="font-display text-xl font-black text-green">
                       {p.place}
                     </dt>
                     <dd className="text-sm text-warm/80">{p.detail}</dd>
@@ -166,7 +162,7 @@ export default function HomeCooksPage() {
 
         <section className="border-t border-line bg-bg2 px-4 py-14 sm:px-6">
           <div className="mx-auto max-w-3xl text-center">
-            <h2 className="font-display text-2xl font-extrabold sm:text-3xl">
+            <h2 className="font-display text-2xl font-black sm:text-3xl">
               Where to buy
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-warm/70">
@@ -178,7 +174,7 @@ export default function HomeCooksPage() {
               </Link>
               . Home cook? Ask your local pizzeria if they stock TJ&rsquo;s —
               or call Jeff on{" "}
-              <a href="tel:0402091718" className="text-green underline hover:no-underline">
+              <a href="tel:+61402091718" className="text-green underline hover:no-underline">
                 0402 091 718
               </a>{" "}
               to find the closest place to buy.

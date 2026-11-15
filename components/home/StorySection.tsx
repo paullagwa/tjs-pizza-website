@@ -10,7 +10,7 @@ export default function StorySection() {
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-green">
           Our story
         </p>
-        <h2 className="mt-3 font-display text-4xl font-extrabold sm:text-5xl">
+        <h2 className="mt-3 font-display text-4xl font-black sm:text-5xl">
           {years} years of doing things <em className="text-green">right</em>
         </h2>
         <p className="mt-4 max-w-2xl text-warm/70">{storyIntro}</p>
@@ -23,7 +23,7 @@ export default function StorySection() {
                 i < timeline.length - 1 ? "border-b border-line" : ""
               }`}
             >
-              <p className="font-display text-2xl font-extrabold text-green">
+              <p className="font-display text-2xl font-black text-green">
                 {entry.period}
               </p>
               <div>

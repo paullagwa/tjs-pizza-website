@@ -11,6 +11,10 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  images: {
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 31536000,
+  },
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }];
   },
@@ -24,6 +28,8 @@ const nextConfig: NextConfig = {
       { source: "/gallery", destination: "/about", permanent: true },
       { source: "/privacy-policy", destination: "/privacy", permanent: true },
       { source: "/terms-and-conditions", destination: "/terms", permanent: true },
+      // Unpublished until sizes and carton quantities are confirmed
+      { source: "/products/fresh-frozen", destination: "/products", permanent: false },
       { source: "/retail", destination: "/home-cooks", permanent: true },
       {
         source: "/sizes-and-uses",

@@ -9,7 +9,8 @@ import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import { business } from "@/lib/content/business";
 import { productRanges } from "@/lib/content/products";
-import { absoluteUrl, organizationId } from "@/lib/seo";
+import SpecTable from "@/components/SpecTable";
+import { absoluteUrl, organizationId, pageMeta } from "@/lib/seo";
 
 type Params = { slug: string };
 
@@ -29,19 +30,11 @@ export async function generateMetadata({
   const { slug } = await params;
   const product = getProduct(slug);
   if (!product) return {};
-  const title = `${product.name} — Wholesale`;
-  const description = product.description.slice(0, 155);
-  return {
-    title,
-    description,
-    alternates: { canonical: `/products/${product.slug}` },
-    openGraph: {
-      title,
-      description,
-      url: absoluteUrl(`/products/${product.slug}`),
-      ...(product.image ? { images: [{ url: product.image }] } : {}),
-    },
-  };
+  return pageMeta({
+    title: `${product.name} — Wholesale`,
+    description: product.metaDescription ?? product.description.slice(0, 155),
+    path: `/products/${product.slug}`,
+  });
 }
 
 export default async function ProductPage({
@@ -79,7 +72,7 @@ export default async function ProductPage({
         <Breadcrumbs
           items={[
             { name: "Home", path: "/" },
-            { name: "Products", path: "/#products" },
+            { name: "Products", path: "/products" },
             { name: product.name, path: `/products/${product.slug}` },
           ]}
         />
@@ -88,7 +81,7 @@ export default async function ProductPage({
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-green">
             {product.tagline}
           </p>
-          <h1 className="mt-3 max-w-2xl font-display text-4xl font-extrabold leading-[1.1] sm:text-5xl">
+          <h1 className="mt-3 max-w-2xl font-display text-4xl font-black leading-[1.1] sm:text-5xl">
             {product.name}
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-warm/75">
@@ -106,47 +99,20 @@ export default async function ProductPage({
 
           <div className="mt-10 grid gap-10 lg:grid-cols-2">
             <div>
-              {product.specs.length > 0 ? (
-                <div className="rounded-lg border border-line bg-bg2 p-6">
-                  <h2 className="font-display text-xl font-bold">
-                    Sizes &amp; carton quantities
-                  </h2>
-                  <table className="mt-4 w-full text-sm">
-                    <thead>
-                      <tr className="border-b border-line text-left font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
-                        <th scope="col" className="py-2 pr-4 font-medium">Size</th>
-                        <th scope="col" className="py-2 font-medium">Carton</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {product.specs.map((row) => (
-                        <tr key={row.size} className="border-b border-line/50">
-                          <td className="py-2 pr-4 font-medium tabular-nums">{row.size}</td>
-                          <td className="py-2 tabular-nums text-warm/70">{row.carton}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                  {product.shelfLife && (
-                    <p className="mt-4 text-sm text-warm/65">
-                      <span className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
-                        Shelf life:{" "}
-                      </span>
-                      {product.shelfLife}
-                    </p>
-                  )}
-                </div>
-              ) : (
-                <div className="rounded-lg border border-line bg-bg2 p-6">
-                  <h2 className="font-display text-xl font-bold">
-                    Sizes &amp; carton quantities
-                  </h2>
-                  <p className="mt-3 text-sm text-warm/70">
-                    Contact us for current sizes, carton quantities and
-                    pricing — Jeff will have numbers for you same-day.
+              <div className="rounded-lg border border-line bg-bg2 p-6">
+                <h2 className="font-display text-xl font-bold">
+                  Sizes &amp; carton quantities
+                </h2>
+                <SpecTable product={product} />
+                {product.shelfLife && (
+                  <p className="mt-4 text-sm text-warm/70">
+                    <span className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
+                      Shelf life:{" "}
+                    </span>
+                    {product.shelfLife}
                   </p>
-                </div>
-              )}
+                )}
+              </div>
 
               <div className="mt-6 rounded-lg border border-line bg-bg2 p-6">
                 <h2 className="font-display text-xl font-bold">
@@ -158,17 +124,17 @@ export default async function ProductPage({
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">
                   <a
-                    href="tel:0402091718"
+                    href="tel:+61402091718"
                     className="inline-flex items-center gap-2 rounded-md bg-green-deep px-5 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
                   >
                     <Phone aria-hidden="true" className="h-4 w-4" />
                     Call Jeff — 0402 091 718
                   </a>
                   <Link
-                    href="/contact"
-                    className="inline-flex items-center gap-2 rounded-md border border-line px-5 py-3 text-sm font-semibold text-warm hover:border-green"
+                    href={`/contact?intent=sample&product=${product.slug}`}
+                    className="btn-ghost"
                   >
-                    Send an enquiry
+                    Get a sample box
                     <ArrowRight aria-hidden="true" className="h-4 w-4" />
                   </Link>
                 </div>
@@ -182,6 +148,7 @@ export default async function ProductPage({
                 width={800}
                 height={600}
                 priority
+                sizes="(min-width: 1024px) 36rem, 100vw"
                 className="h-full max-h-[26rem] w-full rounded-lg object-cover"
               />
             )}

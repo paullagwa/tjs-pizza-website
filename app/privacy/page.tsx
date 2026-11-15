@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import { business } from "@/lib/content/business";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Privacy Policy",
   description:
     "How TJ's Pizza Products collects, uses and protects personal information — including competition entries involving children.",
-  alternates: { canonical: "/privacy" },
-};
+  path: "/privacy",
+});
 
 const LAST_UPDATED = "13 July 2026";
 
@@ -26,7 +27,7 @@ export default function PrivacyPage() {
           ]}
         />
         <article className="prose-invert mx-auto max-w-3xl px-4 py-12 sm:px-6">
-          <h1 className="font-display text-4xl font-extrabold">Privacy Policy</h1>
+          <h1 className="font-display text-4xl font-black">Privacy Policy</h1>
           <p className="mt-2 text-sm text-warm/65">Last updated: {LAST_UPDATED}</p>
 
           <div className="mt-8 space-y-8 text-[15px] leading-relaxed text-warm/80">

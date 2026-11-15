@@ -26,7 +26,7 @@ function render(): string {
     .map((p) => {
       const specs =
         p.specs.length > 0
-          ? `\nSizes: ${p.specs.map((s) => `${s.size} (${s.carton})`).join(", ")}.`
+          ? `\nSizes: ${p.specs.map((s) => (s.carton ? `${s.size} (${s.carton})` : s.size)).join(", ")}.`
           : "";
       const shelf = p.shelfLife ? `\nShelf life: ${p.shelfLife}.` : "";
       return `### ${p.name} (${p.tagline})\n\n${p.description}${specs}${shelf}\nDietary: ${p.dietary.join(", ")}.\nURL: ${SITE_URL}/products/${p.slug}`;

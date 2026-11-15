@@ -65,19 +65,19 @@ export const business: Business = {
   legalName: "TJ's Pizza Products Pty Ltd", // "Pizza Products PtyLtd" on the PDF letterhead
   tagline: 'Built from the base up', // nav logo sub-line on the legacy site
   phones: [
-    { label: 'Jeff Knox (Director)', display: '0402 091 718', href: 'tel:0402091718' },
+    { label: 'Jeff Knox (Director)', display: '0402 091 718', href: 'tel:+61402091718' },
     // Legacy site prints the landline as "(02) 43 94 01 76"; normalised display below.
     // NOTE: the product sheet PDF prints "(02) 4394 01768" (extra digit — likely a typo).
-    { label: 'Landline', display: '(02) 4394 0176', href: 'tel:0243940176' },
-    { label: 'Rhys Wellfare (Managing Director)', display: '0416 071 022', href: 'tel:0416071022' },
-    { label: 'Paul Lagwa (QLD Sales Executive)', display: '0411 635 322', href: 'tel:0411635322' },
+    { label: 'Landline', display: '(02) 4394 0176', href: 'tel:+61243940176' },
+    { label: 'Rhys Wellfare (Managing Director)', display: '0416 071 022', href: 'tel:+61416071022' },
+    { label: 'Paul Lagwa (QLD Sales Executive)', display: '0411 635 322', href: 'tel:+61411635322' },
   ],
   emails: [
-    // Primary public email — used in the legacy contact section, footer and JSON-LD.
-    { label: 'Sales & general enquiries', address: 'jeff@tjspizzaproducts.com.au', primary: true },
-    // Legacy inbox — used on team cards, the DinoBite competition fallback,
-    // the product sheet PDF and the old WordPress site.
-    { label: 'Legacy inbox', address: 'tjspizza@live.com.au' },
+    // The one public email, site-wide. This is the inbox proven to be monitored
+    // (form delivery goes here too). jeff@tjspizzaproducts.com.au appeared on the
+    // legacy site but is unconfirmed — switch `primary` once Jeff confirms it works.
+    { label: 'Sales & general enquiries', address: 'tjspizza@live.com.au', primary: true },
+    { label: 'Unconfirmed branded address', address: 'jeff@tjspizzaproducts.com.au' },
   ],
   fax: '(02) 4392 0622', // old WordPress site footer only
   address: {
@@ -133,3 +133,15 @@ export const business: Business = {
   socials: [],
   website: 'https://tjspizzaproducts.com.au',
 };
+
+/** Jeff's mobile — the site's primary call-to-action number. */
+export const JEFF = business.phones[0];
+
+/** The single public email address used everywhere on the site. */
+export const publicEmail = business.emails.find((e) => e.primary)!.address;
+
+/** "0402 091 718" / "(02) 4394 0176" -> "tel:+61402091718" */
+export function telHref(display: string): string {
+  const digits = display.replace(/\D/g, "");
+  return `tel:+61${digits.replace(/^0/, "")}`;
+}

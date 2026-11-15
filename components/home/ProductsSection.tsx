@@ -2,43 +2,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { productRanges, bespokeOffer } from "@/lib/content/products";
+import SpecTable from "@/components/SpecTable";
 import type { ProductRange } from "@/lib/content/types";
-
-function SpecTable({ product }: { product: ProductRange }) {
-  if (product.specs.length === 0) return null;
-  return (
-    <table className="mt-4 w-full text-sm">
-      <caption className="sr-only">
-        {product.name} sizes and carton quantities
-      </caption>
-      <thead>
-        <tr className="border-b border-line text-left font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
-          <th scope="col" className="py-1.5 pr-4 font-medium">Size</th>
-          <th scope="col" className="py-1.5 font-medium">Carton</th>
-        </tr>
-      </thead>
-      <tbody>
-        {product.specs.map((row) => (
-          <tr key={row.size} className="border-b border-line/50">
-            <td className="py-1.5 pr-4 font-medium tabular-nums">{row.size}</td>
-            <td className="py-1.5 tabular-nums text-warm/70">{row.carton}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  );
-}
 
 function ProductCard({ product }: { product: ProductRange }) {
   return (
     <article
-      className={`flex flex-col rounded-lg border border-line bg-bg2 p-6 ${
+      className={`relative flex flex-col rounded-lg border border-line bg-bg2 p-6 transition-colors focus-within:border-green hover:border-green/70 ${
         product.flagship ? "border-green/60 md:col-span-2" : ""
       }`}
     >
       <div className={product.flagship ? "gap-8 md:grid md:grid-cols-2" : ""}>
         <div>
-          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-green">
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-green">
             {product.tagline}
           </p>
           <h3 className="mt-2 font-display text-2xl font-bold">{product.name}</h3>
@@ -62,6 +38,7 @@ function ProductCard({ product }: { product: ProductRange }) {
               alt={product.imageAlt ?? product.name}
               width={640}
               height={480}
+              sizes="(min-width: 768px) 34rem, 92vw"
               className="mt-5 h-44 w-full rounded-md object-cover"
             />
           )}
@@ -78,9 +55,9 @@ function ProductCard({ product }: { product: ProductRange }) {
           )}
           <Link
             href={`/products/${product.slug}`}
-            className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-green hover:underline"
+            className="mt-4 inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-green after:absolute after:inset-0 hover:underline"
           >
-            {product.name} details
+            See sizes &amp; specs<span className="sr-only">: {product.name}</span>
             <ArrowRight aria-hidden="true" className="h-4 w-4" />
           </Link>
         </div>
@@ -89,19 +66,24 @@ function ProductCard({ product }: { product: ProductRange }) {
   );
 }
 
-export default function ProductsSection() {
+export default function ProductsSection({
+  headingLevel = "h2",
+}: {
+  headingLevel?: "h1" | "h2";
+}) {
+  const Heading = headingLevel;
   return (
     <section id="products" className="px-4 py-20 sm:px-6">
       <div className="mx-auto max-w-6xl">
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-green">
           Our range
         </p>
-        <h2 className="mt-3 font-display text-4xl font-extrabold sm:text-5xl">
+        <Heading className="mt-3 font-display text-4xl font-black sm:text-5xl">
           Built on the <em className="text-green">dough ball</em>
-        </h2>
+        </Heading>
         <p className="mt-4 max-w-2xl text-warm/70">
           Our frozen dough ball range is the core of what we do — and why 500+
-          commercial kitchens order every week. Seven ranges, one standard:
+          commercial kitchens order from us. One standard across every range:
           clean ingredients, consistent results.
         </p>
 
@@ -112,7 +94,7 @@ export default function ProductsSection() {
         </div>
 
         <aside className="mt-10 rounded-lg border border-green/50 bg-bg2 p-7 md:p-9">
-          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-green">
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-green">
             {bespokeOffer.tag}
           </p>
           <h3 className="mt-2 font-display text-2xl font-bold sm:text-3xl">
@@ -130,8 +112,8 @@ export default function ProductsSection() {
             ))}
           </ul>
           <Link
-            href="/#contact"
-            className="mt-6 inline-flex items-center gap-2 rounded-md bg-green-deep px-5 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
+            href="/contact?intent=bespoke"
+            className="btn-primary mt-6"
           >
             {bespokeOffer.cta}
             <ArrowRight aria-hidden="true" className="h-4 w-4" />

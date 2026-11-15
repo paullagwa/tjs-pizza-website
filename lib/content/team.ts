@@ -25,8 +25,7 @@ export const team: TeamMember[] = [
       'national. He oversees all production quality.',
     phone: '0416 071 022',
     email: 'tjspizza@live.com.au',
-    image: '/images/Person.jpg',
-    imageAlt: "Rhys Wellfare, Managing Director of TJ's Pizza Products",
+    // No real portrait yet (the legacy file was a stock placeholder) — renders a monogram tile.
   },
   {
     name: 'Paul Lagwa',

@@ -9,10 +9,12 @@ import type { ProductRange } from './types';
  * footer links, the hidden .footer-seo paragraph and the JSON-LD — specs for
  * those come from the JSON-LD and are flagged below. See extraction-notes.md.
  *
- * A carton value of '—' means the carton quantity could not be sourced.
+ * A spec row without `carton` means the quantity is not confirmed — the UI
+ * hides the column and points to the spec sheet instead of printing a dash.
+ * `draft: true` ranges are not published (see `productRanges` at the bottom).
  */
 
-export const productRanges: ProductRange[] = [
+const allProductRanges: ProductRange[] = [
   {
     slug: 'frozen-dough-balls',
     name: 'Frozen Dough Ball Range',
@@ -21,7 +23,9 @@ export const productRanges: ProductRange[] = [
       'The heart of what we do. Hand-stretched and frozen at peak freshness. ' +
       'From 150g to 1kg — whatever your kitchen requires, we have a size for you. ' +
       'Vegan friendly. Works in every oven — especially wood fire. ' +
-      'Perfect for Neapolitan, NY, Roman and artisan pizza. Thaws in minutes. ' +
+      'Perfect for Neapolitan, NY, Roman and artisan pizza. Pull tomorrow’s dough ' +
+      'tonight: 24 hours in the cool room, an hour or two on the bench, and it ' +
+      'stretches like you made it this morning. ' +
       'Available through PFD Food Services nationally and direct from our Warnervale factory.',
     // Carton quantities exactly as the legacy detail table.
     // CONFLICT: the product sheet PDF says "15 per box at 1kg" (legacy table says 12/ctn),
@@ -47,8 +51,10 @@ export const productRanges: ProductRange[] = [
       'No milk products',
     ],
     image: '/images/TJs-Pizza-Products-12.jpg',
-    imageAlt: "Frozen pizza dough balls from TJ's Warnervale production line",
+    imageAlt: 'Floured hands stretching a ball of pizza dough',
     flagship: true,
+    metaDescription:
+      'Hand-stretched frozen pizza dough balls in nine sizes from 150g to 1kg. Vegan friendly, no preservatives. Wholesale from the NSW Central Coast, nationally via PFD.',
   },
   {
     slug: 'traditional-pizza-bases',
@@ -62,9 +68,9 @@ export const productRanges: ProductRange[] = [
       'and defrost in just a couple of minutes — ideal for busy service times. ' +
       'No added preservatives, colourings or flavours.',
     specs: [
-      { size: '6 inch', carton: '—' },
-      { size: '8 inch', carton: '—' },
-      { size: '9 inch', carton: '—' },
+      { size: '6 inch' },
+      { size: '8 inch' },
+      { size: '9 inch' },
     ],
     shelfLife: 'Up to 3 weeks chilled or 12 months frozen',
     dietary: ['No preservatives', 'No soy', 'No milk products'],
@@ -72,7 +78,7 @@ export const productRanges: ProductRange[] = [
   {
     slug: 'fresh-frozen',
     name: 'Fresh Frozen Range',
-    tagline: 'Frozen at Peak Quality',
+    tagline: 'Par-Baked, Frozen',
     // No card, no specs anywhere in the sources — name only (contact-form dropdown,
     // footer links, footer-seo, old WordPress homepage). Needs Paul's input.
     description:
@@ -80,28 +86,32 @@ export const productRanges: ProductRange[] = [
       'Contact us for current sizes and carton quantities.',
     specs: [],
     dietary: ['No preservatives', 'No soy', 'No milk products'],
+    // Unpublished until Jeff/Rhys supply sizes and carton quantities.
+    draft: true,
   },
   {
     slug: 'gluten-free',
     name: 'Gluten Free Range',
-    tagline: 'Dedicated Facility',
+    tagline: 'Gluten Free Recipe',
     // No product card on the legacy site — sourced from the legacy JSON-LD
     // (product entry + FAQ entry): "produced in a dedicated, fully segregated
     // HACCP-certified facility with no cross-contamination".
+    // UNVERIFIED allergen claim — softened to "gluten free recipe" until Jeff or
+    // Rhys confirm the segregated-facility wording in writing.
     description:
-      'HACCP-certified gluten free pizza bases, produced in a dedicated, fully ' +
-      'segregated facility with no cross-contamination. No soy, no milk. ' +
-      'Available in 9 inch and 11 inch.',
+      'Gluten free recipe pizza bases from our HACCP-certified Warnervale factory. ' +
+      'No soy, no milk. Available in 9 inch and 11 inch. Ask us for the allergen ' +
+      'statement and spec sheet.',
     specs: [
-      { size: '9 inch', carton: '—' },
-      { size: '11 inch', carton: '—' },
+      { size: '9 inch' },
+      { size: '11 inch' },
     ],
-    dietary: ['Gluten free', 'No cross-contamination', 'No soy', 'No milk products'],
+    dietary: ['Gluten free recipe', 'No soy', 'No milk products'],
   },
   {
     slug: 'garlic-butter-cheese',
     name: 'Garlic Butter & Cheese',
-    tagline: 'Ready to Serve',
+    tagline: 'Pre-Topped',
     description:
       'Pre-topped with rich garlic butter and cheese. Freezer to oven to plate. ' +
       'High-margin. Eliminates prep time. Also available as herb, bacon, bruschetta ' +
@@ -109,13 +119,12 @@ export const productRanges: ProductRange[] = [
     specs: [],
     shelfLife: '12 months frozen',
     dietary: ['No preservatives'], // contains cheese — not vegan / not milk-free
-    image: '/images/TJs-Pizza-Products-6.jpg',
-    imageAlt: 'Garlic butter and cheese pizza base ready to serve',
+    // No honest photo of this product yet (the legacy image was a stock seafood pizza).
   },
   {
     slug: 'square-pizza-base',
     name: 'Square Pizza Base',
-    tagline: 'Versatile',
+    tagline: 'Tray & Slab',
     description:
       'Cut to any shape. Ideal for pub-style pizza, canteen trays, or individual portions. ' +
       'Popular with schools, hospitals and club kitchens. Custom sizes up to half-metre on request.',
@@ -141,6 +150,9 @@ export const productRanges: ProductRange[] = [
   },
 ];
 
+/** Published ranges — everything the site renders, links or lists. */
+export const productRanges: ProductRange[] = allProductRanges.filter((p) => !p.draft);
+
 /**
  * Bespoke / custom recipe offer — rendered as a full-width banner on the
  * legacy site rather than a product card.
@@ -156,7 +168,7 @@ export const bespokeOffer = {
   points: [
     'Custom hydration, flour blend and fermentation profile',
     'Your flavour, your texture, your brand — nobody else’s',
-    'Custom weights and sizes from 150g to 600g+',
+    'Custom weights and sizes from 150g to 1kg',
     'Produced under full confidentiality agreement',
     'Consistent quality at commercial volumes',
   ],

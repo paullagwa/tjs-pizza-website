@@ -6,18 +6,14 @@ import JsonLd from "@/components/JsonLd";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
 import { faqs } from "@/lib/content/faq";
-import { absoluteUrl } from "@/lib/seo";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "FAQ — Wholesale Pizza Base Questions Answered",
   description:
     "Minimum orders, shelf life, vegan and gluten free options, national delivery, HACCP certification — answers to the questions commercial kitchens ask TJ's Pizza Products.",
-  alternates: { canonical: "/faq" },
-  openGraph: {
-    title: "FAQ | TJ's Pizza Products",
-    url: absoluteUrl("/faq"),
-  },
-};
+  path: "/faq",
+});
 
 export default function FaqPage() {
   const faqSchema = {
@@ -45,7 +41,7 @@ export default function FaqPage() {
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-green">
             FAQ
           </p>
-          <h1 className="mt-3 font-display text-4xl font-extrabold sm:text-5xl">
+          <h1 className="mt-3 font-display text-4xl font-black sm:text-5xl">
             Common <em className="text-green">questions</em>
           </h1>
           <p className="mt-4 text-warm/70">
@@ -76,7 +72,7 @@ export default function FaqPage() {
 
           <div className="mt-10 flex flex-wrap gap-3">
             <a
-              href="tel:0402091718"
+              href="tel:+61402091718"
               className="inline-flex items-center gap-2 rounded-md bg-green-deep px-5 py-3 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
             >
               <Phone aria-hidden="true" className="h-4 w-4" />

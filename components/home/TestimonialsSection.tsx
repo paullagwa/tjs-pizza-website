@@ -9,7 +9,7 @@ export default function TestimonialsSection() {
         <p className="font-mono text-xs uppercase tracking-[0.2em] text-green">
           Kitchens that trust us
         </p>
-        <h2 className="mt-3 font-display text-4xl font-extrabold sm:text-5xl">
+        <h2 className="mt-3 font-display text-4xl font-black sm:text-5xl">
           Word from the <em className="text-green">pass</em>
         </h2>
 
@@ -20,7 +20,7 @@ export default function TestimonialsSection() {
               className="flex flex-col rounded-lg border border-line bg-bg2 p-6"
             >
               <Quote aria-hidden="true" className="h-5 w-5 text-green" />
-              <blockquote className="mt-3 flex-1 text-sm leading-relaxed text-warm/80">
+              <blockquote className="mt-3 flex-1 font-display text-xl italic leading-snug text-warm/90">
                 &ldquo;{t.quote}&rdquo;
               </blockquote>
               <figcaption className="mt-4 text-sm">

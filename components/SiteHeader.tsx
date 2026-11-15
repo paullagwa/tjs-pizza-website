@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Menu, Phone, X } from "lucide-react";
 
 const links = [
-  { href: "/#products", label: "Products" },
+  { href: "/products", label: "Products" },
   { href: "/about", label: "Our Story" },
   { href: "/home-cooks", label: "Home Cooks" },
   { href: "/faq", label: "FAQ" },
@@ -37,10 +37,10 @@ export default function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-line bg-bg/90 backdrop-blur-md">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link href="/" className="flex flex-col leading-none" onClick={() => setOpen(false)}>
-          <span className="font-display text-2xl font-extrabold text-green">
+          <span className="font-display text-2xl font-black text-green">
             TJ&rsquo;s
           </span>
-          <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-muted">
+          <span className="font-mono text-xs uppercase tracking-[0.28em] text-muted">
             Pizza Products
           </span>
         </Link>
@@ -59,7 +59,7 @@ export default function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <a
-            href="tel:0402091718"
+            href="tel:+61402091718"
             className="inline-flex items-center gap-2 rounded-md bg-green-deep px-4 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
           >
             <Phone aria-hidden="true" className="h-4 w-4" />
@@ -103,7 +103,7 @@ export default function SiteHeader() {
             ))}
             <li>
               <a
-                href="tel:0402091718"
+                href="tel:+61402091718"
                 className="mt-4 mb-2 inline-flex w-full items-center justify-center gap-2 rounded-md bg-green-deep px-4 py-3 font-semibold text-white"
               >
                 <Phone aria-hidden="true" className="h-4 w-4" />

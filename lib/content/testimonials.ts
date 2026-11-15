@@ -1,8 +1,8 @@
 import type { Testimonial } from './types';
 
-// TODO: replace with attributable venue-named testimonials before launch.
-// "Marco P." and "Sarah M." have no verifiable venue; Tony Schlick and Steve
-// Harris also appear on the old WordPress site (slightly different wording there).
+// Only quotes that also appear on the old WordPress site are published. Two
+// unattributable quotes ("Marco P.", "Sarah M.") were removed in the design
+// audit. TODO: get venue names and suburbs for these two, and add named venues.
 export const testimonials: Testimonial[] = [
   {
     quote:
@@ -17,19 +17,5 @@ export const testimonials: Testimonial[] = [
       'with. The product quality speaks for itself.',
     name: 'Steve Harris',
     venue: 'Restaurant Owner, NSW',
-  },
-  {
-    quote:
-      "We've tried every supplier. Nothing comes close for consistency. Same quality " +
-      'every single delivery.',
-    name: 'Marco P.',
-    venue: 'Pizzeria Owner, Sydney',
-  },
-  {
-    quote:
-      'The gluten free range is the real deal. Our GF customers finally feel like ' +
-      "they're getting a great pizza.",
-    name: 'Sarah M.',
-    venue: 'Cafe & Catering Manager',
   },
 ];

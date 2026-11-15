@@ -6,18 +6,14 @@ import StorySection from "@/components/home/StorySection";
 import TeamSection from "@/components/home/TeamSection";
 import TrustBar from "@/components/home/TrustBar";
 import { business } from "@/lib/content/business";
-import { absoluteUrl } from "@/lib/seo";
+import { pageMeta } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "About — Family-Owned Pizza Base Makers Since 2002",
   description:
     "TJ's Pizza Products is a family-owned wholesale pizza base manufacturer in Warnervale, NSW Central Coast. From a service-station pizza outlet in 2002 to a 2000m² HACCP-certified factory supplying kitchens nationally.",
-  alternates: { canonical: "/about" },
-  openGraph: {
-    title: "About | TJ's Pizza Products",
-    url: absoluteUrl("/about"),
-  },
-};
+  path: "/about",
+});
 
 export default function AboutPage() {
   return (
@@ -35,7 +31,7 @@ export default function AboutPage() {
             About TJ&rsquo;s
           </p>
           {/* GEO pattern: open with the definitive one-sentence answer */}
-          <h1 className="mt-3 font-display text-4xl font-extrabold leading-[1.15] sm:text-5xl">
+          <h1 className="mt-3 font-display text-4xl font-black leading-[1.15] sm:text-5xl">
             Australian family-owned pizza base makers.
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-warm/75">

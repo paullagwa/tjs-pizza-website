@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { business } from "@/lib/content/business";
 import { productRanges } from "@/lib/content/products";
 
@@ -14,6 +15,14 @@ export const SITE_NAME = business.name;
 export function absoluteUrl(path: string): string {
   return `${SITE_URL}${path === "/" ? "" : path}`;
 }
+
+/** Default social card — 1200x630 crop of the dough-toss photo. */
+export const OG_IMAGE = {
+  url: "/og.jpg",
+  width: 1200,
+  height: 630,
+  alt: "Pizza dough tossed in the air with a burst of flour",
+};
 
 const primaryEmail = business.emails.find((e) => e.primary)!;
 
@@ -45,15 +54,14 @@ export function siteGraph() {
         sameAs: business.socials,
       },
       {
-        "@type": "FoodEstablishment",
+        "@type": "WholesaleStore",
         "@id": localBusinessId,
         name: business.name,
         parentOrganization: { "@id": organizationId },
         url: SITE_URL,
         email: primaryEmail.address,
         telephone: PHONE_E164,
-        image: absoluteUrl("/images/TJs-Pizza-Products-16-scaled.jpg"),
-        servesCuisine: "Pizza",
+        image: absoluteUrl(OG_IMAGE.url),
         address: {
           "@type": "PostalAddress",
           streetAddress: business.address.street,
@@ -116,5 +124,43 @@ export function breadcrumbGraph(
       name: item.name,
       item: absoluteUrl(item.path),
     })),
+  };
+}
+
+/**
+ * Per-route metadata. Next replaces (not merges) `openGraph` per route, so
+ * every page builds the full object here — otherwise og:image, og:type and
+ * og:site_name silently drop off everything but the homepage.
+ */
+export function pageMeta({
+  title,
+  description,
+  path,
+  ogTitle,
+}: {
+  title: string;
+  description: string;
+  path: string;
+  ogTitle?: string;
+}): Metadata {
+  return {
+    title,
+    description,
+    alternates: { canonical: path },
+    openGraph: {
+      type: "website",
+      locale: "en_AU",
+      siteName: SITE_NAME,
+      url: absoluteUrl(path),
+      title: ogTitle ?? `${title} | ${SITE_NAME}`,
+      description,
+      images: [OG_IMAGE],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: ogTitle ?? `${title} | ${SITE_NAME}`,
+      description,
+      images: [OG_IMAGE.url],
+    },
   };
 }

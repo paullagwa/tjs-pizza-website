@@ -1,8 +1,8 @@
 export type SpecRow = {
   /** e.g. "150g" or "6 inch" */
   size: string;
-  /** e.g. "40 per carton" */
-  carton: string;
+  /** e.g. "40/ctn" — omit when the quantity is not confirmed */
+  carton?: string;
   /** optional extra column, e.g. suggested pizza size */
   note?: string;
 };
@@ -23,6 +23,10 @@ export type ProductRange = {
   imageAlt?: string;
   /** true for the hero range (Frozen Dough Balls) */
   flagship?: boolean;
+  /** hand-written meta description (falls back to the description) */
+  metaDescription?: string;
+  /** true = not published anywhere (no page, nav, sitemap, form option) */
+  draft?: boolean;
 };
 
 export type FaqItem = {
