@@ -42,15 +42,15 @@ export default function Hero() {
           Warnervale NSW · Since {business.foundedYear}
         </p>
 
-        <h1 className="h-display hero-rise mt-6 max-w-[11ch] [animation-delay:90ms] lg:text-[clamp(4rem,6.6vw,6.75rem)]">
-          Hand-stretched dough balls for{" "}
-          <em className="text-green">Australia&rsquo;s pizza kitchens.</em>
+        <h1 className="h-display hero-rise mt-6 max-w-[13ch] [animation-delay:90ms] lg:text-[clamp(4rem,6.6vw,6.75rem)]">
+          Our balls, in the hands of{" "}
+          <em className="text-green">Australia&rsquo;s best pizza makers.</em>
         </h1>
 
         <p className="lead hero-rise mt-7 max-w-md text-warm/85 [animation-delay:180ms]">
-          {sizes.length} sizes, six ingredients, no preservatives. Made on the
-          Central Coast and delivered nationally, direct or through your
-          distributor.
+          Hand-stretched dough balls in {sizes.length} sizes. Six ingredients,
+          no preservatives. Made on the Central Coast and delivered
+          nationally, direct or through your distributor.
         </p>
 
         <div className="hero-rise mt-9 flex flex-wrap gap-3 [animation-delay:270ms]">
