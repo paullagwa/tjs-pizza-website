@@ -26,12 +26,12 @@ export default function AboutPage() {
             { name: "About", path: "/about" },
           ]}
         />
-        <div className="mx-auto max-w-3xl px-4 pt-12 sm:px-6">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-green">
+        <div className="container-read pt-12">
+          <p className="eyebrow">
             About TJ&rsquo;s
           </p>
           {/* GEO pattern: open with the definitive one-sentence answer */}
-          <h1 className="mt-3 font-display text-4xl font-black leading-[1.15] sm:text-5xl">
+          <h1 className="h-page mt-3">
             Australian family-owned pizza base makers.
           </h1>
           <p className="mt-5 text-lg leading-relaxed text-warm/75">

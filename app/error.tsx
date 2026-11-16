@@ -15,12 +15,12 @@ export default function Error({
   }, [error]);
 
   return (
-    <main id="main" className="flex flex-1 items-center px-4 py-24 sm:px-6">
+    <main id="main" className="flex flex-1 items-center py-24">
       <div className="mx-auto max-w-xl">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-green">
+        <p className="eyebrow">
           Something went wrong
         </p>
-        <h1 className="mt-3 font-display text-4xl font-black sm:text-5xl">
+        <h1 className="h-section mt-3">
           That didn&rsquo;t come out of the oven right.
         </h1>
         <p className="mt-4 text-warm/75">

@@ -3,13 +3,13 @@ import { faqs } from "@/lib/content/faq";
 
 export default function FaqSection() {
   return (
-    <section id="faq" className="px-4 py-20 sm:px-6">
-      <div className="mx-auto max-w-3xl">
-        <p className="text-center font-mono text-xs uppercase tracking-[0.2em] text-green">
+    <section id="faq" className="py-20">
+      <div className="container-read">
+        <p className="text-center eyebrow">
           FAQ
         </p>
-        <h2 className="mt-3 text-center font-display text-4xl font-black sm:text-5xl">
-          Common <em className="text-green">questions</em>
+        <h2 className="h-section mt-3 text-center">
+          Common questions
         </h2>
 
         <div className="mt-10 space-y-3">

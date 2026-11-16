@@ -9,8 +9,8 @@ export default function manifest(): MetadataRoute.Manifest {
       "Wholesale pizza bases and hand-stretched dough balls from the NSW Central Coast.",
     start_url: "/",
     display: "browser",
-    background_color: "#111008",
-    theme_color: "#111008",
+    background_color: "#0f0d07",
+    theme_color: "#0f0d07",
     icons: [
       { src: "/icon.svg", type: "image/svg+xml", sizes: "any" },
       { src: "/apple-icon.png", type: "image/png", sizes: "180x180" },

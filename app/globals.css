@@ -5,16 +5,30 @@
    (#3d6e36, 5.0:1). --color-green (#6aa862) is for text, icons and rules on the
    dark surfaces (6:1+ on bg and bg2) — never as a background behind white text. */
 :root {
-  --bg: #111008;
-  --bg2: #1a160d;
-  --bg3: #231e14;
+  /* char — the dark, oven-lit ground */
+  --bg: #0f0d07;
+  --bg2: #1d180e;
+  --bg3: #2a2318;
   --warm: #f5f0e8;
   --muted: #9a8a6a;
   --green: #6aa862;
   --green-deep: #3d6e36;
   --border: rgba(255, 255, 255, 0.08);
   --border-strong: rgba(255, 255, 255, 0.45);
+  /* crust gold: numerals, eyebrows, rules. ember: Forno's flame only. */
+  --crust: #d9a441;
+  --ember: #e2562b;
+  /* flour — the cream paper ground (see .theme-flour) */
+  --flour: #f5f0e8;
+  --flour-2: #ebe3d3;
+  --ink: #1b160d;
+  /* motion: slow like dough for storytelling, quick like service for controls */
+  --dur-1: 120ms;
+  --dur-2: 240ms;
+  --dur-3: 500ms;
+  --dur-4: 900ms;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 @theme inline {
@@ -27,6 +41,10 @@
   --color-green-deep: var(--green-deep);
   --color-line: var(--border);
   --color-line-strong: var(--border-strong);
+  --color-crust: var(--crust);
+  --color-ember: var(--ember);
+  --color-flour: var(--flour);
+  --color-ink: var(--ink);
   --font-display: var(--font-playfair);
   --font-body: var(--font-jakarta);
   --font-mono: var(--font-dm-mono);
@@ -34,6 +52,8 @@
 }
 
 body {
+  font-size: 1.0625rem;
+  line-height: 1.65;
   background: var(--bg);
   color: var(--warm);
   font-family: var(--font-jakarta);
@@ -59,6 +79,11 @@ html {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+  .reveal,
+  .reveal-stagger > * {
+    animation: none !important;
+    animation-timeline: auto !important;
   }
 }
 
@@ -104,6 +129,194 @@ html {
   }
   .btn-primary:disabled {
     opacity: 0.6;
+    transform: none;
+  }
+}
+
+/* ---------- Layout ---------- */
+
+/* One container for header, footer, breadcrumbs, every section, every page. */
+@utility container-site {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* Reading pages sit on the same left edge, with a text-width measure. */
+@utility container-read {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+  & > * {
+    max-width: 46rem;
+  }
+  @media (width >= 40rem) {
+    padding-inline: 2rem;
+  }
+  @media (width >= 64rem) {
+    padding-inline: 2.5rem;
+  }
+}
+
+/* ---------- Type scale ---------- */
+
+@layer components {
+  .h-display,
+  .h-page,
+  .h-section {
+    font-family: var(--font-playfair);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  .h-display {
+    font-size: clamp(3rem, 7.5vw, 7.5rem);
+    line-height: 0.95;
+  }
+  .h-page {
+    font-size: clamp(2.5rem, 5.5vw, 5rem);
+    line-height: 1;
+  }
+  .h-section {
+    font-size: clamp(2.25rem, 5vw, 4.5rem);
+    line-height: 1.02;
+  }
+  .h-display em,
+  .h-page em,
+  .h-section em {
+    font-weight: 700;
+  }
+  .eyebrow {
+    font-family: var(--font-dm-mono);
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--crust);
+  }
+  .lead {
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+
+  /* ---------- Surfaces ---------- */
+
+  /* Flour: cream paper. Redefines the same tokens, so anything inside
+     (text-warm, text-muted, border-line, text-green, bg-bg2) just works. */
+  .theme-flour {
+    --bg: var(--flour);
+    --bg2: var(--flour-2);
+    --bg3: #e0d6c2;
+    --warm: var(--ink);
+    --muted: #5d533f;
+    --green: #2f5a29;
+    --crust: #7a5510;
+    --border: rgba(27, 22, 13, 0.14);
+    --border-strong: rgba(27, 22, 13, 0.5);
+    background: var(--bg);
+    color: var(--warm);
+  }
+
+  /* Plate: image bleeds to the card edge. */
+  .surface-plate {
+    overflow: hidden;
+    border-radius: 0.375rem;
+    background: var(--bg2);
+  }
+  /* Feature panel: one per page, real elevation. */
+  .surface-panel {
+    border-radius: 0.5rem;
+    background: var(--bg2);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.06) inset,
+      0 30px 60px -30px rgba(0, 0, 0, 0.7);
+  }
+
+  /* Warm oven glow at the top of a dark section. */
+  .glow-top {
+    background-image: radial-gradient(
+      ellipse 70% 55% at 50% 0%,
+      rgba(226, 86, 43, 0.1),
+      rgba(217, 164, 65, 0.04) 45%,
+      transparent 70%
+    );
+  }
+
+  /* ---------- Photo grade ---------- */
+
+  /* One darkroom grade so stock and phone shots read as one shoot. */
+  .photo {
+    position: relative;
+    overflow: hidden;
+    background: var(--bg3);
+  }
+  .photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .photo-dough img {
+    filter: grayscale(0.55) sepia(0.28) contrast(1.06) brightness(0.96);
+  }
+  .photo-baked img {
+    filter: saturate(0.82) sepia(0.12) contrast(1.05) brightness(0.97);
+  }
+  .photo-vignette::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 55%, rgba(15, 13, 7, 0.55));
+  }
+}
+
+/* Film grain over the whole page — the texture that stops flat black
+   reading as a software dashboard. Fixed, non-interactive, 5%. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 1 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Motion ---------- */
+
+/* Reveal on scroll. The server-rendered state is the visible end state; the
+   animation only exists where scroll timelines are supported AND the visitor
+   has not asked for reduced motion, so content can never get stuck hidden. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 22%;
+    }
+    .reveal-stagger > * {
+      animation: reveal-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 60%;
+    }
+  }
+}
+@keyframes reveal-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.5rem);
+  }
+  to {
+    opacity: 1;
     transform: none;
   }
 }

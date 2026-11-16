@@ -19,18 +19,18 @@ export default function Hero() {
   ];
 
   return (
-    <section className="px-4 pb-16 pt-14 sm:px-6 sm:pt-20">
-      <div className="mx-auto max-w-6xl">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-green">
+    <section className="glow-top pb-16 pt-14 sm:pt-24">
+      <div className="container-site">
+        <p className="eyebrow">
           Warnervale NSW · Since {business.foundedYear}
         </p>
 
-        <h1 className="mt-6 max-w-4xl font-display text-5xl font-black leading-[1.02] text-balance sm:text-7xl">
+        <h1 className="h-display mt-6 max-w-5xl">
           Hand-stretched dough balls for{" "}
           <em className="font-bold text-green">Australia&rsquo;s pizza kitchens.</em>
         </h1>
 
-        <p className="mt-6 max-w-xl text-lg text-warm/80">
+        <p className="lead mt-7 max-w-xl text-warm/80">
           Nine sizes, six ingredients, no preservatives. Made on the Central
           Coast and delivered nationally, direct or through PFD Food Services.
         </p>

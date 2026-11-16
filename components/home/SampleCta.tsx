@@ -8,8 +8,8 @@ import { ArrowRight } from "lucide-react";
  */
 export default function SampleCta() {
   return (
-    <section className="border-y border-line bg-bg2 px-4 py-16 sm:px-6">
-      <div className="mx-auto max-w-3xl text-center">
+    <section className="border-y border-line bg-bg2 py-16">
+      <div className="container-site text-center [&>*]:mx-auto">
         <h2 className="font-display text-3xl font-black sm:text-4xl">
           Try TJ&rsquo;s in <em className="text-green">your kitchen</em>
         </h2>

@@ -15,8 +15,8 @@ export default function NotFound() {
   return (
     <>
       <SiteHeader />
-      <main id="main" className="flex-1 px-4 py-20 sm:px-6">
-        <div className="mx-auto max-w-6xl">
+      <main id="main" className="flex-1 py-20">
+        <div className="container-site">
           <svg
             viewBox="0 0 120 120"
             aria-hidden="true"
@@ -33,10 +33,10 @@ export default function NotFound() {
             <circle cx="78" cy="74" r="5" />
             <path d="M72 44 L92 9" strokeDasharray="3 6" />
           </svg>
-          <p className="mt-8 font-mono text-xs uppercase tracking-[0.2em] text-green">
+          <p className="mt-8 eyebrow">
             404
           </p>
-          <h1 className="mt-3 font-display text-4xl font-black sm:text-6xl">
+          <h1 className="h-page mt-3">
             That one&rsquo;s not on the menu.
           </h1>
           <p className="mt-4 max-w-xl text-lg text-warm/75">

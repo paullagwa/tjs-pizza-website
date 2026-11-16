@@ -94,13 +94,13 @@ export default function ContactSection({
   }
 
   return (
-    <section id="contact" className="border-t border-line bg-bg2 px-4 py-20 sm:px-6">
-      <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-2">
+    <section id="contact" className="border-t border-line bg-bg2 py-20">
+      <div className="container-site grid gap-12 lg:grid-cols-2">
         <div>
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-green">
+          <p className="eyebrow">
             {copy.eyebrow}
           </p>
-          <Heading className="mt-3 font-display text-4xl font-black sm:text-5xl">
+          <Heading className="h-section mt-3">
             {copy.title}
           </Heading>
           <p className="mt-4 max-w-md text-warm/75">{copy.intro}</p>

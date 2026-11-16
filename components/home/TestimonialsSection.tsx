@@ -4,13 +4,13 @@ import { testimonials } from "@/lib/content/testimonials";
 
 export default function TestimonialsSection() {
   return (
-    <section className="px-4 py-20 sm:px-6">
-      <div className="mx-auto max-w-6xl">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-green">
+    <section className="py-20">
+      <div className="container-site reveal">
+        <p className="eyebrow">
           Kitchens that trust us
         </p>
-        <h2 className="mt-3 font-display text-4xl font-black sm:text-5xl">
-          Word from the <em className="text-green">pass</em>
+        <h2 className="h-section mt-3">
+          Word from the pass
         </h2>
 
         <div className="mt-10 grid gap-5 sm:grid-cols-2">

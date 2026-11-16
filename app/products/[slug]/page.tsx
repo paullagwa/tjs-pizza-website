@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Photo from "@/components/Photo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, Check, Phone } from "lucide-react";
@@ -77,11 +77,11 @@ export default async function ProductPage({
           ]}
         />
 
-        <article className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-green">
+        <article className="container-site py-12">
+          <p className="eyebrow">
             {product.tagline}
           </p>
-          <h1 className="mt-3 max-w-2xl font-display text-4xl font-black leading-[1.1] sm:text-5xl">
+          <h1 className="h-page mt-3 max-w-3xl">
             {product.name}
           </h1>
           <p className="mt-5 max-w-2xl text-lg leading-relaxed text-warm/75">
@@ -142,14 +142,15 @@ export default async function ProductPage({
             </div>
 
             {product.image && (
-              <Image
+              <Photo
                 src={product.image}
                 alt={product.imageAlt ?? product.name}
-                width={800}
-                height={600}
+                ratio="4/5"
+                grade={product.slug === "square-pizza-base" ? "baked" : "dough"}
+                vignette={product.slug === "square-pizza-base"}
                 priority
                 sizes="(min-width: 1024px) 36rem, 100vw"
-                className="h-full max-h-[26rem] w-full rounded-lg object-cover"
+                className="rounded-lg"
               />
             )}
           </div>

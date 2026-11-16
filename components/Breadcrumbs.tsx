@@ -9,7 +9,7 @@ export default function Breadcrumbs({
   items: Array<{ name: string; path: string }>;
 }) {
   return (
-    <nav aria-label="Breadcrumb" className="mx-auto max-w-6xl px-4 pt-6 sm:px-6">
+    <nav aria-label="Breadcrumb" className="container-site pt-6">
       <JsonLd data={breadcrumbGraph(items)} />
       <ol className="flex flex-wrap items-center gap-1.5 text-sm text-warm/65">
         {items.map((item, i) => {

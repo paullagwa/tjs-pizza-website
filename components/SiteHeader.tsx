@@ -35,7 +35,7 @@ export default function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-bg/90 backdrop-blur-md">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+      <div className="container-site flex h-16 items-center justify-between gap-4">
         <Link href="/" className="flex flex-col leading-none" onClick={() => setOpen(false)}>
           <span className="font-display text-2xl font-black text-green">
             TJ&rsquo;s

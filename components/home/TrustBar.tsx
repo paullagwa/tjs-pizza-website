@@ -13,7 +13,7 @@ export default function TrustBar() {
 
   return (
     <div className="border-y border-line bg-bg2">
-      <ul className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-8 gap-y-3 px-4 py-4 sm:px-6">
+      <ul className="container-site flex flex-wrap items-center gap-x-8 gap-y-3 py-4">
         {items.map(({ icon: Icon, label }) => (
           <li
             key={label}

@@ -26,7 +26,7 @@ export default function TermsPage() {
             { name: "Terms", path: "/terms" },
           ]}
         />
-        <article className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
+        <article className="container-read py-12">
           <h1 className="font-display text-4xl font-black">Terms of Use</h1>
           <p className="mt-2 text-sm text-warm/65">Last updated: {LAST_UPDATED}</p>
 

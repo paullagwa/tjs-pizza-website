@@ -37,12 +37,12 @@ export default function FaqPage() {
             { name: "FAQ", path: "/faq" },
           ]}
         />
-        <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-green">
+        <div className="container-read py-12">
+          <p className="eyebrow">
             FAQ
           </p>
-          <h1 className="mt-3 font-display text-4xl font-black sm:text-5xl">
-            Common <em className="text-green">questions</em>
+          <h1 className="h-section mt-3">
+            Common questions
           </h1>
           <p className="mt-4 text-warm/70">
             Everything commercial kitchens ask us about ordering, storage,

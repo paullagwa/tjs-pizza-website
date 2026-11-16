@@ -33,11 +33,11 @@ export default function HomeCooksPage() {
           ]}
         />
 
-        <section className="mx-auto max-w-6xl px-4 py-12 sm:px-6">
-          <p className="font-mono text-xs uppercase tracking-[0.2em] text-green">
+        <section className="container-site py-12">
+          <p className="eyebrow">
             For home cooks
           </p>
-          <h1 className="mt-3 max-w-2xl font-display text-4xl font-black leading-[1.1] sm:text-5xl">
+          <h1 className="h-page mt-3 max-w-3xl">
             Restaurant quality. <em className="text-green">Your kitchen.</em>
           </h1>
           <p className="mt-5 max-w-xl text-lg text-warm/75">
@@ -72,8 +72,8 @@ export default function HomeCooksPage() {
           </div>
         </section>
 
-        <section className="border-y border-line bg-bg2 px-4 py-16 sm:px-6">
-          <div className="mx-auto max-w-6xl">
+        <section className="border-y border-line bg-bg2 py-16">
+          <div className="container-site">
             <h2 className="font-display text-3xl font-black sm:text-4xl">
               Try these <em className="text-green">first</em>
             </h2>
@@ -122,10 +122,10 @@ export default function HomeCooksPage() {
           </div>
         </section>
 
-        <section id="competition" className="px-4 py-16 sm:px-6">
-          <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-2">
+        <section id="competition" className="py-16">
+          <div className="container-site grid gap-10 lg:grid-cols-2">
             <div>
-              <p className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.2em] text-green">
+              <p className="inline-flex items-center gap-2 eyebrow">
                 <Trophy aria-hidden="true" className="h-4 w-4" />
                 {competition.tag}
               </p>
@@ -160,8 +160,8 @@ export default function HomeCooksPage() {
           </div>
         </section>
 
-        <section className="border-t border-line bg-bg2 px-4 py-14 sm:px-6">
-          <div className="mx-auto max-w-3xl text-center">
+        <section className="border-t border-line bg-bg2 py-14">
+          <div className="container-site text-center [&>*]:mx-auto">
             <h2 className="font-display text-2xl font-black sm:text-3xl">
               Where to buy
             </h2>

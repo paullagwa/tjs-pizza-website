@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Photo from "@/components/Photo";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { productRanges, bespokeOffer } from "@/lib/content/products";
@@ -33,13 +33,14 @@ function ProductCard({ product }: { product: ProductRange }) {
             ))}
           </ul>
           {product.image && (
-            <Image
+            <Photo
               src={product.image}
               alt={product.imageAlt ?? product.name}
-              width={640}
-              height={480}
+              ratio="3/2"
+              grade={product.slug === "square-pizza-base" ? "baked" : "dough"}
+              vignette={product.slug === "square-pizza-base"}
               sizes="(min-width: 768px) 34rem, 92vw"
-              className="mt-5 h-44 w-full rounded-md object-cover"
+              className="mt-5 rounded-md"
             />
           )}
         </div>
@@ -73,13 +74,13 @@ export default function ProductsSection({
 }) {
   const Heading = headingLevel;
   return (
-    <section id="products" className="px-4 py-20 sm:px-6">
-      <div className="mx-auto max-w-6xl">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-green">
+    <section id="products" className="py-20">
+      <div className="container-site reveal">
+        <p className="eyebrow">
           Our range
         </p>
-        <Heading className="mt-3 font-display text-4xl font-black sm:text-5xl">
-          Built on the <em className="text-green">dough ball</em>
+        <Heading className="h-section mt-3">
+          Built on the dough ball
         </Heading>
         <p className="mt-4 max-w-2xl text-warm/70">
           Our frozen dough ball range is the core of what we do — and why 500+

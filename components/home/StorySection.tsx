@@ -5,13 +5,13 @@ export default function StorySection() {
   const years = new Date().getFullYear() - business.foundedYear;
 
   return (
-    <section id="story" className="px-4 py-20 sm:px-6">
-      <div className="mx-auto max-w-6xl">
-        <p className="font-mono text-xs uppercase tracking-[0.2em] text-green">
+    <section id="story" className="py-20">
+      <div className="container-site reveal">
+        <p className="eyebrow">
           Our story
         </p>
-        <h2 className="mt-3 font-display text-4xl font-black sm:text-5xl">
-          {years} years of doing things <em className="text-green">right</em>
+        <h2 className="h-section mt-3">
+          {years} years of doing things right
         </h2>
         <p className="mt-4 max-w-2xl text-warm/70">{storyIntro}</p>
 
