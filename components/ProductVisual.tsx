@@ -100,7 +100,7 @@ export default function ProductVisual({
         viewBox="0 0 300 200"
         role="img"
         aria-label={`Line drawing of the ${product.name}, to scale`}
-        className="plate h-full w-full text-flour"
+        className="plate h-full w-full text-warm"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.5"

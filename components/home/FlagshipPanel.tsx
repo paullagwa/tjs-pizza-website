@@ -2,7 +2,6 @@ import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import DoughSizer from "@/components/DoughSizer";
 import Photo from "@/components/Photo";
-import SectionEdge from "@/components/SectionEdge";
 import SpecTable from "@/components/SpecTable";
 import { productRanges } from "@/lib/content/products";
 
@@ -11,8 +10,7 @@ export default function FlagshipPanel() {
   if (!product) return null;
 
   return (
-    <section id="dough-balls" className="theme-flour relative py-24">
-      <SectionEdge />
+    <section id="dough-balls" className="border-y border-line bg-bg2 py-24">
       <div className="container-site reveal">
         <p className="eyebrow">{product.tagline}</p>
         <h2 className="h-section mt-3 max-w-3xl">
@@ -25,7 +23,7 @@ export default function FlagshipPanel() {
               src="/images/TJs-Pizza-Products-10.jpg"
               alt="Rows of floured pizza dough balls resting on a wooden board"
               ratio="3/2"
-              grade="baked"
+              grade="dough"
               sizes="(min-width: 1024px) 34rem, 92vw"
               className="rounded-md"
             />

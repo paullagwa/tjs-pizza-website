@@ -152,7 +152,7 @@ export default function ContactSection({
 
         <div
           data-contact-form
-          className="order-1 border-t-4 border-ink bg-white/55 p-6 shadow-[0_30px_60px_-40px_rgba(27,22,13,0.5)] sm:p-9 lg:order-2"
+          className="order-1 border-t-4 border-ink bg-white/35 p-6 shadow-[0_30px_60px_-40px_rgba(27,22,13,0.5)] sm:p-9 lg:order-2"
         >
           <div ref={statusRef} tabIndex={-1} role="status" aria-live="polite" className="outline-none">
             {status === "success" && (

@@ -44,7 +44,7 @@ export default function DoughSizer({ specs }: { specs: SpecRow[] }) {
           </defs>
           {/* outline of the largest size, for scale */}
           <ellipse cx="160" cy={206 - 118 * 0.8} rx="118" ry={118 * 0.8} fill="none" stroke="currentColor" strokeOpacity="0.25" strokeDasharray="3 6" />
-          <ellipse cx="160" cy="208" rx={r * 0.95} ry={r * 0.09 + 3} fill="#1b160d" opacity="0.18" />
+          <ellipse cx="160" cy="208" rx={r * 0.95} ry={r * 0.09 + 3} fill="#000" opacity="0.45" />
           <g key={row.size} className="sizer-settle" style={{ transformOrigin: "160px 206px" }}>
             <ellipse cx="160" cy={206 - r * 0.8} rx={r} ry={r * 0.8} fill="url(#sizer-ball)" />
             <ellipse cx="160" cy={206 - r * 0.8} rx={r} ry={r * 0.8} fill="#fff" filter="url(#sizer-flour)" opacity="0.5" />
@@ -60,7 +60,7 @@ export default function DoughSizer({ specs }: { specs: SpecRow[] }) {
           {specs.map((s, i) => (
             <label
               key={s.size}
-              className="cursor-pointer rounded-full border border-line-strong px-4 py-2.5 text-sm font-semibold tabular-nums transition-colors has-[:checked]:border-green has-[:checked]:bg-green has-[:checked]:text-flour has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-green"
+              className="cursor-pointer rounded-full border border-line-strong px-4 py-2.5 text-sm font-semibold tabular-nums transition-colors has-[:checked]:border-green-deep has-[:checked]:bg-green-deep has-[:checked]:text-white has-[:focus-visible]:outline has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-green"
             >
               <input
                 type="radio"
