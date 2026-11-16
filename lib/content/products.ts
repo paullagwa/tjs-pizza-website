@@ -75,31 +75,7 @@ const allProductRanges: ProductRange[] = [
     metaDescription:
       'Hand-stretched frozen pizza dough balls in 17 sizes from 150g to 1kg. Vegan friendly, no preservatives. Wholesale from the NSW Central Coast, nationally via PFD.',
   },
-  {
-    slug: 'traditional-pizza-bases',
-    useCase: 'Par-baked rounds that defrost in minutes for fast, consistent service.',
-    bestFor: ['Pub & club', 'Food truck', 'School & canteen'],
-    name: 'Traditional Pizza Bases',
-    tagline: 'Par-Baked',
-    // No product card on the legacy site — description assembled from the legacy
-    // JSON-LD, the hidden footer-seo paragraph and the old WordPress homepage.
-    description:
-      'Par-baked pizza bases from 6 to 12 inch, supplied chilled or frozen. ' +
-      'Keep in the cool room for up to 3 weeks or in the freezer for up to 12 months, ' +
-      'and defrost in just a couple of minutes — ideal for busy service times. ' +
-      'No added preservatives, colourings or flavours.',
-    specs: [
-      // From the TJ's CRM product table
-      { size: '6 inch', sku: 'PB6', carton: '50/ctn', codes: { PFD: '383557', Bidfood: '127615' } },
-      { size: '8 inch', sku: 'PB8', carton: '50/ctn', codes: { PFD: '383558' } },
-      { size: '9 inch', sku: 'PB09', carton: '50/ctn', codes: { PFD: '383562', MOCO: '26426' } },
-      { size: '10 inch', codes: { Bidfood: '127613' } },
-      { size: '12 inch', carton: '40/ctn', codes: { Bidfood: '142438' } },
-      { size: '12 inch', carton: '50/ctn', codes: { Bidfood: '127612' } },
-    ],
-    shelfLife: 'Up to 3 weeks chilled or 12 months frozen',
-    dietary: ['No preservatives', 'No soy', 'No milk products'],
-  },
+  // Traditional Par-Baked Bases removed 2026-11-16 — TJ's no longer offers them.
   {
     slug: 'fresh-frozen',
     name: 'Fresh Frozen Range',

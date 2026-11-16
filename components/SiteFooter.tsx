@@ -99,7 +99,7 @@ export default function SiteFooter() {
           {business.customerTypes.at(-1)!.toLowerCase()} across{" "}
           {business.deliveryRegions.slice(0, -1).join(", ")} — and nationally
           through {`PFD Food Services`}. Our range covers frozen dough balls,
-          traditional par-baked bases, gluten free bases,
+          gluten free bases,
           garlic butter &amp; cheese bases, square bases and DinoBite kids
           bases. HACCP food safety certified. No artificial preservatives,
           colours or flavours. No soy. No milk products. Vegan friendly.

@@ -30,6 +30,8 @@ const nextConfig: NextConfig = {
       { source: "/terms-and-conditions", destination: "/terms", permanent: true },
       // Unpublished until sizes and carton quantities are confirmed
       { source: "/products/fresh-frozen", destination: "/products", permanent: false },
+      // Range discontinued
+      { source: "/products/traditional-pizza-bases", destination: "/products", permanent: false },
       { source: "/retail", destination: "/home-cooks", permanent: true },
       {
         source: "/sizes-and-uses",

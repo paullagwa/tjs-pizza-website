@@ -11,7 +11,7 @@ import { absoluteUrl, pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "Wholesale Pizza Bases & Dough Balls — The Range",
   description:
-    "The full TJ's range: hand-stretched frozen dough balls in 17 sizes, par-baked bases, gluten free recipe bases, garlic butter & cheese, square slabs and DinoBite kids bases.",
+    "The full TJ's range: hand-stretched frozen dough balls in 17 sizes, gluten free recipe bases, garlic butter & cheese, square slabs and DinoBite kids bases.",
   path: "/products",
 });
 

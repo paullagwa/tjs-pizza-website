@@ -9,10 +9,10 @@ export const faqs: FaqItem[] = [
       "Call Jeff on 0402 091 718 and we'll work out what suits your operation.",
   },
   {
-    question: "How long do TJ's pizza bases last?",
+    question: "How long do TJ's products last?",
     answer:
-      'Our par-baked bases keep for up to 3 weeks chilled, or up to 12 months frozen. ' +
-      'Par-baked bases defrost in a couple of minutes — ideal for busy service.',
+      'Our dough balls and bases keep for up to 12 months frozen. Thaw dough balls ' +
+      'in the cool room for 24 hours before service.',
   },
   {
     question: 'Are your dough balls vegan and vegetarian friendly?',

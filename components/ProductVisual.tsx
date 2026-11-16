@@ -35,8 +35,6 @@ function Rings({ inches }: { inches: number[] }) {
 
 function Plate({ slug }: { slug: string }) {
   switch (slug) {
-    case "traditional-pizza-bases":
-      return <Rings inches={[6, 9, 12]} />;
     case "gluten-free":
       return <Rings inches={[9, 11]} />;
     case "square-pizza-base":
