@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { Check, Loader2 } from "lucide-react";
 import SectionEdge from "@/components/SectionEdge";
-import { business, JEFF, publicEmail } from "@/lib/content/business";
+import { business, JEFF, publicEmail, QLD } from "@/lib/content/business";
 import { productRanges } from "@/lib/content/products";
 
 type Status = "idle" | "sending" | "success" | "error";
@@ -107,7 +107,7 @@ export default function ContactSection({
       <SectionEdge />
       <div className="container-site grid gap-12 lg:grid-cols-[5fr_7fr] lg:gap-20">
         <div className="order-2 lg:order-1">
-          <p className="eyebrow">Ring Jeff. He&rsquo;ll pick up.</p>
+          <p className="eyebrow">NSW &amp; national · Ring Jeff. He&rsquo;ll pick up.</p>
           <a
             href={JEFF.href}
             className="mt-3 inline-flex min-h-11 items-center font-display text-[clamp(2.5rem,5vw,4rem)] font-black leading-none tracking-tight hover:text-green"
@@ -115,6 +115,14 @@ export default function ContactSection({
             {JEFF.display}
           </a>
           <dl className="mt-8 grid gap-6 border-t border-line-strong pt-7">
+            <div>
+              <dt className={label}>Queensland · {QLD.name}, {QLD.role}</dt>
+              <dd>
+                <a href={QLD.href} className="inline-flex min-h-11 items-center font-display text-3xl font-bold hover:text-green">
+                  {QLD.display}
+                </a>
+              </dd>
+            </div>
             <div>
               <dt className={label}>Factory landline</dt>
               <dd>

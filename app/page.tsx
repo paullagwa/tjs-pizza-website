@@ -4,6 +4,7 @@ import ContactSection from "@/components/home/ContactSection";
 import CustomDough from "@/components/home/CustomDough";
 import FaqSection from "@/components/home/FaqSection";
 import FlagshipPanel from "@/components/home/FlagshipPanel";
+import GallerySection from "@/components/home/GallerySection";
 import FounderTeaser from "@/components/home/FounderTeaser";
 import Hero from "@/components/home/Hero";
 import RangeSection from "@/components/home/RangeSection";
@@ -19,6 +20,7 @@ export default function Home() {
         <Hero />
         <FlagshipPanel />
         <RangeSection />
+        <GallerySection />
         <WhySection />
         <TestimonialsSection />
         <SampleCta />

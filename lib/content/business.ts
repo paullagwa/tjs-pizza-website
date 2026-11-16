@@ -149,3 +149,11 @@ export function telHref(display: string): string {
   const digits = display.replace(/\D/g, "");
   return `tel:+61${digits.replace(/^0/, "")}`;
 }
+
+/** Queensland sales contact. */
+export const QLD = {
+  name: "Paul Lagwa",
+  role: "QLD Sales Executive",
+  display: business.phones[3].display,
+  href: business.phones[3].href,
+};

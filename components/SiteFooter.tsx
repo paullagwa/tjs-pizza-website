@@ -67,6 +67,11 @@ export default function SiteFooter() {
                 </a>
               </li>
               <li>
+                <a href="tel:+61411635322" className="inline-flex min-h-11 items-center text-warm/75 hover:text-warm">
+                  0411 635 322 (Paul, QLD)
+                </a>
+              </li>
+              <li>
                 <a href="tel:+61243940176" className="inline-flex min-h-11 items-center text-warm/75 hover:text-warm">
                   (02) 4394 0176
                 </a>
