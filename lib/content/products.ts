@@ -139,12 +139,11 @@ const allProductRanges: ProductRange[] = [
     ],
     shelfLife: '12 months frozen',
     dietary: ['No artificial colours or flavours', 'No preservatives'],
-    // Photos supplied by Paul, 16 Nov 2026 (retail pack + raw bases).
-    image: '/images/dinobite-pack.jpg',
-    imageAlt:
-      'A DinoBite Pizza Bases retail pack with a dinosaur-shaped base showing through the window',
-    imagePosition: '50% 38%',
-    imageFullColour: true,
+    // Photos supplied by Paul, 16 Nov 2026. The main image is the single base
+    // cut out of its bench background. The retail pack photo is not to be used.
+    image: '/images/dinobite-base-cut.png',
+    imageAlt: 'A dinosaur-shaped par-baked DinoBite pizza base',
+    imageCutout: true,
     extraImages: [
       {
         src: '/images/dinobite-bases-stack.jpg',

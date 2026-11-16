@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Photo from "@/components/Photo";
 import type { ProductRange } from "@/lib/content/types";
 
@@ -37,13 +38,26 @@ export default function ProductVisual({
   product: ProductRange;
   sizes: string;
 }) {
+  if (product.image && product.imageCutout) {
+    return (
+      <div className="relative aspect-[3/2] bg-bg3">
+        <Image
+          src={product.image}
+          alt={product.imageAlt ?? product.name}
+          fill
+          sizes={sizes}
+          className="object-contain p-3 drop-shadow-[0_14px_18px_rgba(0,0,0,0.55)] transition-transform duration-500 group-hover:scale-105"
+        />
+      </div>
+    );
+  }
   if (product.image) {
     return (
       <Photo
         src={product.image}
         alt={product.imageAlt ?? product.name}
         ratio="3/2"
-        grade={product.imageFullColour ? "none" : product.slug === "square-pizza-base" ? "baked" : "dough"}
+        grade={product.slug === "square-pizza-base" ? "baked" : "dough"}
         position={product.imagePosition}
         vignette={product.slug === "square-pizza-base"}
         sizes={sizes}

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Photo from "@/components/Photo";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -143,17 +144,30 @@ export default async function ProductPage({
 
             {product.image && (
               <div>
-                <Photo
-                  src={product.image}
-                  alt={product.imageAlt ?? product.name}
-                  ratio="4/5"
-                  grade={product.imageFullColour ? "none" : product.slug === "square-pizza-base" ? "baked" : "dough"}
-                  vignette={product.slug === "square-pizza-base"}
-                  position={product.imagePosition}
-                  priority
-                  sizes="(min-width: 1024px) 30rem, 100vw"
-                  className="rounded-lg"
-                />
+                {product.imageCutout ? (
+                  <div className="relative aspect-[4/5] rounded-lg bg-bg2">
+                    <Image
+                      src={product.image}
+                      alt={product.imageAlt ?? product.name}
+                      fill
+                      priority
+                      sizes="(min-width: 1024px) 30rem, 100vw"
+                      className="object-contain p-6 drop-shadow-[0_24px_30px_rgba(0,0,0,0.6)]"
+                    />
+                  </div>
+                ) : (
+                  <Photo
+                    src={product.image}
+                    alt={product.imageAlt ?? product.name}
+                    ratio="4/5"
+                    grade={product.slug === "square-pizza-base" ? "baked" : "dough"}
+                    vignette={product.slug === "square-pizza-base"}
+                    position={product.imagePosition}
+                    priority
+                    sizes="(min-width: 1024px) 30rem, 100vw"
+                    className="rounded-lg"
+                  />
+                )}
                 {product.extraImages && (
                   <div className="mt-4 grid grid-cols-2 gap-4">
                     {product.extraImages.map((img) => (

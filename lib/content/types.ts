@@ -31,8 +31,8 @@ export type ProductRange = {
   imageAlt?: string;
   /** CSS object-position for the main image when cropped */
   imagePosition?: string;
-  /** true = show the photo in full colour (packaging), not graded */
-  imageFullColour?: boolean;
+  /** true = the image is a transparent cut-out, shown whole on a dark panel */
+  imageCutout?: boolean;
   /** further photos shown on the product page */
   extraImages?: Array<{ src: string; alt: string }>;
   /** true for the hero range (Frozen Dough Balls) */
