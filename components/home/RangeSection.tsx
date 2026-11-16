@@ -30,7 +30,7 @@ export default function RangeSection() {
           ))}
         </div>
 
-        <ul className="-mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3">
+        <ul className="-mx-5 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-4 sm:mx-0 sm:grid sm:grid-cols-2 sm:gap-6 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-4">
           {productRanges.map((p) => {
             const dimmed = venue !== null && !p.bestFor?.includes(venue);
             return (
@@ -40,7 +40,7 @@ export default function RangeSection() {
                   dimmed ? "opacity-35" : ""
                 }`}
               >
-                <ProductVisual product={p} sizes="(min-width: 1024px) 24rem, (min-width: 640px) 45vw, 78vw" />
+                <ProductVisual product={p} sizes="(min-width: 1024px) 18rem, (min-width: 640px) 45vw, 78vw" />
                 <div className="flex flex-1 flex-col p-6">
                   <p className="font-mono text-xs uppercase tracking-[0.16em] text-crust">
                     {p.tagline}
