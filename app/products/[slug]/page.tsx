@@ -142,16 +142,34 @@ export default async function ProductPage({
             </div>
 
             {product.image && (
-              <Photo
-                src={product.image}
-                alt={product.imageAlt ?? product.name}
-                ratio="4/5"
-                grade={product.slug === "square-pizza-base" ? "baked" : "dough"}
-                vignette={product.slug === "square-pizza-base"}
-                priority
-                sizes="(min-width: 1024px) 36rem, 100vw"
-                className="rounded-lg"
-              />
+              <div>
+                <Photo
+                  src={product.image}
+                  alt={product.imageAlt ?? product.name}
+                  ratio="4/5"
+                  grade={product.imageFullColour ? "none" : product.slug === "square-pizza-base" ? "baked" : "dough"}
+                  vignette={product.slug === "square-pizza-base"}
+                  position={product.imagePosition}
+                  priority
+                  sizes="(min-width: 1024px) 30rem, 100vw"
+                  className="rounded-lg"
+                />
+                {product.extraImages && (
+                  <div className="mt-4 grid grid-cols-2 gap-4">
+                    {product.extraImages.map((img) => (
+                      <Photo
+                        key={img.src}
+                        src={img.src}
+                        alt={img.alt}
+                        ratio="4/5"
+                        grade="none"
+                        sizes="(min-width: 1024px) 15rem, 46vw"
+                        className="rounded-lg"
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
             )}
           </div>
 

@@ -29,6 +29,12 @@ export type ProductRange = {
   /** path under /public, e.g. "/images/dough-balls.jpg" */
   image?: string;
   imageAlt?: string;
+  /** CSS object-position for the main image when cropped */
+  imagePosition?: string;
+  /** true = show the photo in full colour (packaging), not graded */
+  imageFullColour?: boolean;
+  /** further photos shown on the product page */
+  extraImages?: Array<{ src: string; alt: string }>;
   /** true for the hero range (Frozen Dough Balls) */
   flagship?: boolean;
   /** one-line 'what it is for', shown on range plates */

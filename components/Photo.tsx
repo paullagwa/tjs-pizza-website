@@ -5,8 +5,8 @@ type Props = {
   alt: string;
   /** Only two ratios are allowed site-wide. */
   ratio?: "4/5" | "3/2";
-  /** dough = warm near-monochrome (raw dough, hands). baked = tamed colour. */
-  grade?: "dough" | "baked";
+  /** dough = warm near-monochrome (raw dough, hands). baked = tamed colour. none = as shot (packaging). */
+  grade?: "dough" | "baked" | "none";
   /** Darkened corners — for phone shots with busy edges. */
   vignette?: boolean;
   sizes: string;

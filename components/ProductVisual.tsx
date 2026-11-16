@@ -13,17 +13,6 @@ function Plate({ slug }: { slug: string }) {
           </text>
         </>
       );
-    case "dinobite-kids":
-      return (
-        <>
-          <path d="M52 132c2-22 22-36 50-38 10-30 24-50 44-52 16-1 22 12 12 18-12 2-20 14-24 34 34 0 62 10 84 30 12 6 24 4 32-4-4 18-24 26-44 20v22h-16l-2-16h-74l-2 16H96l-2-18c-22 2-38-2-42-12z" />
-          <circle cx="150" cy="54" r="2" fill="currentColor" />
-          <path d="M60 178h54" strokeDasharray="2 4" />
-          <text x="87" y="194" textAnchor="middle" className="plate-label">
-            6 inch
-          </text>
-        </>
-      );
     case "garlic-butter-cheese":
       return (
         <>
@@ -54,7 +43,8 @@ export default function ProductVisual({
         src={product.image}
         alt={product.imageAlt ?? product.name}
         ratio="3/2"
-        grade={product.slug === "square-pizza-base" ? "baked" : "dough"}
+        grade={product.imageFullColour ? "none" : product.slug === "square-pizza-base" ? "baked" : "dough"}
+        position={product.imagePosition}
         vignette={product.slug === "square-pizza-base"}
         sizes={sizes}
       />
