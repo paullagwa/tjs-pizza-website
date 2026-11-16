@@ -30,7 +30,8 @@ const nextConfig: NextConfig = {
       { source: "/terms-and-conditions", destination: "/terms", permanent: true },
       // Unpublished until sizes and carton quantities are confirmed
       { source: "/products/fresh-frozen", destination: "/products", permanent: false },
-      // Range discontinued
+      // Ranges TJ's no longer offers
+      { source: "/products/gluten-free", destination: "/products", permanent: false },
       { source: "/products/traditional-pizza-bases", destination: "/products", permanent: false },
       { source: "/retail", destination: "/home-cooks", permanent: true },
       {

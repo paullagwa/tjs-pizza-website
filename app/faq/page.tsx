@@ -11,7 +11,7 @@ import { pageMeta } from "@/lib/seo";
 export const metadata: Metadata = pageMeta({
   title: "FAQ — Wholesale Pizza Base Questions Answered",
   description:
-    "Minimum orders, shelf life, vegan and gluten free options, national delivery, HACCP certification — answers to the questions commercial kitchens ask TJ's Pizza Products.",
+    "Minimum orders, shelf life, vegan and dietary questions, national delivery, HACCP certification — answers to the questions commercial kitchens ask TJ's Pizza Products.",
   path: "/faq",
 });
 

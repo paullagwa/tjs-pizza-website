@@ -1,42 +1,8 @@
 import Photo from "@/components/Photo";
 import type { ProductRange } from "@/lib/content/types";
 
-const INCH = 13; // px per inch — every plate is drawn to the same scale
-
-function Rings({ inches }: { inches: number[] }) {
-  const max = Math.max(...inches);
-  const angles = [-150, -90, -30, 30];
-  return (
-    <>
-      {inches.map((d, i) => {
-        const r = (d * INCH) / 2;
-        const a = (angles[i % angles.length] * Math.PI) / 180;
-        return (
-          <g key={d}>
-            <circle cx="150" cy="96" r={r} />
-            <text
-              x={150 + (r - 9) * Math.cos(a)}
-              y={96 + (r - 9) * Math.sin(a) + 3}
-              textAnchor="middle"
-              className="plate-label"
-            >
-              {d}&quot;
-            </text>
-          </g>
-        );
-      })}
-      <path d={`M${150 - (max * INCH) / 2} 182h${max * INCH}`} strokeDasharray="2 4" />
-      <text x="150" y="195" textAnchor="middle" className="plate-label">
-        {max} inch
-      </text>
-    </>
-  );
-}
-
 function Plate({ slug }: { slug: string }) {
   switch (slug) {
-    case "gluten-free":
-      return <Rings inches={[9, 11]} />;
     case "square-pizza-base":
       return (
         <>

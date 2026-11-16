@@ -20,7 +20,6 @@ export const venueTypes = [
   'Pub & club',
   'Food truck',
   'School & canteen',
-  'Gluten free menu',
 ];
 
 const allProductRanges: ProductRange[] = [
@@ -90,27 +89,7 @@ const allProductRanges: ProductRange[] = [
     // Unpublished until Jeff/Rhys supply sizes and carton quantities.
     draft: true,
   },
-  {
-    slug: 'gluten-free',
-    useCase: 'Gluten free recipe bases so the whole table can order pizza.',
-    bestFor: ['Gluten free menu'],
-    name: 'Gluten Free Range',
-    tagline: 'Gluten Free Recipe',
-    // No product card on the legacy site — sourced from the legacy JSON-LD
-    // (product entry + FAQ entry): "produced in a dedicated, fully segregated
-    // HACCP-certified facility with no cross-contamination".
-    // UNVERIFIED allergen claim — softened to "gluten free recipe" until Jeff or
-    // Rhys confirm the segregated-facility wording in writing.
-    description:
-      'Gluten free recipe pizza bases from our HACCP-certified Warnervale factory. ' +
-      'No soy, no milk. Available in 9 inch and 11 inch. Ask us for the allergen ' +
-      'statement and spec sheet.',
-    specs: [
-      { size: '9 inch' },
-      { size: '11 inch' },
-    ],
-    dietary: ['Gluten free recipe', 'No soy', 'No milk products'],
-  },
+  // Gluten Free Range removed 2026-11-16 — TJ's does not make a gluten free product.
   {
     slug: 'garlic-butter-cheese',
     useCase: 'Pre-topped garlic bases. Freezer to oven to plate with no prep.',

@@ -5,9 +5,8 @@ blocks the build.
 
 ## Claims we softened or removed (need written confirmation to restore)
 
-1. **Gluten free.** Is the GF range made in a dedicated, fully segregated
-   facility with no cross-contamination? The site now says "gluten free recipe
-   bases" only. Is there an allergen statement we can link?
+1. **Gluten free.** Removed from the site on 16 Nov 2026: TJ's does not make a
+   gluten free product.
 2. **Testimonials.** We removed "Marco P." and "Sarah M." because nobody can
    say which venues they are. Can we get venue names and suburbs for Tony
    Schlick and Steve Harris, and 6 to 10 customers happy to be named?
