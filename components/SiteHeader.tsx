@@ -45,7 +45,7 @@ export default function SiteHeader() {
           </span>
         </Link>
 
-        <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
+        <nav aria-label="Primary" className="hidden items-center gap-7 lg:flex">
           {links.map((l) => (
             <Link
               key={l.href}
@@ -58,12 +58,13 @@ export default function SiteHeader() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a
-            href="tel:+61402091718"
-            className="inline-flex items-center gap-2 rounded-md bg-green-deep px-4 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
-          >
+          <Link href="/contact?intent=sample" className="btn-ghost hidden py-2 text-sm lg:inline-flex">
+            Sample box
+          </Link>
+          <a href="tel:+61402091718" className="btn-primary py-2 text-sm">
             <Phone aria-hidden="true" className="h-4 w-4" />
             <span className="hidden sm:inline">Call Jeff</span>
+            <span className="hidden xl:inline">0402 091 718</span>
             <span className="sm:hidden">Call</span>
           </a>
           <button
@@ -72,7 +73,7 @@ export default function SiteHeader() {
             aria-controls="mobile-nav"
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen(!open)}
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-line text-warm md:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md border border-line-strong text-warm lg:hidden"
           >
             {open ? (
               <X aria-hidden="true" className="h-5 w-5" />
@@ -87,7 +88,7 @@ export default function SiteHeader() {
         <nav
           id="mobile-nav"
           aria-label="Primary"
-          className="max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-bg2 md:hidden"
+          className="drawer-in max-h-[calc(100dvh-4rem)] overflow-y-auto border-t border-line bg-bg2 lg:hidden"
         >
           <ul className="flex flex-col px-4 py-3">
             {links.map((l) => (
@@ -95,16 +96,25 @@ export default function SiteHeader() {
                 <Link
                   href={l.href}
                   onClick={() => setOpen(false)}
-                  className="block border-b border-line py-3.5 text-base text-warm/85"
+                  className="block border-b border-line py-4 font-display text-2xl font-bold"
                 >
                   {l.label}
                 </Link>
               </li>
             ))}
             <li>
+              <Link
+                href="/contact?intent=sample"
+                onClick={() => setOpen(false)}
+                className="btn-ghost mt-5 w-full"
+              >
+                Get a free sample box
+              </Link>
+            </li>
+            <li>
               <a
                 href="tel:+61402091718"
-                className="mt-4 mb-2 inline-flex w-full items-center justify-center gap-2 rounded-md bg-green-deep px-4 py-3 font-semibold text-white"
+                className="btn-primary mb-3 mt-2 w-full"
               >
                 <Phone aria-hidden="true" className="h-4 w-4" />
                 Call Jeff — 0402 091 718

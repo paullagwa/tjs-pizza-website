@@ -97,7 +97,7 @@ export default async function ProductPage({
             ))}
           </ul>
 
-          <div className="mt-10 grid gap-10 lg:grid-cols-2">
+          <div className="mt-10 grid gap-10 lg:grid-cols-[7fr_5fr]">
             <div>
               <div className="rounded-lg border border-line bg-bg2 p-6">
                 <h2 className="font-display text-xl font-bold">
@@ -119,7 +119,7 @@ export default async function ProductPage({
                   Get wholesale pricing
                 </h2>
                 <p className="mt-2 text-sm text-warm/70">
-                  Available through PFD Food Services nationally or direct
+                  Order through {business.distributors.join(", ")}, or direct
                   from our {business.address.locality} factory.
                 </p>
                 <div className="mt-5 flex flex-wrap gap-3">

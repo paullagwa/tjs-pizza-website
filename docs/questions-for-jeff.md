@@ -16,6 +16,16 @@ blocks the build.
 
 ## Missing product data
 
+Sizes, carton quantities and distributor order codes now come from the TJ's CRM
+product table. Still open:
+
+- Carton quantities for dough balls at 160g, 180g, 200g, 320g, 330g, 400g,
+  480g, 560g and 1kg, and for the 10 inch par-baked base.
+- 12 inch par-baked base is listed at both 40 and 50 per carton. Which, or both?
+- MOCO codes for 150g and 200g; any codes missing from the table on the site.
+- Is it right to publish distributor order codes on the public website?
+- Should MOCO be written as "MOCO Food Services"?
+
 4. Carton quantities for Traditional bases (6, 8, 9 inch) and Gluten Free
    (9, 11 inch).
 5. Fresh Frozen range: sizes, carton quantities, how it differs from

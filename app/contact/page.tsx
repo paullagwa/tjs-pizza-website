@@ -17,11 +17,16 @@ export const metadata: Metadata = pageMeta({
 export default async function ContactPage({
   searchParams,
 }: {
-  searchParams: Promise<{ intent?: string; product?: string }>;
+  searchParams: Promise<{ intent?: string; product?: string; size?: string }>;
 }) {
-  const { intent, product } = await searchParams;
-  const safeIntent: ContactIntent =
-    intent === "sample" || intent === "bespoke" ? intent : undefined;
+  const { intent, product, size } = await searchParams;
+  const safeIntent: ContactIntent | undefined =
+    intent === "sample" || intent === "bespoke" || intent === "price"
+      ? intent
+      : product
+        ? "price"
+        : undefined;
+  const safeSize = size && /^[\w .]{1,12}$/.test(size) ? size : undefined;
 
   return (
     <>
@@ -37,6 +42,7 @@ export default async function ContactPage({
           headingLevel="h1"
           intent={safeIntent}
           product={product}
+          size={safeSize}
         />
       </main>
       <SiteFooter />

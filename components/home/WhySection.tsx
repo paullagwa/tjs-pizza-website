@@ -1,40 +1,23 @@
-import { Award, Handshake, Leaf, PiggyBank, Truck, Zap } from "lucide-react";
 import SectionEdge from "@/components/SectionEdge";
 import { business } from "@/lib/content/business";
 
 export default function WhySection() {
-  const years = new Date().getFullYear() - business.foundedYear;
-
-  const pillars = [
+  const outcomes = [
     {
-      icon: Leaf,
-      title: "Clean Ingredients",
-      body: "Zero preservatives, artificial colours, or flavours. No soy, no milk products. Real ingredients that make great pizza.",
+      title: "No dough prep",
+      body: "No mixing, proving or balling before service. Pull tomorrow’s dough tonight and it’s ready when you are.",
     },
     {
-      icon: Award,
-      title: "HACCP Certified",
-      body: `Our ${business.factorySize} Warnervale factory exceeds Australian food safety standards. Full batch traceability every time.`,
+      title: "Six ingredients",
+      body: `${business.ingredients}. No preservatives, no soy, no milk products.`,
     },
     {
-      icon: PiggyBank,
-      title: "Cost Effective",
-      body: `Low cost, high profit. Best price-to-quality dough ball in the market — backed by ${years}+ years of loyal kitchens.`,
+      title: `A ${business.factorySize} HACCP factory`,
+      body: "Made in Warnervale on the Central Coast, with batch traceability on every carton.",
     },
     {
-      icon: Zap,
-      title: "Service Ready",
-      body: "Pull tomorrow’s dough tonight and it’s ready when you are. Par-baked bases defrost in minutes for the rush.",
-    },
-    {
-      icon: Handshake,
-      title: "Family Business",
-      body: `100% Australian-owned since ${business.foundedYear}. Jeff and Rhys pick up the phone. Your account matters — not just your order.`,
-    },
-    {
-      icon: Truck,
-      title: "National Reach",
-      body: "Central Coast NSW roots, national delivery through PFD Food Services and direct. Reliable cold chain nationwide.",
+      title: "A person, not a portal",
+      body: `Jeff and Rhys pick up the phone. Australian family-owned since ${business.foundedYear}.`,
     },
   ];
 
@@ -42,21 +25,18 @@ export default function WhySection() {
     <section id="why" className="theme-flour relative py-24">
       <SectionEdge />
       <div className="container-site reveal">
-        <p className="eyebrow">
-          Why TJ&rsquo;s
-        </p>
+        <p className="eyebrow">Why kitchens switch</p>
         <h2 className="h-section mt-3">
           We don&rsquo;t cut corners.
           <br />
-          We cut <em className="text-green">dough</em>
+          We cut <em className="text-green">dough.</em>
         </h2>
 
-        <div className="mt-12 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-          {pillars.map(({ icon: Icon, title, body }) => (
-            <div key={title} className="border-t border-line-strong pt-5">
-              <Icon aria-hidden="true" className="h-6 w-6 text-green" />
-              <h3 className="mt-3 font-display text-xl font-bold">{title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-warm/70">{body}</p>
+        <div className="reveal-stagger mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+          {outcomes.map((o) => (
+            <div key={o.title} className="border-t-2 border-ink pt-5">
+              <h3 className="font-display text-2xl font-bold leading-tight">{o.title}</h3>
+              <p className="mt-3 text-[0.9375rem] leading-relaxed text-warm/80">{o.body}</p>
             </div>
           ))}
         </div>

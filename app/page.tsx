@@ -1,15 +1,15 @@
-import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import Hero from "@/components/home/Hero";
-import TrustBar from "@/components/home/TrustBar";
-import ProductsSection from "@/components/home/ProductsSection";
-import WhySection from "@/components/home/WhySection";
-import StorySection from "@/components/home/StorySection";
-import TeamSection from "@/components/home/TeamSection";
-import TestimonialsSection from "@/components/home/TestimonialsSection";
-import SampleCta from "@/components/home/SampleCta";
-import FaqSection from "@/components/home/FaqSection";
+import SiteHeader from "@/components/SiteHeader";
 import ContactSection from "@/components/home/ContactSection";
+import CustomDough from "@/components/home/CustomDough";
+import FaqSection from "@/components/home/FaqSection";
+import FlagshipPanel from "@/components/home/FlagshipPanel";
+import FounderTeaser from "@/components/home/FounderTeaser";
+import Hero from "@/components/home/Hero";
+import RangeSection from "@/components/home/RangeSection";
+import SampleCta from "@/components/home/SampleCta";
+import TestimonialsSection from "@/components/home/TestimonialsSection";
+import WhySection from "@/components/home/WhySection";
 
 export default function Home() {
   return (
@@ -17,13 +17,13 @@ export default function Home() {
       <SiteHeader />
       <main id="main" className="flex-1">
         <Hero />
-        <TrustBar />
-        <ProductsSection />
+        <FlagshipPanel />
+        <RangeSection />
         <WhySection />
-        <StorySection />
-        <TeamSection />
         <TestimonialsSection />
         <SampleCta />
+        <CustomDough />
+        <FounderTeaser />
         <FaqSection />
         <ContactSection />
       </main>

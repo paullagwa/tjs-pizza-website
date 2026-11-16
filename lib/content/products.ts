@@ -14,33 +14,52 @@ import type { ProductRange } from './types';
  * `draft: true` ranges are not published (see `productRanges` at the bottom).
  */
 
+/** Kitchen types used by the homepage range filter. */
+export const venueTypes = [
+  'Wood-fire & Neapolitan',
+  'Pub & club',
+  'Food truck',
+  'School & canteen',
+  'Gluten free menu',
+];
+
 const allProductRanges: ProductRange[] = [
   {
     slug: 'frozen-dough-balls',
+    useCase: 'Raw, hand-stretched dough for Neapolitan, New York and Roman styles in any oven.',
+    bestFor: ['Wood-fire & Neapolitan', 'Food truck', 'Pub & club'],
     name: 'Frozen Dough Ball Range',
     tagline: "TJ's Signature Product",
     description:
       'The heart of what we do. Hand-stretched and frozen at peak freshness. ' +
-      'From 150g to 1kg — whatever your kitchen requires, we have a size for you. ' +
+      'Seventeen sizes from 150g to 1kg — whatever your kitchen requires, we have a size for you. ' +
       'Vegan friendly. Works in every oven — especially wood fire. ' +
       'Perfect for Neapolitan, NY, Roman and artisan pizza. Pull tomorrow’s dough ' +
       'tonight: 24 hours in the cool room, an hour or two on the bench, and it ' +
       'stretches like you made it this morning. ' +
-      'Available through PFD Food Services nationally and direct from our Warnervale factory.',
-    // Carton quantities exactly as the legacy detail table.
-    // CONFLICT: the product sheet PDF says "15 per box at 1kg" (legacy table says 12/ctn),
-    // and the legacy JSON-LD/footer-seo describe "8 sizes from 150g to 600g" while this
-    // table has 9 sizes up to 1kg. Legacy table takes priority — confirm with Paul.
+      'Order through PFD Food Services, MOCO or Bidfood, or direct from our Warnervale factory.',
+    // Sizes, TJ's codes, carton quantities and distributor order codes come from
+    // the TJ's CRM product table (paullagwa-tj-crm, migrations to 12 Nov 2026).
+    // Carton quantities are the same across distributors. A row without `carton`
+    // is a size TJ's makes whose carton quantity is not confirmed yet.
     specs: [
-      { size: '150g', carton: '80/ctn' },
-      { size: '220g', carton: '60/ctn' },
-      { size: '240g', carton: '60/ctn' },
-      { size: '250g', carton: '60/ctn' },
-      { size: '270g', carton: '50/ctn' },
-      { size: '300g', carton: '50/ctn' },
-      { size: '350g', carton: '40/ctn' },
-      { size: '600g', carton: '20/ctn' },
-      { size: '1kg', carton: '12/ctn' },
+      { size: '150g', sku: 'Do150', carton: '80/ctn', codes: { PFD: '383561', Bidfood: '219091' } },
+      { size: '160g', codes: { MOCO: '34609' } },
+      { size: '180g', codes: { MOCO: '34913' } },
+      { size: '200g' },
+      { size: '220g', sku: 'Do220', carton: '60/ctn', codes: { PFD: '274076', MOCO: '31593', Bidfood: '184426' } },
+      { size: '240g', sku: 'Do240', carton: '60/ctn', codes: { PFD: '384576' } },
+      { size: '250g', sku: 'Do250', carton: '60/ctn', codes: { PFD: '273315', MOCO: '30906', Bidfood: '184015' } },
+      { size: '270g', sku: 'Do270', carton: '50/ctn', codes: { PFD: '385906', MOCO: '31594', Bidfood: '184427' } },
+      { size: '300g', sku: 'Do300', carton: '50/ctn', codes: { PFD: '380849', MOCO: '31346', Bidfood: '187190' } },
+      { size: '320g', codes: { Bidfood: '220413' } },
+      { size: '330g', codes: { MOCO: '31673', Bidfood: '207560' } },
+      { size: '350g', sku: 'Do350', carton: '40/ctn', codes: { PFD: '274662' } },
+      { size: '400g', codes: { Bidfood: '202135' } },
+      { size: '480g', codes: { Bidfood: '220371' } },
+      { size: '560g', codes: { MOCO: '34610' } },
+      { size: '600g', sku: 'Do600', carton: '20/ctn', codes: { PFD: '279591' } },
+      { size: '1kg', codes: { Bidfood: '147050' } },
     ],
     shelfLife: '12 months frozen',
     dietary: [
@@ -54,23 +73,29 @@ const allProductRanges: ProductRange[] = [
     imageAlt: 'Floured hands stretching a ball of pizza dough',
     flagship: true,
     metaDescription:
-      'Hand-stretched frozen pizza dough balls in nine sizes from 150g to 1kg. Vegan friendly, no preservatives. Wholesale from the NSW Central Coast, nationally via PFD.',
+      'Hand-stretched frozen pizza dough balls in 17 sizes from 150g to 1kg. Vegan friendly, no preservatives. Wholesale from the NSW Central Coast, nationally via PFD.',
   },
   {
     slug: 'traditional-pizza-bases',
+    useCase: 'Par-baked rounds that defrost in minutes for fast, consistent service.',
+    bestFor: ['Pub & club', 'Food truck', 'School & canteen'],
     name: 'Traditional Pizza Bases',
     tagline: 'Par-Baked',
     // No product card on the legacy site — description assembled from the legacy
     // JSON-LD, the hidden footer-seo paragraph and the old WordPress homepage.
     description:
-      'Par-baked pizza bases in 6, 8 and 9 inch, supplied chilled or frozen. ' +
+      'Par-baked pizza bases from 6 to 12 inch, supplied chilled or frozen. ' +
       'Keep in the cool room for up to 3 weeks or in the freezer for up to 12 months, ' +
       'and defrost in just a couple of minutes — ideal for busy service times. ' +
       'No added preservatives, colourings or flavours.',
     specs: [
-      { size: '6 inch' },
-      { size: '8 inch' },
-      { size: '9 inch' },
+      // From the TJ's CRM product table
+      { size: '6 inch', sku: 'PB6', carton: '50/ctn', codes: { PFD: '383557', Bidfood: '127615' } },
+      { size: '8 inch', sku: 'PB8', carton: '50/ctn', codes: { PFD: '383558' } },
+      { size: '9 inch', sku: 'PB09', carton: '50/ctn', codes: { PFD: '383562', MOCO: '26426' } },
+      { size: '10 inch', codes: { Bidfood: '127613' } },
+      { size: '12 inch', carton: '40/ctn', codes: { Bidfood: '142438' } },
+      { size: '12 inch', carton: '50/ctn', codes: { Bidfood: '127612' } },
     ],
     shelfLife: 'Up to 3 weeks chilled or 12 months frozen',
     dietary: ['No preservatives', 'No soy', 'No milk products'],
@@ -91,6 +116,8 @@ const allProductRanges: ProductRange[] = [
   },
   {
     slug: 'gluten-free',
+    useCase: 'Gluten free recipe bases so the whole table can order pizza.',
+    bestFor: ['Gluten free menu'],
     name: 'Gluten Free Range',
     tagline: 'Gluten Free Recipe',
     // No product card on the legacy site — sourced from the legacy JSON-LD
@@ -110,6 +137,8 @@ const allProductRanges: ProductRange[] = [
   },
   {
     slug: 'garlic-butter-cheese',
+    useCase: 'Pre-topped garlic bases. Freezer to oven to plate with no prep.',
+    bestFor: ['Pub & club'],
     name: 'Garlic Butter & Cheese',
     tagline: 'Pre-Topped',
     description:
@@ -123,6 +152,8 @@ const allProductRanges: ProductRange[] = [
   },
   {
     slug: 'square-pizza-base',
+    useCase: 'Slabs cut to any shape for trays, canteens and pub-style pizza.',
+    bestFor: ['School & canteen', 'Pub & club'],
     name: 'Square Pizza Base',
     tagline: 'Tray & Slab',
     description:
@@ -136,13 +167,21 @@ const allProductRanges: ProductRange[] = [
   },
   {
     slug: 'dinobite-kids',
+    useCase: 'Dinosaur-shaped par-baked bases for kids menus and canteens.',
+    bestFor: ['School & canteen'],
     name: 'DinoBite Kids Pizza Base',
     tagline: 'Kids Range',
     description:
       'Dinosaur-shaped par-baked pizza bases. Fun shapes, same clean ingredients as our ' +
       'full range. Perfect for school canteens, family dining and kids menus. ' +
       'No artificial colours or flavours.',
-    specs: [{ size: '6" Dino shape', carton: '60/ctn' }],
+    specs: [
+      {
+        size: '6" Dino shape',
+        carton: '60/ctn',
+        codes: { PFD: '396209', MOCO: '37310', Bidfood: '195137' },
+      },
+    ],
     shelfLife: '12 months frozen',
     dietary: ['No artificial colours or flavours', 'No preservatives'],
     // Legacy card image was base64-embedded and does not match any rescued

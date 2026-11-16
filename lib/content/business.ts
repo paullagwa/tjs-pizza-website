@@ -47,6 +47,8 @@ export type Business = {
   dietaryClaims: string[];
   ingredients: string;
   distribution: string;
+  /** from the TJ's CRM — venues order through their own distributor */
+  distributors: string[];
   /** from the hidden .footer-seo paragraph on the legacy site */
   deliveryRegions: string[];
   customerTypes: string[];
@@ -104,7 +106,9 @@ export const business: Business = {
   // Dough ball ingredients, from the product sheet PDF
   ingredients:
     '00 Australian Wheat Flour, Yeast, Sugar, Salt, Vegetable Oil, and Filtered Water',
-  distribution: 'PFD Food Services nationally and direct from the Warnervale factory',
+  distribution:
+    'PFD Food Services nationally, MOCO and Bidfood, and direct from the Warnervale factory',
+  distributors: ['PFD Food Services', 'MOCO', 'Bidfood'],
   deliveryRegions: [
     'Sydney',
     'Newcastle',

@@ -23,6 +23,13 @@ export default function FornoWidget() {
     }
   });
   const [input, setInput] = useState("");
+
+  // The phone action bar opens the chat through this event
+  useEffect(() => {
+    const toggle = () => setOpen((o) => !o);
+    window.addEventListener("forno:toggle", toggle);
+    return () => window.removeEventListener("forno:toggle", toggle);
+  }, []);
   const [busy, setBusy] = useState(false);
   const panelRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -93,7 +100,7 @@ export default function FornoWidget() {
         aria-expanded={open}
         aria-controls="forno-panel"
         aria-label={open ? "Close Forno pizza chat" : "Chat with Forno, our pizza expert"}
-        className="fixed bottom-5 right-5 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-green-deep text-white shadow-lg transition-transform hover:scale-105"
+        className="fixed bottom-6 right-6 z-40 hidden h-14 w-14 md:flex items-center justify-center rounded-full bg-green-deep text-white shadow-lg transition-transform hover:scale-105"
       >
         {open ? (
           <X aria-hidden="true" className="h-6 w-6" />
@@ -108,7 +115,7 @@ export default function FornoWidget() {
           ref={panelRef}
           role="dialog"
           aria-label="Forno pizza chat"
-          className="fixed bottom-24 right-5 z-40 flex h-[28rem] max-h-[calc(100dvh-8rem)] w-[22rem] max-w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-lg border border-line bg-bg2 shadow-2xl"
+          className="fixed bottom-20 right-3 z-40 flex md:bottom-24 md:right-6 h-[28rem] max-h-[calc(100dvh-8rem)] w-[22rem] max-w-[calc(100vw-2.5rem)] flex-col overflow-hidden rounded-lg border border-line bg-bg2 shadow-2xl"
         >
           <div className="flex items-center justify-between border-b border-line bg-bg px-4 py-3">
             <div>

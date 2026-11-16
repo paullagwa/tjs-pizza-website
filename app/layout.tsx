@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Playfair_Display, Plus_Jakarta_Sans, DM_Mono } from "next/font/google";
 import FornoWidget from "@/components/FornoWidget";
 import JsonLd from "@/components/JsonLd";
+import MobileActionBar from "@/components/MobileActionBar";
 import { OG_IMAGE, SITE_NAME, SITE_URL, siteGraph } from "@/lib/seo";
 import "./globals.css";
 
@@ -75,6 +76,7 @@ export default function RootLayout({
         </a>
         <JsonLd data={siteGraph()} />
         {children}
+        <MobileActionBar />
         <FornoWidget />
       </body>
     </html>
